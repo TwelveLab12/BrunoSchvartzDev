@@ -40,7 +40,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="fr"
       className={`${instrumentSerif.variable} ${plexSans.variable} ${plexMono.variable}`}
-      suppressHydrationWarning
     >
       <body className="font-sans">{children}</body>
     </html>
