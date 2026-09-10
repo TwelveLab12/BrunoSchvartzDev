@@ -9,34 +9,68 @@ export const profile = {
   phone: "06 23 80 88 39",
   phoneHref: "tel:+33623808839",
   linkedin: "https://www.linkedin.com/in/bruno-schvartz",
-  github: "https://github.com/",
+  github: "https://github.com/TwelveLab12",
+  website: "https://brunoschvartz.dev",
+  websiteLabel: "brunoschvartz.dev",
 } as const;
 
 export const stackGroups = [
   {
     label: "01 — Front-end",
-    items: ["TypeScript", "React", "Next.js", "Inertia.js", "Zustand", "TanStack Query", "Vite"],
+    items: [
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Inertia.js",
+      "Zustand",
+      "TanStack Query",
+      "Vite",
+      "React Hook Form",
+      "Cypress",
+      "Playwright",
+    ],
   },
-  { label: "02 — Style & UI", items: ["Tailwind", "SCSS", "MUI", "Ant Design", "Figma"] },
+  {
+    label: "02 — Style & UI",
+    items: ["Tailwind", "SCSS", "MUI", "Ant Design", "Radix UI", "Figma"],
+  },
   {
     label: "03 — Back & workflow",
-    items: ["Laravel", "API REST", "Mercure", "MySQL", "PostgreSQL", "Docker", "Git"],
+    items: [
+      "Laravel",
+      "API REST",
+      "Mercure",
+      "MySQL",
+      "PostgreSQL",
+      "Docker",
+      "Git",
+      "ESLint",
+      "Prettier",
+      "GitHub Actions",
+      "PHPUnit",
+      "PHPStan",
+      "Larastan",
+      "Sanctum",
+      "JWT",
+      "Laravel Resources",
+    ],
     note: "Certifié Laravel — 2021",
   },
 ] as const;
 
 /** Note affichée à côté du libellé « Cas d'étude » : la page n'en montre que deux. */
 export const caseStudiesNote =
-  "Deux projets détaillés ici. Ils ne sont qu'un extrait : le parc applicatif suivi en agence en comptait bien davantage, sur des problématiques variées. Le reste avec plaisir en entretien.";
+  "Deux projets détaillés — le parc applicatif en comptait bien davantage.";
 
 export const caseStudies = [
   {
     name: "Ninkasi",
+    meta: "2022 — 2026",
     summary:
       "Plateforme d'animation pour un réseau de restaurants : blind test en direct, carte des produits, agenda des événements. Trois briques — backoffice Nova, couche Laravel/Inertia, et deux applications front.",
     scope:
       "Mon périmètre : les deux applications front React et leur intégration Inertia. Backoffice Nova et développement back-end assurés par le reste de l'équipe.",
-    tags: ["React", "MUI", "Inertia.js", "Mercure", "Laravel"],
+    tags: ["React", "TypeScript", "MUI", "Inertia.js", "Mercure", "Laravel"],
     highlights: [
       {
         label: "Interface game master",
@@ -54,9 +88,10 @@ export const caseStudies = [
   },
   {
     name: "Medikiosk",
+    meta: "2024 — 2026",
     summary:
       "Application de borne interactive en environnement médical, devant rester pleinement opérationnelle sans connexion réseau. React + Vite.",
-    tags: ["React", "Vite", "DexieDB", "Service Worker"],
+    tags: ["React", "TypeScript", "Vite", "DexieDB", "Service Worker"],
     highlights: [
       {
         label: "Synchronisation locale",
@@ -94,7 +129,13 @@ export const experience = [
 /** Contenu de la feuille CV imprimée (voir components/cv-print.tsx). Une page A4. */
 export const cv = {
   headline: "Développeur front-end React · TypeScript",
-  contact: ["Lyon, France", "06 23 80 88 39", "bruno.schvartz@gmail.com", "linkedin.com/in/bruno-schvartz"],
+  contact: [
+    "Lyon, France",
+    "06 23 80 88 39",
+    "bruno.schvartz@gmail.com",
+    "linkedin.com/in/bruno-schvartz",
+    "brunoschvartz.dev",
+  ],
   profil:
     "Développeur depuis 2008 — PHP, puis Laravel à partir de 2016 — et spécialisé React / TypeScript depuis cinq ans. Référent technique unique d'un parc applicatif en agence, de l'architecture front à l'API Laravel. Disponible immédiatement suite à la fermeture de l'agence ; recherche un CDI à Lyon : sur site, hybride ou à distance.",
   jobs: [
@@ -118,19 +159,25 @@ export const cv = {
   projects: [
     {
       title: "Ninkasi",
-      meta: "React · MUI · Inertia · Mercure",
+      meta: "React · TypeScript · MUI · Inertia · Mercure",
       body: "Plateforme d'animation pour un réseau de restaurants : console de pilotage de blind test en direct et application de salle accessible par QR code, synchronisation temps réel via Mercure, carte produits rendue depuis l'API en mobile et en PDF imprimable.",
     },
     {
       title: "Medikiosk",
-      meta: "React · Vite · DexieDB",
+      meta: "React · TypeScript · Vite · DexieDB",
       body: "Borne interactive fonctionnant hors connexion : persistance et cohérence des données en local sur DexieDB (IndexedDB), refonte complète du service worker.",
     },
   ],
   skills: [
-    { label: "Front", value: "React, Next.js, TypeScript, Inertia.js, Zustand, TanStack Query, Vite" },
+    {
+      label: "Front",
+      value: "React, Next.js, TypeScript, Inertia.js, Zustand, TanStack Query, Vite",
+    },
     { label: "UI", value: "Tailwind CSS, SCSS, MUI, Ant Design, intégration Figma" },
-    { label: "Back & outils", value: "Laravel (API REST), Mercure, PostgreSQL, MySQL, Docker, Git" },
+    {
+      label: "Back & outils",
+      value: "Laravel (API REST), Mercure, PostgreSQL, MySQL, Docker, Git",
+    },
   ],
   education: [
     { title: "Certification Laravel", meta: "2021" },

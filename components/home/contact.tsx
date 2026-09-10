@@ -33,6 +33,7 @@ export function Contact() {
             En ligne
           </SectionLabel>
           <div className="flex flex-col gap-[7px] text-base">
+            <a href={profile.website}>{profile.websiteLabel}</a>
             <a href={profile.linkedin}>LinkedIn</a>
             <a href={profile.github}>GitHub</a>
           </div>

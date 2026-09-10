@@ -23,9 +23,14 @@ export function CaseStudies() {
           )}
         >
           <div>
-            <h2 className="m-0 font-serif text-[clamp(32px,4.4vw,54px)] leading-[1.05] font-normal tracking-[-0.02em]">
-              {study.name}
-            </h2>
+            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <h2 className="m-0 font-serif text-[clamp(32px,4.4vw,54px)] leading-[1.05] font-normal tracking-[-0.02em]">
+                {study.name}
+              </h2>
+              <span className="text-muted font-mono text-[13px] whitespace-nowrap">
+                {study.meta}
+              </span>
+            </div>
             <p className="text-ink-muted mt-[18px] mb-0 max-w-[44ch] text-[15.5px] leading-[1.65]">
               {study.summary}
             </p>
