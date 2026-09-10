@@ -54,7 +54,9 @@ export function CaseStudies() {
                   hi === 0 ? "border-accent border-t-2" : "border-ink/[0.16] border-t",
                 )}
               >
-                <SectionLabel className="tracking-[0.08em]">{h.label}</SectionLabel>
+                <SectionLabel as="h3" className="tracking-[0.08em]">
+                  {h.label}
+                </SectionLabel>
                 <p className="text-ink-soft mt-[9px] mb-0 text-[15.5px] leading-relaxed">
                   {h.body}
                 </p>

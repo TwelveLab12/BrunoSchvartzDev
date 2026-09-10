@@ -13,26 +13,34 @@ export function Contact() {
       </h2>
       <div className="mt-[clamp(36px,5vw,56px)] grid [grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))] gap-x-[clamp(24px,4vw,56px)] gap-y-6">
         <div>
-          <SectionLabel className="mb-2.5">E-mail</SectionLabel>
+          <SectionLabel as="h3" className="mb-2.5">
+            E-mail
+          </SectionLabel>
           <a href={`mailto:${profile.email}`} className="text-base">
             {profile.email}
           </a>
         </div>
         <div>
-          <SectionLabel className="mb-2.5">Téléphone</SectionLabel>
+          <SectionLabel as="h3" className="mb-2.5">
+            Téléphone
+          </SectionLabel>
           <a href={profile.phoneHref} className="text-base">
             {profile.phone}
           </a>
         </div>
         <div>
-          <SectionLabel className="mb-2.5">En ligne</SectionLabel>
+          <SectionLabel as="h3" className="mb-2.5">
+            En ligne
+          </SectionLabel>
           <div className="flex flex-col gap-[7px] text-base">
             <a href={profile.linkedin}>LinkedIn</a>
             <a href={profile.github}>GitHub</a>
           </div>
         </div>
         <div>
-          <SectionLabel className="mb-2.5">Basé à</SectionLabel>
+          <SectionLabel as="h3" className="mb-2.5">
+            Basé à
+          </SectionLabel>
           <div className="text-base">{profile.location}</div>
         </div>
       </div>

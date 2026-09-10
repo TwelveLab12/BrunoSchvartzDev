@@ -53,6 +53,11 @@
   a:hover {
     @apply text-accent;
   }
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
 }
 
 /* Impression : la page web disparaît, seule la feuille CV (components/cv-print.tsx)

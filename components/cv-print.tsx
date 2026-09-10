@@ -14,9 +14,9 @@ export function CvPrint() {
     >
       <header className="flex items-end justify-between gap-[12mm] pb-[5mm]">
         <div>
-          <h1 className="text-print-name text-ink m-0 font-serif font-normal tracking-[-0.015em]">
+          <p className="text-print-name text-ink m-0 font-serif font-normal tracking-[-0.015em]">
             <Wordmark />
-          </h1>
+          </p>
           <p className="text-print-lead text-muted mt-[2.5mm] mb-0">{cv.headline}</p>
         </div>
         <address className="text-print-contact text-ink-muted text-right font-mono whitespace-nowrap not-italic">

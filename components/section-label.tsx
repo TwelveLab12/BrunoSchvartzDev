@@ -1,14 +1,17 @@
 import { cn } from "@/lib/utils";
 
-export function SectionLabel({ children, className }: { children: React.ReactNode; className?: string }) {
+export function SectionLabel({
+  as: Tag = "h2",
+  children,
+  className,
+}: {
+  as?: "h2" | "h3";
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <div
-      className={cn(
-        "font-mono text-[11.5px] uppercase tracking-[0.1em] text-muted",
-        className,
-      )}
-    >
+    <Tag className={cn("text-muted font-mono text-[11.5px] tracking-[0.1em] uppercase", className)}>
       {children}
-    </div>
+    </Tag>
   );
 }
