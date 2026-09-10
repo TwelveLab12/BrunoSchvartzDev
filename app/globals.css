@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f6f4ef;
+  --color-ink: #1a1a18;
+  --color-ink-soft: #2e2c27;
+  --color-ink-muted: #4a4740;
+  --color-muted: #6b675e;
+  --color-accent: #b4472a;
+  --color-rule: rgba(26, 26, 24, 0.14);
+  --color-rule-soft: rgba(26, 26, 24, 0.12);
+
+  --font-serif: var(--font-instrument-serif), Georgia, serif;
+  --font-sans: var(--font-plex-sans), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  /* Feuille CV imprimée (components/cv-print.tsx) : palette et échelle
+     typographique dédiées, distinctes des tokens web ci-dessus. */
+  --color-print-ink: #23221e;
+  --color-print-muted: #8a867c;
+  --color-print-rule: #ded9cf;
+
+  --text-print-name: 30pt;
+  --text-print-name--line-height: 1.05;
+  --text-print-lead: 10.5pt;
+  --text-print-contact: 8.2pt;
+  --text-print-contact--line-height: 1.85;
+  --text-print-body: 9.4pt;
+  --text-print-body--line-height: 1.5;
+  --text-print-profil: 10pt;
+  --text-print-profil--line-height: 1.55;
+  --text-print-entry-title: 11pt;
+  --text-print-meta: 8pt;
+  --text-print-meta--line-height: 1.4;
+  --text-print-kicker: 7.6pt;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-paper text-ink antialiased;
+    text-wrap: pretty;
+  }
+  h1,
+  h2 {
+    text-wrap: balance;
+  }
+  a {
+    @apply text-ink underline-offset-[3px] transition-colors;
+  }
+  a:hover {
+    @apply text-accent;
+  }
+}
+
+/* Impression : la page web disparaît, seule la feuille CV (components/cv-print.tsx)
+   est imprimée — une page A4 pleine, sans en-tête ni URL du navigateur. */
+@media print {
+  /* La marge est portée par la feuille CV elle-même (print:px/py),
+     @page à 0 supprime l'en-tête et l'URL ajoutés par le navigateur. */
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  html,
+  body {
+    background: #fff;
+    color: #000;
+  }
+  [data-print="cv"] a {
+    color: #000;
+    text-decoration: none;
+  }
+  li,
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+  section,
+  li {
+    break-inside: avoid;
+  }
+}
