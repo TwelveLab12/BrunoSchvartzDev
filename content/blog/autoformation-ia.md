@@ -13,6 +13,7 @@ excerpt: >-
   de nouvelles briques techniques avec la même exigence de qualité que sur mes
   projets clients.
 status: published
+pinnedOrder: 1
 ---
 
 Mon agence a cessé son activité. Je suis développeur front-end depuis 2008, React/TypeScript
