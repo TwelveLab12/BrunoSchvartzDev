@@ -4,7 +4,7 @@ export const profile = {
   location: "Lyon 3e — France",
   availability: "Disponible immédiatement — Lyon, sur site, hybride ou à distance",
   intro:
-    "Développeur professionnel depuis 2008 : d'abord PHP, puis Laravel à partir de 2016. Depuis cinq ans, entièrement tourné vers le front — React et TypeScript. En agence, j'ai été seul responsable du développement et de la maintenance d'un parc applicatif complet, de l'architecture front à l'API Laravel qui l'alimente. L'agence a cessé son activité : je suis disponible immédiatement.",
+    "Développeur professionnel depuis 2008 : d'abord PHP, puis Laravel à partir de 2016. Depuis cinq ans, entièrement tourné vers le front — React et TypeScript. En agence, l'équipe front est passée de trois développeurs à un seul après deux départs : j'en suis devenu l'unique référent technique, responsable du développement et de la maintenance de l'ensemble des applications front. L'agence a cessé son activité : je suis disponible immédiatement.",
   email: "bruno.schvartz@gmail.com",
   phone: "06 23 80 88 39",
   phoneHref: "tel:+33623808839",
@@ -110,7 +110,7 @@ export const experience = [
     company: "WEB-ID — Lyon",
     role: "Développeur React / Laravel",
     period: "2018 — 2026",
-    body: "Pivot vers React en octobre 2021 au sein d'une équipe de trois, puis rôle de référent technique unique sur l'ensemble du parc applicatif jusqu'à la fermeture de l'agence.",
+    body: "Pivot vers React en octobre 2021 au sein d'une équipe front de trois développeurs (un lead, un junior, moi). Après deux départs, seul référent technique sur la partie front jusqu'à la fermeture de l'agence.",
   },
   {
     company: "BrandBirds — Lyon",
@@ -137,12 +137,12 @@ export const cv = {
     "brunoschvartz.dev",
   ],
   profil:
-    "Développeur depuis 2008 — PHP, puis Laravel à partir de 2016 — et spécialisé React / TypeScript depuis cinq ans. Référent technique unique d'un parc applicatif en agence, de l'architecture front à l'API Laravel. Disponible immédiatement suite à la fermeture de l'agence ; recherche un CDI à Lyon : sur site, hybride ou à distance.",
+    "Développeur depuis 2008 — PHP, puis Laravel à partir de 2016 — et spécialisé React / TypeScript depuis cinq ans. Seul référent technique front en agence après le départ de mes deux collègues. Disponible immédiatement suite à la fermeture de l'agence ; recherche un CDI à Lyon : sur site, hybride ou à distance.",
   jobs: [
     {
       title: "Développeur front-end React — WEB-ID",
       meta: "2018 — 2026",
-      body: "React / TypeScript sur l'ensemble des projets clients à partir d'octobre 2021. Passé d'une équipe de trois à référent technique unique : responsabilité totale du développement et de la maintenance du parc applicatif. Architectures Laravel et API REST jusqu'en 2021.",
+      body: "React / TypeScript sur l'ensemble des projets clients à partir d'octobre 2021. Équipe front passée de trois développeurs à un seul après deux départs : seul référent technique sur la partie front. Architectures Laravel et API REST jusqu'en 2021.",
     },
     {
       title: "Senior Web Application Developer — BrandBirds",
