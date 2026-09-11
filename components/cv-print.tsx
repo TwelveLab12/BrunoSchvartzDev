@@ -20,6 +20,7 @@ export function CvPrint() {
             alt="Portrait de Bruno Schvartz"
             width={200}
             height={200}
+            priority
             className="size-[20mm] rounded-full object-cover"
           />
           <div>
