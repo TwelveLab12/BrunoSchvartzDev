@@ -130,11 +130,11 @@ export const experience = [
 export const cv = {
   headline: "Développeur front-end React · TypeScript",
   contact: [
-    "Lyon, France",
-    "06 23 80 88 39",
-    "bruno.schvartz@gmail.com",
-    "linkedin.com/in/bruno-schvartz",
-    "brunoschvartz.dev",
+    { label: "Lyon, France" },
+    { label: profile.phone, href: profile.phoneHref },
+    { label: profile.email, href: `mailto:${profile.email}` },
+    { label: "linkedin.com/in/bruno-schvartz", href: profile.linkedin },
+    { label: profile.websiteLabel, href: profile.website },
   ],
   profil:
     "Développeur depuis 2008 — PHP, puis Laravel à partir de 2016 — et spécialisé React / TypeScript depuis cinq ans. Référent technique unique d'un parc applicatif en agence, de l'architecture front à l'API Laravel. Disponible immédiatement suite à la fermeture de l'agence ; recherche un CDI à Lyon : sur site, hybride ou à distance.",

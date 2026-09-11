@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { cv } from "@/content/profile";
 import { Wordmark } from "@/components/wordmark";
 
@@ -13,18 +14,34 @@ export function CvPrint() {
       className="text-print-body text-print-ink hidden bg-white print:block print:px-[16mm] print:py-[14mm]"
     >
       <header className="flex items-end justify-between gap-[12mm] pb-[5mm]">
-        <div>
-          <p className="text-print-name text-ink font-wordmark m-0 font-semibold tracking-[-0.015em]">
-            <Wordmark />
-          </p>
-          <p className="text-print-lead text-muted mt-[2.5mm] mb-0">{cv.headline}</p>
+        <div className="flex items-center gap-[5mm]">
+          <Image
+            src="/portrait.jpg"
+            alt="Portrait de Bruno Schvartz"
+            width={200}
+            height={200}
+            priority
+            className="size-[20mm] rounded-full object-cover"
+          />
+          <div>
+            <p className="text-print-name text-ink font-wordmark m-0 font-semibold tracking-[-0.015em]">
+              <Wordmark />
+            </p>
+            <p className="text-print-lead text-muted mt-[2.5mm] mb-0">{cv.headline}</p>
+          </div>
         </div>
         <address className="text-print-contact text-ink-muted text-right font-mono whitespace-nowrap not-italic">
-          {cv.contact.map((line) => (
-            <span key={line} className="block">
-              {line}
-            </span>
-          ))}
+          {cv.contact.map((line) =>
+            "href" in line ? (
+              <a key={line.label} href={line.href} className="block">
+                {line.label}
+              </a>
+            ) : (
+              <span key={line.label} className="block">
+                {line.label}
+              </span>
+            ),
+          )}
         </address>
       </header>
 
