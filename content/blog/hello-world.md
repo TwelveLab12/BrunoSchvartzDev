@@ -1,10 +1,13 @@
 ---
-title: "Hello, world"
-date: "2026-09-11"
-updatedAt: "2026-09-11"
-tags: ["meta"]
-excerpt: "Premier article de test, validant la chaîne de lecture content/blog → lib/blog.ts."
-status: "draft"
+title: 'Hello, world'
+date: '2026-09-11'
+updatedAt: '2026-09-11'
+tags:
+  - meta
+excerpt: >-
+  Premier article de test, validant la chaîne de lecture content/blog →
+  lib/blog.ts.
+status: published
 ---
 
 Ceci est un article de test pour valider `lib/blog.ts` de bout en bout : lecture du frontmatter,
