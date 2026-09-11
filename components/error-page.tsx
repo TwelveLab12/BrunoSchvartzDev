@@ -2,8 +2,9 @@ import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * Shell partagé par app/not-found.tsx et app/error.tsx (mêmes kicker/titre/
- * description/actions, tailles de titre différentes selon le contexte).
+ * Shell partagé par app/not-found.tsx, app/error.tsx, et les interstitiels
+ * d'accès à /admin (app/admin/login, app/admin/error) — même forme kicker/
+ * titre/description/actions, tailles de titre différentes selon le contexte.
  * Volontairement PAS utilisé par app/global-error.tsx : celui-ci doit rester
  * fonctionnel même si un composant partagé est la cause du crash du layout
  * racine (voir docs/adr/0010-error-page-strategy.md).
