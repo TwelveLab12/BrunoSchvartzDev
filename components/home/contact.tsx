@@ -1,3 +1,4 @@
+import { Github, Globe, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { SectionLabel } from "@/components/section-label";
 import { Wordmark } from "@/components/wordmark";
 import { profile } from "@/content/profile";
@@ -16,7 +17,8 @@ export function Contact() {
           <SectionLabel as="h3" className="mb-2.5">
             E-mail
           </SectionLabel>
-          <a href={`mailto:${profile.email}`} className="text-base">
+          <a href={`mailto:${profile.email}`} className="flex items-center gap-2 text-base">
+            <Mail className="size-4" aria-hidden />
             {profile.email}
           </a>
         </div>
@@ -24,7 +26,8 @@ export function Contact() {
           <SectionLabel as="h3" className="mb-2.5">
             Téléphone
           </SectionLabel>
-          <a href={profile.phoneHref} className="text-base">
+          <a href={profile.phoneHref} className="flex items-center gap-2 text-base">
+            <Phone className="size-4" aria-hidden />
             {profile.phone}
           </a>
         </div>
@@ -33,16 +36,28 @@ export function Contact() {
             En ligne
           </SectionLabel>
           <div className="flex flex-col gap-[7px] text-base">
-            <a href={profile.website}>{profile.websiteLabel}</a>
-            <a href={profile.linkedin}>LinkedIn</a>
-            <a href={profile.github}>GitHub</a>
+            <a href={profile.website} className="flex items-center gap-2">
+              <Globe className="size-4" aria-hidden />
+              {profile.websiteLabel}
+            </a>
+            <a href={profile.linkedin} className="flex items-center gap-2">
+              <Linkedin className="size-4" aria-hidden />
+              LinkedIn
+            </a>
+            <a href={profile.github} className="flex items-center gap-2">
+              <Github className="size-4" aria-hidden />
+              GitHub
+            </a>
           </div>
         </div>
         <div>
           <SectionLabel as="h3" className="mb-2.5">
             Basé à
           </SectionLabel>
-          <div className="text-base">{profile.location}</div>
+          <div className="flex items-center gap-2 text-base">
+            <MapPin className="size-4" aria-hidden />
+            {profile.location}
+          </div>
         </div>
       </div>
       <div className="border-rule text-muted mt-[clamp(56px,8vw,96px)] flex flex-wrap justify-between gap-3 border-t pt-5 font-mono text-[11.5px] tracking-[0.06em] uppercase">
