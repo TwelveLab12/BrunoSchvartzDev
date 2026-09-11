@@ -7,7 +7,7 @@ tags:
 excerpt: >-
   Premier article de test, validant la chaîne de lecture content/blog →
   lib/blog.ts.
-status: published
+status: draft
 ---
 
 Ceci est un article de test pour valider `lib/blog.ts` de bout en bout : lecture du frontmatter,
