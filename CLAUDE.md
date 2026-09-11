@@ -1,0 +1,77 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project
+
+Personal portfolio/CV site for Bruno Schvartz (front-end developer, job-seeking), deployed at
+https://brunoschvartz.dev on Vercel (custom domain via Cloudflare DNS, apex is canonical — see
+`docs/adr/0008-vercel-apex-canonical.md`). The entire site is statically rendered — no API routes,
+no database, no authentication (`docs/adr/0002-nextjs-static-rendering.md`). The printed/exported
+CV is not a maintained PDF file; it's a second React tree (`components/cv-print.tsx`) toggled via
+`@media print`, rendered from the same content as the web page.
+
+## Commands
+
+Always use `vrp <script>` (= `volta run pnpm <script>`), not bare `pnpm` — this is the project's
+convention throughout its history.
+
+```bash
+vrp dev          # dev server, Turbopack
+vrp build        # production build
+vrp start        # serve the production build
+vrp lint         # eslint
+vrp lint:ci      # eslint --max-warnings=0 (what CI runs)
+vrp typecheck    # tsc --noEmit
+vrp format       # prettier --write .
+```
+
+There is no test suite in this repo. Before every commit, `vrp typecheck`, `vrp lint`, and
+`vrp build` must all be clean — this is the project's baseline, not optional. A pre-commit hook
+(Husky + lint-staged) also runs Prettier/ESLint automatically on staged files.
+
+## Architecture
+
+- **`content/profile.ts`** is the single source of truth for every piece of site text: bio,
+  experience, projects, skills, and the printed CV's content. Components must never hardcode text
+  that belongs here — see `docs/adr/0006-centralized-content.md`.
+- **`components/home/`** — homepage sections (Hero, Stack, Experience, CaseStudies, Contact,
+  SiteHeader), assembled in `app/page.tsx`. **`components/ui/`** — reusable primitives (Button via
+  CVA, PrintButton). Standalone pieces (`Wordmark`, `SectionLabel`, `CvPrint`, `ErrorPage`) live
+  directly under `components/`.
+- **`app/globals.css`** defines the design system as Tailwind v4 `@theme` tokens (colors, fonts) —
+  no `tailwind.config.js`. A separate `--text-print-*`/`--color-print-*` token set exists
+  specifically for the printed CV, distinct from the web palette.
+- **`docs/`** is both the raw source of project documentation AND a live, non-indexed site section:
+  `app/docs/[...slug]/page.tsx` renders every `.md` file found under `docs/` (including
+  subdirectories) at `/docs`. Two categories exist today: `docs/dependencies.md` (what each
+  `package.json` library does and why it's used here — check it before adding or evaluating a
+  dependency) and `docs/adr/NNNN-*.md` (architecture decision records, Status/Context/Decision/
+  Consequences format, sequentially numbered). Read the ADRs before making a structural or
+  tooling change that might contradict one; write a new ADR for a new structural decision rather
+  than editing an old one to bolt on an unrelated choice.
+- **Error handling** uses only the standard Next.js trio (`app/not-found.tsx`, `app/error.tsx`,
+  `app/global-error.tsx`) — no custom 401/403/500, nothing in this static/auth-less site can
+  trigger them (`docs/adr/0010-error-page-strategy.md`). `not-found.tsx`/`error.tsx` share a
+  `components/error-page.tsx` shell; `global-error.tsx` deliberately does not use it, since it must
+  keep rendering even if a shared component is what crashed the root layout.
+- **CI** (`.github/workflows/ci.yml`) runs typecheck/lint/build on every push and PR, and reports
+  status to Vercel as a named Deployment Check that gates production promotion
+  (`docs/adr/0009-vercel-deployment-checks.md`) — the check name must stay in sync with whatever is
+  selected in the Vercel project's Deployment Checks settings, which lives outside this repo.
+
+## Workflow conventions
+
+- One git branch and one PR per distinct concern. Don't stack unrelated changes onto a branch that
+  already has an open PR for something else — branch from `main` again instead.
+- Within a PR, split unrelated changes into separate commits, each with a single responsibility
+  (e.g. an a11y fix and an SEO metadata change on the same file go in two commits, even done in the
+  same session).
+- After a PR merges, delete both branches (`git branch -d <branch>` locally; `gh pr merge
+--delete-branch` handles local + remote in one step).
+- Keep `docs/dependencies.md` and `docs/adr/*.md` in sync proactively when dependencies or
+  structural decisions change — as a dedicated commit folded into whatever branch/PR is already
+  open, not automatically a separate PR (only spin up a standalone docs PR when nothing relevant is
+  already in flight).
+- A GitHub Project board tracks work across sessions/tickets:
+  https://github.com/users/TwelveLab12/projects/1
