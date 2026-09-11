@@ -64,6 +64,8 @@ There is no test suite in this repo. Before every commit, `vrp typecheck`, `vrp 
 
 - Every new development task — however small — starts with a GitHub issue. Create one if it
   doesn't already exist before writing any code, and reference it from the PR (e.g. `Closes #NN`).
+  Immediately add it to the Project board (`gh project item-add 1 --owner TwelveLab12 --url
+<issue-url>`) — an issue that isn't on the board doesn't count as tracked.
 - One git branch and one PR per distinct concern. Don't stack unrelated changes onto a branch that
   already has an open PR for something else — branch from `main` again instead.
 - Within a PR, split unrelated changes into separate commits, each with a single responsibility
@@ -75,5 +77,6 @@ There is no test suite in this repo. Before every commit, `vrp typecheck`, `vrp 
   structural decisions change — as a dedicated commit folded into whatever branch/PR is already
   open, not automatically a separate PR (only spin up a standalone docs PR when nothing relevant is
   already in flight).
-- A GitHub Project board tracks work across sessions/tickets:
-  https://github.com/users/TwelveLab12/projects/1
+- The GitHub Project board (https://github.com/users/TwelveLab12/projects/1) is the reference for
+  what's done and what's left — keep every issue's Status field in sync (À faire / En cours /
+  Terminé) as work progresses, don't let the board drift from reality.
