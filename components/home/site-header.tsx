@@ -11,16 +11,16 @@ const links = [
 export function SiteHeader() {
   return (
     <header className="border-rule mx-auto flex max-w-[1120px] flex-wrap items-center justify-between gap-6 border-b pt-7">
-      <div className="flex items-center gap-3 pb-[22px]">
+      <div className="flex items-center gap-3.5 pb-[22px]">
         <Image
           src="/portrait.jpg"
           alt="Portrait de Bruno Schvartz"
-          width={40}
-          height={40}
+          width={600}
+          height={600}
           priority
-          className="border-rule size-10 rounded-full border object-cover"
+          className="border-rule size-14 rounded-full border object-cover"
         />
-        <span className="font-serif text-[22px] tracking-[-0.01em]">
+        <span className="font-wordmark text-[32px] font-semibold tracking-[-0.01em]">
           <Wordmark />
         </span>
       </div>

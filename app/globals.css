@@ -14,6 +14,9 @@
   --font-serif: var(--font-instrument-serif), Georgia, serif;
   --font-sans: var(--font-plex-sans), system-ui, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  /* Marque personnelle (composant Wordmark) : semibold, distinct du serif
+     éditorial des titres — Instrument Serif n'existe qu'en un seul poids. */
+  --font-wordmark: var(--font-instrument-sans), system-ui, sans-serif;
 
   /* Feuille CV imprimée (components/cv-print.tsx) : palette et échelle
      typographique dédiées, distinctes des tokens web ci-dessus. */
