@@ -62,6 +62,8 @@ There is no test suite in this repo. Before every commit, `vrp typecheck`, `vrp 
 
 ## Workflow conventions
 
+- Every new development task — however small — starts with a GitHub issue. Create one if it
+  doesn't already exist before writing any code, and reference it from the PR (e.g. `Closes #NN`).
 - One git branch and one PR per distinct concern. Don't stack unrelated changes onto a branch that
   already has an open PR for something else — branch from `main` again instead.
 - Within a PR, split unrelated changes into separate commits, each with a single responsibility
