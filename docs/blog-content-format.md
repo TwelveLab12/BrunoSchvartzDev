@@ -24,18 +24,20 @@ updatedAt: "2026-09-11"
 tags: ["ia", "autoformation"]
 excerpt: "Résumé affiché dans la liste des articles et dans les métadonnées OG."
 status: "draft"
+pinnedOrder: 1
 ---
 Le corps de l'article, en Markdown, après le second `---`.
 ```
 
-| Champ       | Type                     | Obligatoire | Détail                                                                                                                                                                                                 |
-| ----------- | ------------------------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `title`     | `string`                 | oui         | Titre affiché partout (liste, article, metadata `<title>`).                                                                                                                                            |
-| `date`      | `string` (`YYYY-MM-DD`)  | oui         | Date de publication. Sert aussi de tri (`getAllPosts()` trie par date décroissante).                                                                                                                   |
-| `updatedAt` | `string` (`YYYY-MM-DD`)  | non         | Mise à jour par l'admin à chaque enregistrement ; retombe sur `date` si absent.                                                                                                                        |
-| `tags`      | `string[]`               | non         | Vide par défaut. Affichés en badges sur `/blog` et `/blog/[slug]` (voir issue #23).                                                                                                                    |
-| `excerpt`   | `string`                 | non         | Vide par défaut. Utilisé comme description sur la liste et dans les métadonnées Open Graph.                                                                                                            |
-| `status`    | `"draft" \| "published"` | non         | `draft` par défaut si absent. Seuls les articles `published` sont rendus publiquement et inclus dans `app/sitemap.ts` — un brouillon reste en 404 sur son URL publique même si le fichier existe déjà. |
+| Champ         | Type                     | Obligatoire | Détail                                                                                                                                                                                                                                                                    |
+| ------------- | ------------------------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `title`       | `string`                 | oui         | Titre affiché partout (liste, article, metadata `<title>`).                                                                                                                                                                                                               |
+| `date`        | `string` (`YYYY-MM-DD`)  | oui         | Date de publication. Sert aussi de tri (`getAllPosts()` trie par date décroissante).                                                                                                                                                                                      |
+| `updatedAt`   | `string` (`YYYY-MM-DD`)  | non         | Mise à jour par l'admin à chaque enregistrement ; retombe sur `date` si absent.                                                                                                                                                                                           |
+| `tags`        | `string[]`               | non         | Vide par défaut. Affichés en badges sur `/blog` et `/blog/[slug]` (voir issue #23).                                                                                                                                                                                       |
+| `excerpt`     | `string`                 | non         | Vide par défaut. Utilisé comme description sur la liste et dans les métadonnées Open Graph.                                                                                                                                                                               |
+| `status`      | `"draft" \| "published"` | non         | `draft` par défaut si absent. Seuls les articles `published` sont rendus publiquement et inclus dans `app/sitemap.ts` — un brouillon reste en 404 sur son URL publique même si le fichier existe déjà.                                                                    |
+| `pinnedOrder` | `number`                 | non         | Absent par défaut (non épinglé). Les articles portant ce champ s'affichent toujours en premier sur `/blog`, triés par `pinnedOrder` croissant ; le reste suit par date décroissante comme d'habitude. Un badge « Épinglé » s'affiche alors sur `/blog` et `/blog/[slug]`. |
 
 Le corps du fichier (tout ce qui suit le frontmatter) est du Markdown brut, rendu via
 `react-markdown` — le même pipeline que `docs/` (ce fichier inclus), sans

@@ -48,6 +48,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         ← Blog
       </Link>
       <header className="mt-8">
+        {post.pinnedOrder !== undefined && (
+          <p className="text-accent mb-2 font-mono text-xs tracking-[0.08em] uppercase">Épinglé</p>
+        )}
         <h1 className="m-0 font-serif text-[clamp(36px,6vw,64px)] leading-[1.02] font-normal tracking-[-0.02em]">
           {post.title}
         </h1>
