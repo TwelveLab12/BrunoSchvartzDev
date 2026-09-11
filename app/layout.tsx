@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, IBM_Plex_Sans, Instrument_Serif } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans, Instrument_Sans, Instrument_Serif } from "next/font/google";
 import { profile } from "@/content/profile";
 import "./globals.css";
 
@@ -7,6 +7,13 @@ const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-instrument-serif",
+  display: "swap",
+});
+
+const instrumentSans = Instrument_Sans({
+  subsets: ["latin"],
+  weight: "600",
+  variable: "--font-instrument-sans",
   display: "swap",
 });
 
@@ -61,7 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="fr"
-      className={`${instrumentSerif.variable} ${plexSans.variable} ${plexMono.variable}`}
+      className={`${instrumentSerif.variable} ${instrumentSans.variable} ${plexSans.variable} ${plexMono.variable}`}
     >
       <body className="font-sans">
         <script
