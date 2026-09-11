@@ -52,6 +52,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           {post.title}
         </h1>
         <p className="text-muted mt-4 font-mono text-xs tracking-[0.08em] uppercase">{post.date}</p>
+        {post.tags.length > 0 && (
+          <div className="mt-4 flex flex-wrap gap-2">
+            {post.tags.map((tag) => (
+              <span
+                key={tag}
+                className="bg-ink/[0.05] rounded-sm px-3 py-[7px] font-mono text-[13px]"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
       </header>
       <article className="prose prose-neutral prose-headings:font-serif prose-a:text-accent mt-10 max-w-none">
         <ReactMarkdown>{post.content}</ReactMarkdown>

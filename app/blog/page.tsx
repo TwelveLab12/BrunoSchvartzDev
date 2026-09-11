@@ -35,6 +35,18 @@ export default function BlogPage() {
               {post.date}
             </p>
             {post.excerpt && <p className="text-ink-muted mt-2">{post.excerpt}</p>}
+            {post.tags.length > 0 && (
+              <div className="mt-3 flex flex-wrap gap-2">
+                {post.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="bg-ink/[0.05] rounded-sm px-3 py-[7px] font-mono text-[13px]"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
           </li>
         ))}
       </ul>
