@@ -1,10 +1,18 @@
 ---
-title: "L'opportunité que je me donne : une autoformation sérieuse à l'IA"
-date: "2026-09-11"
-updatedAt: "2026-09-11"
-tags: ["ia", "autoformation", "carrière", "qualité"]
-excerpt: "La fermeture de mon agence ferme une page, mais elle m'ouvre aussi un temps rare : celui de me former en profondeur à l'IA professionnelle, et de tester de nouvelles briques techniques avec la même exigence de qualité que sur mes projets clients."
-status: "draft"
+title: 'L''opportunité que je me donne : une autoformation sérieuse à l''IA'
+date: '2026-09-11'
+updatedAt: '2026-09-11'
+tags:
+  - ia
+  - autoformation
+  - carrière
+  - qualité
+excerpt: >-
+  La fermeture de mon agence ferme une page, mais elle m'ouvre aussi un temps
+  rare : celui de me former en profondeur à l'IA professionnelle, et de tester
+  de nouvelles briques techniques avec la même exigence de qualité que sur mes
+  projets clients.
+status: published
 ---
 
 Mon agence a cessé son activité. Je suis développeur front-end depuis 2008, React/TypeScript
@@ -29,7 +37,7 @@ flux de travail professionnel, avec la même rigueur que sur n'importe quel proj
 
 Plutôt qu'une liste de lectures, je préfère structurer cette autoformation autour de cas d'usage
 concrets — et j'ai la chance d'avoir déjà un terrain d'expérimentation réel : le développement de
-ce blog, avec l'aide de Claude Code, m'a servi de premier exercice grandeur réelle.
+ce blog (pour commencer j'ai déjà pas mal d'autres idées de petit projet), avec l'aide de Claude Code, m'a servi de premier exercice grandeur réelle.
 
 **1. Travailler avec un agent de codage, pas seulement lui parler.** Plan mode pour trancher une
 architecture avant d'écrire une ligne de code, sous-agents pour explorer ou challenger une
@@ -40,7 +48,7 @@ seulement construit. Apprendre à utiliser ces outils sérieusement, pas en mode
 
 **2. Le développement assisté par IA avec une vraie discipline de qualité.** C'est le point sur
 lequel je veux être intraitable, parce que c'est aussi ce qui différencie un usage amateur d'un
-usage professionnel : une décision d'architecture se documente (ADR), un changement reste
+usage professionnel : une décision d'architecture se documente (ADR pour les curieux, toute la documentation du projet est accessible ici: [brunoschvartz.dev/docs](https://brunoschvartz.dev/docs)), un changement reste
 typecheck/lint/build clean avant tout commit, une PR traite un seul sujet, la documentation suit
 le code plutôt que de prendre du retard. Sur ce blog : 5 PRs séparées (architecture, modèle de
 contenu, authentification, éditeur, pages publiques), une CI qui bloque la mise en prod si un
