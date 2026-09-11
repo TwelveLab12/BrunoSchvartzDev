@@ -1,10 +1,12 @@
 import { Wordmark } from "@/components/wordmark";
 import Image from "next/image";
+import Link from "next/link";
 
 const links = [
   { href: "#experience", label: "Expérience" },
   { href: "#stack", label: "Stack" },
   { href: "#projet", label: "Projet" },
+  { href: "/blog", label: "Blog" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -26,9 +28,9 @@ export function SiteHeader() {
       </div>
       <nav className="flex gap-[26px] pb-[22px] text-[13.5px] tracking-[0.02em]">
         {links.map((l) => (
-          <a key={l.href} href={l.href} className="no-underline">
+          <Link key={l.href} href={l.href} className="no-underline">
             {l.label}
-          </a>
+          </Link>
         ))}
       </nav>
     </header>
