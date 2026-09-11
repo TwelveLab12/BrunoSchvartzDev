@@ -25,6 +25,17 @@ Ce document liste les librairies déclarées dans `package.json` : ce qu'elles f
 - **react-markdown** — Rend les fichiers `.md` de `docs/` en React côté serveur. Utilisé dans `app/docs/[...slug]/page.tsx`, sans `dangerouslySetInnerHTML` (tout le contenu est écrit par le propriétaire du site, mais autant éviter l'injection de HTML brut par principe).
 - **@tailwindcss/typography** — Fournit les classes `prose` pour une mise en forme lisible du Markdown rendu (titres, listes, liens) sans styliser chaque balise à la main. Activé via `@plugin "@tailwindcss/typography";` dans `app/globals.css`.
 
+## Blog & admin (voir `docs/adr/0011-blog-admin-architecture.md`)
+
+- **next-auth** (`@beta`, Auth.js v5) — Authentification de la zone `/admin`, via le provider
+  LinkedIn, restreint au seul profil du propriétaire du site. Stratégie de session en JWT, sans
+  adaptateur de base de données.
+- **@octokit/rest** — Client de l'API GitHub (Contents API), utilisé côté serveur uniquement par les
+  server actions de l'admin pour committer/mettre à jour les fichiers Markdown des articles dans ce
+  repo.
+- **gray-matter** — Parsing et génération du frontmatter YAML des fichiers `content/blog/*.md`
+  (titre, date, tags, statut brouillon/publié), consommé par `lib/blog.ts`.
+
 ## Qualité de code & outillage
 
 - **typescript** — Typage statique sur l'ensemble du code.
