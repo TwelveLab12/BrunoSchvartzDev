@@ -41,7 +41,31 @@ export async function savePostAction(
     return { ok: false, message: "Titre et contenu sont requis." };
   }
 
-  const result = await savePost({ slug, sha, title, date, tags, excerpt, status, content });
+  const pinnedOrderRaw = String(formData.get("pinnedOrder") ?? "").trim();
+  let pinnedOrder: number | undefined;
+  if (pinnedOrderRaw) {
+    const parsed = Number(pinnedOrderRaw);
+    if (!Number.isInteger(parsed) || parsed < 0) {
+      return {
+        ok: false,
+        message:
+          "L'ordre d'épinglage doit être un nombre entier positif, ou vide pour ne pas épingler.",
+      };
+    }
+    pinnedOrder = parsed;
+  }
+
+  const result = await savePost({
+    slug,
+    sha,
+    title,
+    date,
+    tags,
+    excerpt,
+    status,
+    pinnedOrder,
+    content,
+  });
   if (result.ok) redirect("/admin");
   return result;
 }

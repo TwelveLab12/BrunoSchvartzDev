@@ -1,6 +1,6 @@
 import { Octokit } from "@octokit/rest";
 import matter from "gray-matter";
-import type { PostMeta, PostStatus } from "@/lib/blog";
+import { comparePosts, type PostMeta, type PostStatus } from "@/lib/blog";
 
 const OWNER = "TwelveLab12";
 const REPO = "BrunoSchvartzDev";
@@ -17,6 +17,7 @@ export type SavePostInput = {
   tags: string[];
   excerpt: string;
   status: PostStatus;
+  pinnedOrder?: number;
   content: string;
 };
 
@@ -59,6 +60,7 @@ function parse(slug: string, raw: string, sha: string): AdminPost {
     tags: data.tags ?? [],
     excerpt: data.excerpt ?? "",
     status: data.status ?? "draft",
+    pinnedOrder: typeof data.pinnedOrder === "number" ? data.pinnedOrder : undefined,
     content,
   };
 }
@@ -90,7 +92,7 @@ export async function listAdminPosts(): Promise<PostMeta[]> {
     }),
   );
 
-  return posts.sort((a, b) => b.date.localeCompare(a.date));
+  return posts.sort(comparePosts);
 }
 
 export async function getAdminPost(slug: string): Promise<AdminPost | undefined> {
@@ -123,6 +125,7 @@ export async function savePost(input: SavePostInput): Promise<ContentResult> {
     tags: input.tags,
     excerpt: input.excerpt,
     status: input.status,
+    ...(input.pinnedOrder !== undefined ? { pinnedOrder: input.pinnedOrder } : {}),
   });
 
   try {

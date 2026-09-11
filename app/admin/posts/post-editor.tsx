@@ -74,10 +74,23 @@ export function PostEditor({ post, className }: { post?: AdminPost; className?: 
         </label>
       </div>
 
-      <label className="grid gap-1.5">
-        <span className={fieldLabel}>Extrait</span>
-        <input name="excerpt" defaultValue={post?.excerpt} className={fieldInput} />
-      </label>
+      <div className="grid grid-cols-2 gap-6">
+        <label className="grid gap-1.5">
+          <span className={fieldLabel}>Extrait</span>
+          <input name="excerpt" defaultValue={post?.excerpt} className={fieldInput} />
+        </label>
+        <label className="grid gap-1.5">
+          <span className={fieldLabel}>Ordre d&apos;épinglage (vide = non épinglé)</span>
+          <input
+            name="pinnedOrder"
+            type="number"
+            min={0}
+            step={1}
+            defaultValue={post?.pinnedOrder ?? ""}
+            className={fieldInput}
+          />
+        </label>
+      </div>
 
       <div className="grid gap-1.5">
         <span className={fieldLabel}>Aide Markdown</span>
