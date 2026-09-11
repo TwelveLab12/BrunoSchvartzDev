@@ -20,6 +20,11 @@ Ce document liste les librairies déclarées dans `package.json` : ce qu'elles f
 - **tailwind-merge** — Résout les classes Tailwind en conflit (ex. deux `px-*` différents) en gardant la dernière plutôt que de les empiler bêtement. Combiné à `clsx` dans `cn()`, ça permet à n'importe quel composant (ex. `SectionLabel`) d'accepter un prop `className` qui surcharge proprement ses classes par défaut.
 - **lucide-react** — Bibliothèque d'icônes. Utilisée pour l'icône d'impression dans `components/ui/print-button.tsx`.
 
+## Documentation (`/docs`)
+
+- **react-markdown** — Rend les fichiers `.md` de `docs/` en React côté serveur. Utilisé dans `app/docs/[...slug]/page.tsx`, sans `dangerouslySetInnerHTML` (tout le contenu est écrit par le propriétaire du site, mais autant éviter l'injection de HTML brut par principe).
+- **@tailwindcss/typography** — Fournit les classes `prose` pour une mise en forme lisible du Markdown rendu (titres, listes, liens) sans styliser chaque balise à la main. Activé via `@plugin "@tailwindcss/typography";` dans `app/globals.css`.
+
 ## Qualité de code & outillage
 
 - **typescript** — Typage statique sur l'ensemble du code.
