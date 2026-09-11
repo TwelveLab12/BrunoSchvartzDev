@@ -20,6 +20,30 @@ function SubmitButton({ children }: { children: ReactNode }) {
 const fieldLabel = "text-muted font-mono text-xs tracking-[0.08em] uppercase";
 const fieldInput =
   "border-ink/20 focus:border-ink rounded-sm border bg-transparent px-3 py-2 outline-none";
+const editorHeight = "h-[28rem] overflow-y-auto resize-none";
+
+const MARKDOWN_HINTS = [
+  ["# Titre", "## Sous-titre"],
+  ["**gras**", "*italique*"],
+  ["[texte](url)", "`code`"],
+  ["- liste", "1. liste numérotée"],
+  ["> citation", "---"],
+];
+
+function MarkdownCheatsheet() {
+  return (
+    <div className="flex flex-wrap gap-2">
+      {MARKDOWN_HINTS.flat().map((hint) => (
+        <code
+          key={hint}
+          className="bg-ink/[0.05] text-ink-muted rounded-sm px-2.5 py-1 font-mono text-[12.5px]"
+        >
+          {hint}
+        </code>
+      ))}
+    </div>
+  );
+}
 
 export function PostEditor({ post, className }: { post?: AdminPost; className?: string }) {
   const [body, setBody] = useState(post?.content ?? "");
@@ -55,7 +79,12 @@ export function PostEditor({ post, className }: { post?: AdminPost; className?: 
         <input name="excerpt" defaultValue={post?.excerpt} className={fieldInput} />
       </label>
 
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid gap-1.5">
+        <span className={fieldLabel}>Aide Markdown</span>
+        <MarkdownCheatsheet />
+      </div>
+
+      <div className="grid grid-cols-2 items-start gap-6">
         <label className="grid gap-1.5">
           <span className={fieldLabel}>Contenu (Markdown)</span>
           <textarea
@@ -63,13 +92,17 @@ export function PostEditor({ post, className }: { post?: AdminPost; className?: 
             value={body}
             onChange={(event) => setBody(event.target.value)}
             required
-            rows={20}
-            className={cn(fieldInput, "font-mono text-sm")}
+            className={cn(fieldInput, editorHeight, "font-mono text-sm")}
           />
         </label>
         <div className="grid gap-1.5">
-          <span className={fieldLabel}>Aperçu</span>
-          <article className="prose prose-neutral prose-headings:font-serif prose-a:text-accent border-ink/20 max-w-none rounded-sm border px-3 py-2">
+          <span className={fieldLabel}>Aperçu — lecture seule</span>
+          <article
+            className={cn(
+              "prose prose-neutral prose-headings:font-serif prose-a:text-accent border-ink/10 bg-ink/[0.025] max-w-none rounded-sm border border-dashed px-3 py-2",
+              editorHeight,
+            )}
+          >
             <ReactMarkdown>{body}</ReactMarkdown>
           </article>
         </div>
