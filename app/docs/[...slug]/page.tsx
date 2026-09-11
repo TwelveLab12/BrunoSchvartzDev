@@ -8,23 +8,28 @@ export function generateStaticParams() {
   return getDocSlugs().map((slug) => ({ slug }));
 }
 
+function findDoc(slug: string[]) {
+  return getAllDocs().find((d) => d.slug.join("/") === slug.join("/"));
+}
+
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string[] }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const doc = getAllDocs().find((d) => d.slug === slug);
+  const doc = findDoc(slug);
   return {
     title: doc?.title ?? "Documentation",
-    alternates: { canonical: `/docs/${slug}` },
+    alternates: { canonical: `/docs/${slug.join("/")}` },
     robots: { index: false, follow: false },
   };
 }
 
-export default async function DocPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function DocPage({ params }: { params: Promise<{ slug: string[] }> }) {
   const { slug } = await params;
-  if (!getDocSlugs().includes(slug)) notFound();
+  const doc = findDoc(slug);
+  if (!doc) notFound();
 
   return (
     <main className="mx-auto max-w-[720px] px-6 py-16">
