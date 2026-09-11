@@ -11,6 +11,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Reports this job's status to Vercel as a named Deployment Check
+      # (Settings > Deployment Checks in the Vercel dashboard).
+      - uses: vercel/repository-dispatch/actions/status@v1
+        with:
+          name: 'Vercel - bruno_schvartz_dev: ci'
+
       - uses: pnpm/action-setup@v4
 
       - uses: actions/setup-node@v4
