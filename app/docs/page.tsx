@@ -14,7 +14,10 @@ export default function DocsIndexPage() {
 
   return (
     <main className="mx-auto max-w-[720px] px-6 py-16">
-      <h1 className="m-0 font-serif text-4xl font-normal tracking-[-0.01em]">Documentation</h1>
+      <Link href="/" className="text-muted text-sm">
+        ← Accueil
+      </Link>
+      <h1 className="m-0 mt-8 font-serif text-4xl font-normal tracking-[-0.01em]">Documentation</h1>
       <p className="text-muted mt-3">
         Notes techniques sur ce projet — non listées sur la page de présentation.
       </p>
