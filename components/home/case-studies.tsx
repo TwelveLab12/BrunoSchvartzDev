@@ -10,7 +10,7 @@ export function CaseStudies() {
     >
       <div>
         <SectionLabel>Cas d&apos;étude</SectionLabel>
-        <p className="text-muted mt-3 mb-0 max-w-[52ch] text-sm leading-relaxed">
+        <p className="text-muted mt-2 mb-0 max-w-[52ch] text-sm leading-relaxed">
           {caseStudiesNote}
         </p>
       </div>
@@ -20,8 +20,8 @@ export function CaseStudies() {
           className={cn(
             "grid [grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))] gap-[clamp(32px,5vw,72px)]",
             i === 0
-              ? "mt-[26px]"
-              : "border-rule-soft mt-[clamp(44px,6vw,72px)] border-t pt-[clamp(36px,5vw,56px)]",
+              ? "mt-[clamp(40px,5vw,64px)]"
+              : "border-rule-soft mt-[clamp(56px,7vw,88px)] border-t pt-[clamp(40px,5vw,64px)]",
           )}
         >
           <div>
@@ -52,15 +52,9 @@ export function CaseStudies() {
               ))}
             </div>
           </div>
-          <div className="grid content-start gap-[26px]">
+          <div className="grid content-start gap-[32px]">
             {study.highlights.map((h, hi) => (
-              <div
-                key={h.label}
-                className={cn(
-                  "pt-4",
-                  hi === 0 ? "border-accent border-t-2" : "border-ink/[0.16] border-t",
-                )}
-              >
+              <div key={h.label} className={cn(hi === 0 && "border-accent border-t-2 pt-4")}>
                 <SectionLabel as="h3" className="tracking-[0.08em]">
                   {h.label}
                 </SectionLabel>
