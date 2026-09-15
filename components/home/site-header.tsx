@@ -1,3 +1,4 @@
+import { MobileNav } from "@/components/home/mobile-nav";
 import { Wordmark } from "@/components/wordmark";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,13 +27,14 @@ export function SiteHeader() {
           <Wordmark />
         </span>
       </div>
-      <nav className="flex gap-[26px] pb-[22px] text-[13.5px] tracking-[0.02em]">
+      <nav className="hidden gap-[26px] pb-[22px] text-[13.5px] tracking-[0.02em] md:flex">
         {links.map((l) => (
           <Link key={l.href} href={l.href} className="no-underline">
             {l.label}
           </Link>
         ))}
       </nav>
+      <MobileNav links={links} />
     </header>
   );
 }
