@@ -8,9 +8,11 @@ export function CaseStudies() {
       id="projet"
       className="border-rule mx-auto max-w-[1120px] border-t py-[clamp(56px,8vw,104px)]"
     >
-      <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3">
+      <div>
         <SectionLabel>Cas d&apos;étude</SectionLabel>
-        <p className="text-muted m-0 max-w-[52ch] text-sm leading-relaxed">{caseStudiesNote}</p>
+        <p className="text-muted mt-3 mb-0 max-w-[52ch] text-sm leading-relaxed">
+          {caseStudiesNote}
+        </p>
       </div>
       {caseStudies.map((study, i) => (
         <div
