@@ -66,6 +66,10 @@ There is no test suite in this repo. Before every commit, `vrp typecheck`, `vrp 
   doesn't already exist before writing any code, and reference it from the PR (e.g. `Closes #NN`).
   Immediately add it to the Project board (`gh project item-add 1 --owner TwelveLab12 --url
 <issue-url>`) — an issue that isn't on the board doesn't count as tracked.
+- Every issue carries exactly one type label: `bug` (defective behavior), `enhancement` (new
+  feature or UX improvement), `documentation` (docs-only work), `chore` (tooling/infra/maintenance
+  with no direct feature impact), or `content` (editorial copy changes — e.g. blog articles — with
+  no code). Set it at creation (`gh issue create --label <type>`).
 - One git branch and one PR per distinct concern. Don't stack unrelated changes onto a branch that
   already has an open PR for something else — branch from `main` again instead.
 - Within a PR, split unrelated changes into separate commits, each with a single responsibility
