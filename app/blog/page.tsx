@@ -25,11 +25,6 @@ export default function BlogPage() {
       <ul className="divide-ink/10 mt-12 divide-y">
         {posts.map((post) => (
           <li key={post.slug} className="py-6">
-            {post.pinnedOrder !== undefined && (
-              <p className="text-accent mb-1.5 font-mono text-xs tracking-[0.08em] uppercase">
-                Épinglé
-              </p>
-            )}
             <Link
               href={`/blog/${post.slug}`}
               className="font-serif text-2xl font-normal tracking-[-0.01em] no-underline"
