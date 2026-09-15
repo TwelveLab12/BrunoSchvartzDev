@@ -38,18 +38,18 @@ flux de travail professionnel, avec la même rigueur que sur n'importe quel proj
 
 Plutôt qu'une liste de lectures, je préfère structurer cette autoformation autour de cas d'usage
 concrets — et j'ai la chance d'avoir déjà un terrain d'expérimentation réel : le développement de
-ce blog (pour commencer j'ai déjà pas mal d'autres idées de petit projet), avec l'aide de Claude Code, m'a servi de premier exercice grandeur réelle.
+ce blog (pour commencer j'ai déjà pas mal d'autres idées de petit projet), avec l'aide de **Claude Code**, m'a servi de premier exercice grandeur réelle.
 
 **1. Travailler avec un agent de codage, pas seulement lui parler.** Plan mode pour trancher une
 architecture avant d'écrire une ligne de code, sous-agents pour explorer ou challenger une
-conception, mémoire persistante d'une session à l'autre, outils connectés (GitHub, Vercel, CI).
+conception, mémoire persistante d'une session à l'autre, outils connectés (GitHub, Vercel, **CI**).
 C'est exactement ce qui vient de se passer ici : avant de coder l'admin de ce blog, on a d'abord
 comparé CMS headless, base de données et stockage Git — posé et documenté dans l'ADR 0011 — _puis_
 seulement construit. Apprendre à utiliser ces outils sérieusement, pas en mode gadget.
 
 **2. Le développement assisté par IA avec une vraie discipline de qualité.** C'est le point sur
 lequel je veux être intraitable, parce que c'est aussi ce qui différencie un usage amateur d'un
-usage professionnel : une décision d'architecture se documente (ADR pour les curieux, toute la documentation du projet est accessible ici: [brunoschvartz.dev/docs](https://brunoschvartz.dev/docs)), un changement reste
+usage professionnel : une décision d'architecture se documente (**ADR** pour les curieux, toute la documentation du projet est accessible ici : [brunoschvartz.dev/docs](https://brunoschvartz.dev/docs)), un changement reste
 typecheck/lint/build clean avant tout commit, une PR traite un seul sujet, la documentation suit
 le code plutôt que de prendre du retard. Sur ce blog : 5 PRs séparées (architecture, modèle de
 contenu, authentification, éditeur, pages publiques), une CI qui bloque la mise en prod si un
@@ -57,7 +57,7 @@ check échoue, deux ADR écrites en cours de route. Rien d'exceptionnel en soi �
 rigueur qu'un projet client, appliquée avec l'IA comme collaborateur plutôt que comme simple
 générateur de texte.
 
-**3. Comprendre les protocoles qui connectent les agents aux outils.** MCP (Model Context
+**3. Comprendre les protocoles qui connectent les agents aux outils.** **MCP** (Model Context
 Protocol) en particulier : c'est littéralement ce qui a permis à l'agent de consulter les
 déploiements Vercel ou d'interagir avec GitHub pendant qu'on construisait ce blog. Comprendre ce
 qui se passe sous le capot plutôt que de rester utilisateur passif d'une intégration.
