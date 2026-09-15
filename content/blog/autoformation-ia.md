@@ -1,7 +1,7 @@
 ---
-title: 'L''opportunité que je me donne : une autoformation sérieuse à l''IA'
-date: '2026-09-11'
-updatedAt: '2026-09-11'
+title: "L'opportunité que je me donne : une autoformation sérieuse à l'IA"
+date: "2026-09-11"
+updatedAt: "2026-09-11"
 tags:
   - ia
   - autoformation
@@ -38,26 +38,26 @@ flux de travail professionnel, avec la même rigueur que sur n'importe quel proj
 
 Plutôt qu'une liste de lectures, je préfère structurer cette autoformation autour de cas d'usage
 concrets — et j'ai la chance d'avoir déjà un terrain d'expérimentation réel : le développement de
-ce blog (pour commencer j'ai déjà pas mal d'autres idées de petit projet), avec l'aide de Claude Code, m'a servi de premier exercice grandeur réelle.
+ce blog (pour commencer j'ai déjà pas mal d'autres idées de petit projet), avec l'aide de **Claude Code**, m'a servi de premier exercice grandeur réelle.
 
 **1. Travailler avec un agent de codage, pas seulement lui parler.** Plan mode pour trancher une
 architecture avant d'écrire une ligne de code, sous-agents pour explorer ou challenger une
-conception, mémoire persistante d'une session à l'autre, outils connectés (GitHub, Vercel, CI).
+conception, mémoire persistante d'une session à l'autre, outils connectés (GitHub, Vercel, **CI**).
 C'est exactement ce qui vient de se passer ici : avant de coder l'admin de ce blog, on a d'abord
-comparé CMS headless, base de données et stockage Git — posé et documenté dans l'ADR 0011 — *puis*
+comparé CMS headless, base de données et stockage Git — posé et documenté dans l'ADR 0011 — _puis_
 seulement construit. Apprendre à utiliser ces outils sérieusement, pas en mode gadget.
 
 **2. Le développement assisté par IA avec une vraie discipline de qualité.** C'est le point sur
-lequel je veux être intraitable, parce que c'est aussi ce qui différencie un usage amateur d'un
-usage professionnel : une décision d'architecture se documente (ADR pour les curieux, toute la documentation du projet est accessible ici: [brunoschvartz.dev/docs](https://brunoschvartz.dev/docs)), un changement reste
-typecheck/lint/build clean avant tout commit, une PR traite un seul sujet, la documentation suit
+lequel je suis intraitable, parce que c'est aussi ce qui différencie un usage amateur d'un
+usage professionnel : une décision d'architecture se documente (**ADR** pour les curieux, toute la documentation du projet est accessible ici : [brunoschvartz.dev/docs](https://brunoschvartz.dev/docs)), un changement reste
+typecheck/lint/build clean avant que la CI ne le valide, une PR traite un seul sujet, la documentation suit
 le code plutôt que de prendre du retard. Sur ce blog : 5 PRs séparées (architecture, modèle de
 contenu, authentification, éditeur, pages publiques), une CI qui bloque la mise en prod si un
 check échoue, deux ADR écrites en cours de route. Rien d'exceptionnel en soi — c'est juste la même
 rigueur qu'un projet client, appliquée avec l'IA comme collaborateur plutôt que comme simple
 générateur de texte.
 
-**3. Comprendre les protocoles qui connectent les agents aux outils.** MCP (Model Context
+**3. Comprendre les protocoles qui connectent les agents aux outils.** **MCP** (Model Context
 Protocol) en particulier : c'est littéralement ce qui a permis à l'agent de consulter les
 déploiements Vercel ou d'interagir avec GitHub pendant qu'on construisait ce blog. Comprendre ce
 qui se passe sous le capot plutôt que de rester utilisateur passif d'une intégration.
@@ -87,15 +87,8 @@ briques que je n'ai utilisées qu'en surface ou jamais :
 - **Supabase, Neon** — déjà évalués en amont de ce blog comme alternatives possibles au stockage
   Git (voir l'ADR 0011), mais jamais mis en œuvre pour de vrai. L'occasion de les pratiquer sur
   un prochain projet où une vraie base de données a du sens.
-
-Quelques pistes supplémentaires que je veux explorer, dans la continuité directe de ces choix :
-
 - **Drizzle** ou **Prisma** — l'ORM typé qui complète naturellement Supabase/Neon et s'articule
   bien avec Zod.
-- **Vercel AI SDK** — déjà mentionné plus haut, le pont naturel entre mon stack React/Next.js et
-  la construction de vraies fonctionnalités IA.
-- **Serveurs MCP personnalisés** — écrire mon propre serveur MCP serait un excellent exercice
-  pratique pour comprendre ce protocole de l'intérieur plutôt qu'en spectateur.
 
 ## Une démarche, pas juste une liste de technos
 
@@ -105,5 +98,8 @@ des décisions documentées, un code qui passe les mêmes vérifications qu'en e
 discipline de commits et de revue. Ce blog, sa propre construction, et les articles qui vont
 suivre, sont la preuve par l'exemple de cette démarche.
 
-La suite : un article plus technique sur l'ADR 0011 elle-même, et sans doute un autre sur mes
-premiers pas avec le Vercel AI SDK.
+La suite : un article plus technique sur l'ADR 0011 elle-même, et un autre sur mes premiers pas
+avec le Vercel AI SDK.
+
+Si cette rigueur — documenter, tester, itérer sans sacrifier la qualité — correspond à ce que
+vous cherchez pour une équipe front-end, mes coordonnées sont [juste ici](/#contact).
