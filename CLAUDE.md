@@ -76,11 +76,17 @@ There is no test suite in this repo. Before every commit, `vrp typecheck`, `vrp 
   no code). Set it at creation (`gh issue create --label <type>`).
 - One git branch and one PR per distinct concern. Don't stack unrelated changes onto a branch that
   already has an open PR for something else — branch from `main` again instead.
+- Merge strategy: while a branch is open, keep it current with `git fetch origin && git rebase
+origin/main` rather than merging `main` into it. Merge PRs into `main` with squash (GitHub's
+  "Squash and merge", or `gh pr merge --squash`) — never a merge commit — so `main` stays one
+  linear commit per PR. The Dependabot exception above still merges as a merge commit, which is
+  fine since those PRs are single-commit anyway.
 - Within a PR, split unrelated changes into separate commits, each with a single responsibility
   (e.g. an a11y fix and an SEO metadata change on the same file go in two commits, even done in the
-  same session).
-- After a PR merges, delete both branches (`git branch -d <branch>` locally; `gh pr merge
---delete-branch` handles local + remote in one step).
+  same session). This granularity is for review readability on the PR — squash-merging flattens it
+  to one commit on `main`; the original commits stay visible on the closed PR on GitHub.
+- After a PR merges, delete both branches (`git branch -d <branch>` locally; `gh pr merge --squash
+--delete-branch` handles squash-merge + local/remote cleanup in one step).
 - Keep `docs/dependencies.md` and `docs/adr/*.md` in sync proactively when dependencies or
   structural decisions change — as a dedicated commit folded into whatever branch/PR is already
   open, not automatically a separate PR (only spin up a standalone docs PR when nothing relevant is
