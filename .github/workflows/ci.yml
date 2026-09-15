@@ -12,7 +12,7 @@ jobs:
       contents: read
       statuses: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # Reports this job's status to Vercel as a named Deployment Check
       # (Settings > Deployment Checks in the Vercel dashboard).
