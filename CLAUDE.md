@@ -66,6 +66,10 @@ There is no test suite in this repo. Before every commit, `vrp typecheck`, `vrp 
   doesn't already exist before writing any code, and reference it from the PR (e.g. `Closes #NN`).
   Immediately add it to the Project board (`gh project item-add 1 --owner TwelveLab12 --url
 <issue-url>`) — an issue that isn't on the board doesn't count as tracked.
+- Exception: Dependabot PRs don't get an issue or a board entry — they're not planned dev work, and
+  a per-bump issue would just clutter the board. Merge directly (merge commit, not squash) once CI
+  is green, for a minor/patch bump or an official GitHub Action at low risk. A major bump of an
+  application dependency still deserves a look at the changelog before merging.
 - Every issue carries exactly one type label: `bug` (defective behavior), `enhancement` (new
   feature or UX improvement), `documentation` (docs-only work), `chore` (tooling/infra/maintenance
   with no direct feature impact), or `content` (editorial copy changes — e.g. blog articles — with
