@@ -1,7 +1,7 @@
 ---
-title: 'L''opportunité que je me donne : une autoformation sérieuse à l''IA'
-date: '2026-09-11'
-updatedAt: '2026-09-11'
+title: "L'opportunité que je me donne : une autoformation sérieuse à l'IA"
+date: "2026-09-11"
+updatedAt: "2026-09-11"
 tags:
   - ia
   - autoformation
@@ -44,7 +44,7 @@ ce blog (pour commencer j'ai déjà pas mal d'autres idées de petit projet), av
 architecture avant d'écrire une ligne de code, sous-agents pour explorer ou challenger une
 conception, mémoire persistante d'une session à l'autre, outils connectés (GitHub, Vercel, CI).
 C'est exactement ce qui vient de se passer ici : avant de coder l'admin de ce blog, on a d'abord
-comparé CMS headless, base de données et stockage Git — posé et documenté dans l'ADR 0011 — *puis*
+comparé CMS headless, base de données et stockage Git — posé et documenté dans l'ADR 0011 — _puis_
 seulement construit. Apprendre à utiliser ces outils sérieusement, pas en mode gadget.
 
 **2. Le développement assisté par IA avec une vraie discipline de qualité.** C'est le point sur
@@ -87,15 +87,8 @@ briques que je n'ai utilisées qu'en surface ou jamais :
 - **Supabase, Neon** — déjà évalués en amont de ce blog comme alternatives possibles au stockage
   Git (voir l'ADR 0011), mais jamais mis en œuvre pour de vrai. L'occasion de les pratiquer sur
   un prochain projet où une vraie base de données a du sens.
-
-Quelques pistes supplémentaires que je veux explorer, dans la continuité directe de ces choix :
-
 - **Drizzle** ou **Prisma** — l'ORM typé qui complète naturellement Supabase/Neon et s'articule
   bien avec Zod.
-- **Vercel AI SDK** — déjà mentionné plus haut, le pont naturel entre mon stack React/Next.js et
-  la construction de vraies fonctionnalités IA.
-- **Serveurs MCP personnalisés** — écrire mon propre serveur MCP serait un excellent exercice
-  pratique pour comprendre ce protocole de l'intérieur plutôt qu'en spectateur.
 
 ## Une démarche, pas juste une liste de technos
 
