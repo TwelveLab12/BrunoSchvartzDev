@@ -100,3 +100,6 @@ suivre, sont la preuve par l'exemple de cette démarche.
 
 La suite : un article plus technique sur l'ADR 0011 elle-même, et un autre sur mes premiers pas
 avec le Vercel AI SDK.
+
+Si cette rigueur — documenter, tester, itérer sans sacrifier la qualité — correspond à ce que
+vous cherchez pour une équipe front-end, mes coordonnées sont [juste ici](/#contact).
