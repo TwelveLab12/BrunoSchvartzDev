@@ -1,6 +1,5 @@
 import { SectionLabel } from "@/components/section-label";
 import { experience } from "@/content/profile";
-import { cn } from "@/lib/utils";
 
 export function Experience() {
   return (
@@ -10,13 +9,10 @@ export function Experience() {
     >
       <SectionLabel className="mb-[34px]">Parcours</SectionLabel>
       <div className="grid">
-        {experience.map((job, i) => (
+        {experience.map((job) => (
           <div
             key={job.company}
-            className={cn(
-              "border-rule-soft grid [grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-x-[clamp(24px,4vw,56px)] gap-y-3 border-t py-7",
-              i === experience.length - 1 && "border-b",
-            )}
+            className="grid [grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-x-[clamp(24px,4vw,56px)] gap-y-3 py-7"
           >
             <div>
               <div className="text-lg font-semibold tracking-[-0.005em]">{job.company}</div>
