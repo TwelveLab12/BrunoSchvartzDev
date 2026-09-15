@@ -19,9 +19,7 @@ export function CaseStudies() {
           key={study.name}
           className={cn(
             "grid [grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))] gap-[clamp(32px,5vw,72px)]",
-            i === 0
-              ? "mt-[clamp(40px,5vw,64px)]"
-              : "border-rule-soft mt-[clamp(56px,7vw,88px)] border-t pt-[clamp(40px,5vw,64px)]",
+            i === 0 ? "mt-[clamp(40px,5vw,64px)]" : "mt-[clamp(56px,7vw,96px)]",
           )}
         >
           <div>
