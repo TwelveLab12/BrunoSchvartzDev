@@ -1,6 +1,7 @@
 # 0007 — Documentation exposée sur le site, non indexée
 
-**Statut** : Acceptée
+**Statut** : Acceptée — amendée par [0013](./0013-lien-docs-discret-depuis-le-footer.md) (lien
+discret désormais autorisé depuis le footer)
 
 ## Contexte
 

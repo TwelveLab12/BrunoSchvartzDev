@@ -1,4 +1,5 @@
 import { Github, Globe, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import Link from "next/link";
 import { SectionLabel } from "@/components/section-label";
 import { Wordmark } from "@/components/wordmark";
 import { profile } from "@/content/profile";
@@ -65,6 +66,9 @@ export function Contact() {
           <Wordmark vClassName="text-accent" /> — avec un v, jamais un w
         </span>
         <span>{profile.role} — Lyon</span>
+        <Link href="/docs" className="no-underline">
+          Documentation
+        </Link>
       </div>
     </section>
   );

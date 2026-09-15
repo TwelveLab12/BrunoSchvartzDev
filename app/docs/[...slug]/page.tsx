@@ -33,9 +33,11 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
 
   return (
     <main className="mx-auto max-w-[720px] px-6 py-16">
-      <Link href="/docs" className="text-muted text-sm">
-        ← Documentation
-      </Link>
+      <nav className="text-muted flex items-center gap-1.5 text-sm" aria-label="Fil d'Ariane">
+        <Link href="/">Accueil</Link>
+        <span aria-hidden="true">/</span>
+        <Link href="/docs">Documentation</Link>
+      </nav>
       <article className="prose prose-neutral prose-headings:font-serif prose-headings:font-normal prose-a:text-accent mt-8 max-w-none">
         <ReactMarkdown>{getDocContent(slug)}</ReactMarkdown>
       </article>
