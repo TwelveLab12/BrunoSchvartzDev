@@ -14,7 +14,7 @@ export function Experience() {
           <div
             key={job.company}
             className={cn(
-              "border-rule-soft grid [grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-x-[clamp(24px,4vw,56px)] gap-y-3 border-t py-7",
+              "border-rule-soft hover:bg-ink/[0.025] grid [grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-x-[clamp(24px,4vw,56px)] gap-y-3 border-t py-7 transition-colors",
               i === experience.length - 1 && "border-b",
             )}
           >

@@ -43,7 +43,7 @@ export function CaseStudies() {
               {study.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="border-ink/20 rounded-sm border px-[11px] py-1.5 font-mono text-[12.5px]"
+                  className="border-ink/20 hover:border-ink/40 hover:bg-ink/[0.03] rounded-sm border px-[11px] py-1.5 font-mono text-[12.5px] transition-colors"
                 >
                   {tag}
                 </span>

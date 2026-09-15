@@ -15,7 +15,7 @@ export function Stack() {
               {group.items.map((item) => (
                 <span
                   key={item}
-                  className="bg-ink/[0.05] rounded-sm px-3 py-[7px] font-mono text-[13px]"
+                  className="bg-ink/[0.05] hover:bg-ink/10 rounded-sm px-3 py-[7px] font-mono text-[13px] transition-colors"
                 >
                   {item}
                 </span>
