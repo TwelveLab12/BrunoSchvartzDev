@@ -48,9 +48,9 @@ comparé CMS headless, base de données et stockage Git — posé et documenté 
 seulement construit. Apprendre à utiliser ces outils sérieusement, pas en mode gadget.
 
 **2. Le développement assisté par IA avec une vraie discipline de qualité.** C'est le point sur
-lequel je veux être intraitable, parce que c'est aussi ce qui différencie un usage amateur d'un
+lequel je suis intraitable, parce que c'est aussi ce qui différencie un usage amateur d'un
 usage professionnel : une décision d'architecture se documente (**ADR** pour les curieux, toute la documentation du projet est accessible ici : [brunoschvartz.dev/docs](https://brunoschvartz.dev/docs)), un changement reste
-typecheck/lint/build clean avant tout commit, une PR traite un seul sujet, la documentation suit
+typecheck/lint/build clean avant que la CI ne le valide, une PR traite un seul sujet, la documentation suit
 le code plutôt que de prendre du retard. Sur ce blog : 5 PRs séparées (architecture, modèle de
 contenu, authentification, éditeur, pages publiques), une CI qui bloque la mise en prod si un
 check échoue, deux ADR écrites en cours de route. Rien d'exceptionnel en soi — c'est juste la même
@@ -98,5 +98,5 @@ des décisions documentées, un code qui passe les mêmes vérifications qu'en e
 discipline de commits et de revue. Ce blog, sa propre construction, et les articles qui vont
 suivre, sont la preuve par l'exemple de cette démarche.
 
-La suite : un article plus technique sur l'ADR 0011 elle-même, et sans doute un autre sur mes
-premiers pas avec le Vercel AI SDK.
+La suite : un article plus technique sur l'ADR 0011 elle-même, et un autre sur mes premiers pas
+avec le Vercel AI SDK.
