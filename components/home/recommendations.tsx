@@ -3,11 +3,6 @@ import Image from "next/image";
 import { SectionLabel } from "@/components/section-label";
 import { recommendations } from "@/content/profile";
 
-/** Au-delà de cette longueur, une citation dépasse la troncature à 6 lignes
- * sur la largeur de carte la plus étroite — elle reçoit alors l'affordance
- * « Lire la suite » plutôt qu'un texte simplement tronqué sans accès au reste. */
-const LONG_QUOTE_THRESHOLD = 250;
-
 export function Recommendations() {
   return (
     <section
@@ -25,23 +20,9 @@ export function Recommendations() {
               “
             </span>
             <blockquote cite={rec.linkedin} className="m-0 flex-1">
-              {rec.quote.length > LONG_QUOTE_THRESHOLD ? (
-                <details className="group">
-                  <summary className="list-none [&::-webkit-details-marker]:hidden">
-                    <span className="text-ink-soft m-0 line-clamp-6 block cursor-pointer text-[15px] leading-relaxed group-open:line-clamp-none">
-                      {rec.quote.replace(/\n\n/g, " ")}
-                    </span>
-                    <span className="text-accent mt-2 inline-block cursor-pointer text-[13px] font-medium">
-                      <span className="group-open:hidden">Lire la suite</span>
-                      <span className="hidden group-open:inline">Réduire</span>
-                    </span>
-                  </summary>
-                </details>
-              ) : (
-                <p className="text-ink-soft m-0 text-[15px] leading-relaxed">
-                  {rec.quote.replace(/\n\n/g, " ")}
-                </p>
-              )}
+              <p className="text-ink-soft m-0 text-[15px] leading-relaxed">
+                {rec.quote.replace(/\n\n/g, " ")}
+              </p>
             </blockquote>
             <figcaption className="flex items-center gap-3">
               <Image
