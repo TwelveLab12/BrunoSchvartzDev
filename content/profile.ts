@@ -126,6 +126,36 @@ export const experience = [
   },
 ] as const;
 
+export const recommendations = [
+  {
+    name: "Philippe Pelissier",
+    role: "CEO",
+    company: "WEB-ID",
+    quote:
+      "J'ai eu le plaisir de travailler avec Bruno chez WEB-ID et j'ai rapidement apprécié son sérieux et sa fiabilité.\n\nBruno est quelqu'un de discret, consciencieux et surtout sur qui on peut compter. Il est réactif, toujours disponible pour aider ses collègues et cherche systématiquement à trouver des solutions plutôt qu'à chercher des excuses. C'est également quelqu'un qui entretient de très bonnes relations avec les clients, qui apprécient particulièrement son professionnalisme et son écoute.\n\nBref, un vrai « mec bien » avec qui il est agréable de travailler, et que je n'hésiterais pas à recommander à une équipe qui cherche quelqu'un de fiable, impliqué et humain.",
+    avatar: "/recommendations/philippe-pelissier.jpg",
+    linkedin: "https://www.linkedin.com/in/philippepelissier/",
+  },
+  {
+    name: "Léo Tiollier",
+    role: "Software Engineer",
+    company: "WEB-ID",
+    quote:
+      "J'ai eu le plaisir de travailler avec Bruno et je le recommande sans hésitation. Sérieux, à l'écoute et toujours disponible pour aider, il apporte une véritable valeur à toute équipe. Nos sessions de pair programming ont été particulièrement agréables et efficaces : nous avancions ensemble avec fluidité et sans difficulté. Un collaborateur de confiance, que je recommande vivement.",
+    avatar: "/recommendations/leo-tiollier.jpg",
+    linkedin: "https://www.linkedin.com/in/ltiollier/",
+  },
+  {
+    name: "Gabriel Pillet",
+    role: "Dev Fullstack — Qualité & Accessibilité Numérique",
+    company: "WEB-ID",
+    quote:
+      "Bruno est un super dev fullstack Laravel / React, polyvalent, couteau suisse, il répond vite et bien à tous les problèmes avec sérieux. Hyper efficace (et super sympa).",
+    avatar: "/recommendations/gabriel-pillet.jpg",
+    linkedin: "https://www.linkedin.com/in/gabrielpillet/",
+  },
+] as const;
+
 /** Contenu de la feuille CV imprimée (voir components/cv-print.tsx). Une page A4. */
 export const cv = {
   headline: "Développeur front-end React · TypeScript",
