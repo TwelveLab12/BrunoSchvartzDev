@@ -3,6 +3,7 @@ import { CaseStudies } from "@/components/home/case-studies";
 import { Contact } from "@/components/home/contact";
 import { Experience } from "@/components/home/experience";
 import { Hero } from "@/components/home/hero";
+import { Recommendations } from "@/components/home/recommendations";
 import { SiteHeader } from "@/components/home/site-header";
 import { Stack } from "@/components/home/stack";
 
@@ -15,6 +16,7 @@ export default function HomePage() {
         <Stack />
         <CaseStudies />
         <Experience />
+        <Recommendations />
         <Contact />
       </main>
       <CvPrint />
