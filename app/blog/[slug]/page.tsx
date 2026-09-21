@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
+import { formatDate } from "@/lib/utils";
 import { profile } from "@/content/profile";
 
 export function generateStaticParams() {
@@ -51,7 +52,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <h1 className="m-0 font-serif text-[clamp(36px,6vw,64px)] leading-[1.02] font-normal tracking-[-0.02em]">
           {post.title}
         </h1>
-        <p className="text-muted mt-4 font-mono text-xs tracking-[0.08em] uppercase">{post.date}</p>
+        <p className="text-muted mt-4 font-mono text-xs tracking-[0.08em] uppercase">
+          {formatDate(post.date)}
+        </p>
         {post.tags.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-2">
             {post.tags.map((tag) => (
