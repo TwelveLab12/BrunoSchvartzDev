@@ -1,6 +1,6 @@
 # bruno-schvartz-site
 
-Site de présentation personnel, déployé sur [brunoschvartz.dev](https://brunoschvartz.dev) (Vercel, domaine chez Cloudflare). Entièrement statique — pas de base de données, pas d'authentification, pas de route API.
+Site de présentation personnel, déployé sur [brunoschvartz.dev](https://brunoschvartz.dev) (Vercel, domaine chez Cloudflare). Pages publiques entièrement statiques, sans base de données ; seule l'admin du blog (`/admin`) est dynamique et authentifiée par LinkedIn (voir `docs/adr/0011-blog-admin-architecture.md`).
 
 Stack : Next.js 15 (App Router, Turbopack) · React 19 · TypeScript strict · Tailwind CSS 4 · CVA + clsx + tailwind-merge · lucide-react. Qualité : ESLint (`eslint-config-next`), Prettier + `prettier-plugin-tailwindcss`, Husky + lint-staged, CI GitHub Actions. Détail de chaque dépendance : [`docs/dependencies.md`](docs/dependencies.md).
 
@@ -29,7 +29,7 @@ Les couleurs et les polices sont des tokens Tailwind déclarés dans `app/global
 
 - [`docs/dependencies.md`](docs/dependencies.md) — ce que fait chaque librairie et pourquoi elle est utilisée ici.
 - [`docs/adr/`](docs/adr) — décisions d'architecture (format Statut/Contexte/Décision/Conséquences), numérotées.
-- Les deux sont aussi consultables en ligne sur `/docs` (non indexé, non lié depuis la page de présentation).
+- Les deux sont aussi consultables en ligne sur `/docs` (`noindex`, hors sitemap, lien discret dans le pied de la home — voir `docs/adr/0013-lien-docs-discret-depuis-le-footer.md`).
 - [`CLAUDE.md`](CLAUDE.md) — conventions de travail pour Claude Code sur ce repo.
 
 ## CV imprimable

@@ -19,7 +19,7 @@ export default function DocsIndexPage() {
       </Link>
       <h1 className="m-0 mt-8 font-serif text-4xl font-normal tracking-[-0.01em]">Documentation</h1>
       <p className="text-muted mt-3">
-        Notes techniques sur ce projet — non listées sur la page de présentation.
+        Décisions d&apos;architecture et choix techniques de ce site.
       </p>
       {categories.map((category) => (
         <section key={category} className="mt-10">
