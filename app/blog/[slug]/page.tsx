@@ -34,6 +34,9 @@ export async function generateMetadata({
       url: `${profile.website}/blog/${slug}`,
       type: "article",
       locale: "fr_FR",
+      publishedTime: post.date,
+      modifiedTime: post.updatedAt,
+      tags: post.tags,
     },
   };
 }
