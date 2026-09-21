@@ -42,6 +42,14 @@ Tenir sur une page : vérifier l'aperçu d'impression après chaque ajout de con
 
 Vercel, déploiement automatique sur push vers `main`. La promotion en production est bloquée tant que la CI (`.github/workflows/ci.yml`) n'est pas verte (Deployment Check Vercel, voir `docs/adr/0009-vercel-deployment-checks.md`).
 
+## Environnements
+
+- **Production** (Vercel, branche `main`) : site public et `/admin`. Les variables d'`.env.example` y sont toutes définies.
+- **Preview** (une URL par déploiement de PR) : site public uniquement. `/admin` n'y fonctionne pas et affiche « Accès refusé » : c'est attendu, pas un oubli de configuration (voir `docs/adr/0014-admin-production-et-local-uniquement.md`).
+- **Local** (`pnpm dev`, `.env.local` copié depuis `.env.example`) : `/admin` fonctionne une fois les variables renseignées. Attention : enregistrer un article commite réellement sur `main` via l'API GitHub.
+
+Le tableau variable × environnement est en tête d'`.env.example`. Les valeurs ne vont jamais dans le dépôt ni dans `/docs`.
+
 ## Volontairement pas installé
 
 Rien dans cette page n'a besoin de base de données, donc ces dépendances ne sont pas dans le `package.json` (pas de deps mortes). Le blog avec édition depuis le site (suivi dans le GitHub Project) en aura besoin le jour où il sera implémenté :
