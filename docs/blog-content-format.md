@@ -39,6 +39,21 @@ Le corps de l'article, en Markdown, après le second `---`.
 | `status`      | `"draft" \| "published"` | non         | `draft` par défaut si absent. Seuls les articles `published` sont rendus publiquement et inclus dans `app/sitemap.ts` — un brouillon reste en 404 sur son URL publique même si le fichier existe déjà.                                                                    |
 | `pinnedOrder` | `number`                 | non         | Absent par défaut (non épinglé). Les articles portant ce champ s'affichent toujours en premier sur `/blog`, triés par `pinnedOrder` croissant ; le reste suit par date décroissante comme d'habitude. Un badge « Épinglé » s'affiche alors sur `/blog` et `/blog/[slug]`. |
 
+## Pièges courants
+
+- **Dates entre guillemets.** `date: 2026-09-21` sans guillemets est lu par YAML comme un objet
+  `Date`, pas comme une chaîne : le tri et l'affichage attendent une chaîne `YYYY-MM-DD`. Toujours
+  écrire `date: "2026-09-21"` (idem pour `updatedAt`).
+- **Le résumé s'appelle `excerpt`.** Un champ `description` est ignoré : la liste `/blog` et les
+  métadonnées Open Graph ne lisent que `excerpt`.
+- **Pas de `# Titre` dans le corps.** La page article affiche déjà `title` en `<h1>` ; commencer le
+  corps directement par du texte ou un `##`.
+- **Tags en minuscules**, sans variante d'écriture d'un article à l'autre (`autoformation`, pas
+  `auto-formation`), pour rester cohérent avec les badges déjà affichés.
+
+`date`, `updatedAt` et `tags` sont aussi exposés dans les métadonnées Open Graph de l'article
+(`article:published_time`, `article:modified_time`, `article:tag`).
+
 Le corps du fichier (tout ce qui suit le frontmatter) est du Markdown brut, rendu via
 `react-markdown` — le même pipeline que `docs/` (ce fichier inclus), sans
 `dangerouslySetInnerHTML`.
