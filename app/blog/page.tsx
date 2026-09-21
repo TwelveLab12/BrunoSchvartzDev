@@ -4,7 +4,8 @@ import { getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Notes sur le développement front-end React et TypeScript.",
+  description:
+    "Notes sur le développement front-end (React, TypeScript) et sur mon autoformation à l'IA.",
   alternates: { canonical: "/blog" },
 };
 
