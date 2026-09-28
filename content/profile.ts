@@ -154,6 +154,24 @@ export const recommendations = [
     avatar: "/recommendations/gabriel-pillet.jpg",
     linkedin: "https://www.linkedin.com/in/gabrielpillet/",
   },
+  {
+    name: "Elise Liegeois",
+    role: "Développeuse PHP",
+    company: "WEB-ID",
+    quote:
+      "J'ai travaillé avec Bruno chez WEB-ID, sur des sujets front alors que je suis plutôt back. Il a su m'accompagner avec pédagogie jusqu'à ce que je sois autonome sur un projet, sans jamais se contenter de le faire à ma place.\n\nCompétent, disponible et clair dans ses explications, je recommande Bruno à toute équipe recherchant quelqu'un de fiable et impliqué.",
+    avatar: "/recommendations/elise-liegeois.jpg",
+    linkedin: "https://www.linkedin.com/in/elise-liegeois-277879100/",
+  },
+  {
+    name: "Ludovic Jourdain",
+    role: "Product Manager & Product Designer",
+    company: "WEB-ID",
+    quote:
+      "J'ai eu le grand plaisir de collaborer avec Bruno sur plusieurs projets, y compris en tant que manager. Développeur Front/React investi et consciencieux, il a mené à bien des projets de toutes envergures, au sein d'équipes de tailles variées, avec une véritable autonomie. Le tout dans un état d'esprit constamment constructif et positif. Je le recommande sans la moindre hésitation !",
+    avatar: "/recommendations/ludovic-jourdain.jpg",
+    linkedin: "https://www.linkedin.com/in/ludovicjourdain/",
+  },
 ] as const;
 
 /** Contenu de la feuille CV imprimée (voir components/cv-print.tsx). Une page A4. */
