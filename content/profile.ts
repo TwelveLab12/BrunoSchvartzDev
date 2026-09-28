@@ -69,31 +69,75 @@ export const stackGroups = [
   },
 ] as const;
 
-/** Note affichée à côté du libellé « Cas d'étude » : la page n'en montre que deux. */
-export const caseStudiesNote =
-  "Deux projets détaillés — le parc applicatif en comptait bien davantage.";
+/** Titre de la section Cas d'étude, découpé pour mettre en valeur les deux contraintes. */
+export const caseStudiesTitle = [
+  { text: "Deux projets, deux contraintes fortes : le " },
+  { text: "temps réel", emphasis: true },
+  { text: " et le " },
+  { text: "hors ligne", emphasis: true },
+  { text: "." },
+] as const;
+
+/** Libellés communs aux cas d'étude (points forts et légende des schémas). */
+export const caseStudyLabels = {
+  challenge: "Enjeu :",
+  legendMine: "mon périmètre",
+  legendOthers: "hors périmètre",
+} as const;
 
 export const caseStudies = [
   {
     name: "Ninkasi",
     meta: "2022 — 2026",
     summary:
-      "Plateforme d'animation pour un réseau de restaurants : blind test en direct, carte des produits, agenda des événements. Trois briques — backoffice Nova, couche Laravel/Inertia, et deux applications front.",
-    scope:
-      "Mon périmètre : les deux applications front React et leur intégration Inertia. Backoffice Nova et développement back-end assurés par le reste de l'équipe.",
-    tags: ["React", "TypeScript", "MUI", "Inertia.js", "Mercure", "Laravel"],
+      "Plateforme d'animation pour un réseau de restaurants : blind test en direct, carte des produits, agenda des événements.",
+    roles: [
+      {
+        label: "Mon rôle",
+        body: "Les deux applications front React et leur intégration Inertia.",
+      },
+      {
+        label: "Équipe",
+        body: "Backoffice Nova et back-end Laravel assurés par le reste de l'équipe.",
+      },
+    ],
+    tags: ["React", "TypeScript", "MUI", "Inertia.js", "Mercure"],
+    diagram: {
+      kind: "ninkasi",
+      description:
+        "Le game master pilote la partie via Inertia ; Laravel publie les événements sur le hub Mercure, qui les diffuse en SSE aux joueurs et à la console.",
+      nodes: {
+        console: { title: "Console game master", sub: "React · MUI" },
+        backend: { title: "Laravel · Nova", sub: "back-office, API" },
+        hub: { title: "Hub Mercure", sub: "diffusion SSE" },
+        players: { title: "App de salle (joueurs)", sub: "React · accès QR code" },
+      },
+      edges: { actions: "actions", actionsVia: "(Inertia)", publish: "publie", sse: "SSE" },
+    },
     highlights: [
       {
         label: "Interface game master",
-        body: "Console permettant à un employé de piloter un blind test en direct, connectée au backoffice Laravel via Inertia.",
+        challenge:
+          "un employé de restaurant, non technique, doit animer une partie en direct sans formation.",
+        solution:
+          "Console de pilotage connectée au back-office Laravel via Inertia : lancement des manches, contrôle du rythme.",
+        result: "Déployée dans le réseau Ninkasi, plus de 20 établissements",
       },
       {
         label: "Temps réel multi-acteurs",
-        body: "Blind test synchronisé entre les joueurs en salle et le game master via Mercure. Application accessible uniquement par QR code, géolocalisée par restaurant et volontairement non référencée.",
+        challenge:
+          "garder l'animateur et toutes les équipes synchronisés en direct, sur le réseau d'un restaurant.",
+        solution:
+          "Diffusion des événements via Mercure (SSE), un protocole conçu pour monter en charge. Accès par QR code seulement, géolocalisé par restaurant et volontairement non référencé.",
+        result: "Une vingtaine d'équipes et plus par partie, plusieurs joueurs par équipe",
       },
       {
         label: "Carte produits — écran & PDF",
-        body: "Rendu dynamique de la carte depuis l'API, en version mobile et en PDF imprimable — mise en page fidèle à des contraintes graphiques fortes.",
+        challenge:
+          "chaque restaurant a sa propre carte, avec ses contraintes et ses choix, gérée par Ninkasi sous Excel et servie par une API maison.",
+        solution:
+          "Rendu de la carte depuis l'API, par restaurant et par format : version digitale et PDF imprimable, avec des données et une mise en page propres à chaque support, fidèles à la charte.",
+        result: "Plus de ressaisie manuelle des cartes, en digital comme en print",
       },
     ],
   },
@@ -101,16 +145,42 @@ export const caseStudies = [
     name: "Medikiosk",
     meta: "2024 — 2026",
     summary:
-      "Application de borne interactive en environnement médical, devant rester pleinement opérationnelle sans connexion réseau. React + Vite.",
-    tags: ["React", "TypeScript", "Vite", "DexieDB", "Service Worker"],
+      "Borne interactive déployée en pharmacie, qui doit rester pleinement opérationnelle sans connexion réseau.",
+    roles: [
+      {
+        label: "Mon rôle",
+        body: "Seul responsable du développement, de la maintenance et des évolutions de la v2.",
+      },
+    ],
+    tags: ["React", "TypeScript", "Next.js", "DexieDB", "Service Worker"],
+    diagram: {
+      kind: "medikiosk",
+      description:
+        "L'interface lit ses données dans DexieDB ; une synchronisation descendante depuis l'API a lieu à la connexion de la borne ou sur demande depuis l'administration de la pharmacie ; le service worker sert l'application en cache et gère ses mises à jour.",
+      nodes: {
+        app: { title: "Interface borne", sub: "Next.js · React" },
+        worker: { title: "Service worker", sub: "cache & mises à jour" },
+        store: { title: "DexieDB (IndexedDB)", sub: "source de vérité locale" },
+        api: { title: "API", sub: "serveur distant" },
+        admin: { title: "Admin pharmacie", sub: "déclenche la synchro" },
+      },
+      edges: { readWrite: "lecture / écriture", sync: "synchro descendante", serves: "sert" },
+    },
     highlights: [
       {
-        label: "Synchronisation locale",
-        body: "Couche de persistance sur DexieDB (IndexedDB) garantissant la cohérence et la reprise des données en mode déconnecté.",
+        label: "Synchronisation repensée",
+        challenge:
+          "fonctionner aussi bien hors ligne qu'en ligne. En v1, la synchronisation dans les deux sens, montante et descendante, s'était révélée peu fiable.",
+        solution:
+          "En v2, mêmes déclencheurs (connexion de la borne, ou manuellement depuis l'administration de la pharmacie), mais une synchronisation descendante uniquement : la borne récupère ses données, puis les sert en local depuis DexieDB (IndexedDB).",
+        result: "Une fois synchronisée, la borne fonctionne en totale autonomie",
       },
       {
         label: "Refonte du service worker",
-        body: "Réécriture complète de la stratégie de cache et du cycle de mise à jour, pour un fonctionnement fiable de la borne sur le long terme.",
+        challenge:
+          "des bornes réparties en pharmacie, qui doivent rester à jour sans intervention sur place.",
+        solution: "Réécriture complète de la stratégie de cache et du cycle de mise à jour.",
+        result: "Mises à jour appliquées automatiquement, sans intervention",
       },
     ],
   },
@@ -223,7 +293,7 @@ export const cv = {
     },
     {
       title: "Medikiosk",
-      meta: "React · TypeScript · Vite · DexieDB",
+      meta: "Next.js · React · TypeScript · DexieDB",
       body: "Borne interactive fonctionnant hors connexion : persistance et cohérence des données en local sur DexieDB (IndexedDB), refonte complète du service worker.",
     },
   ],

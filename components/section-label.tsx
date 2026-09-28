@@ -5,7 +5,7 @@ export function SectionLabel({
   children,
   className,
 }: {
-  as?: "h2" | "h3";
+  as?: "h2" | "h3" | "h4" | "p";
   children: React.ReactNode;
   className?: string;
 }) {
