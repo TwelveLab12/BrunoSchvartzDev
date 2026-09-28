@@ -1,41 +1,53 @@
 import { MobileNav } from "@/components/home/mobile-nav";
+import { ButtonLink } from "@/components/ui/button";
 import { Wordmark } from "@/components/wordmark";
 import Image from "next/image";
 import Link from "next/link";
 
+// Dans l'ordre des sections de la page.
 const links = [
-  { href: "#experience", label: "Expérience" },
   { href: "#stack", label: "Stack" },
-  { href: "#projet", label: "Projet" },
+  { href: "#projet", label: "Cas d'étude" },
+  { href: "#experience", label: "Parcours" },
   { href: "#recommandations", label: "Recommandations" },
   { href: "/blog", label: "Blog" },
-  { href: "#contact", label: "Contact" },
 ];
+
+const contact = { href: "#contact", label: "Me contacter" };
 
 export function SiteHeader() {
   return (
-    <header className="border-rule mx-auto flex max-w-[1120px] flex-wrap items-center justify-between gap-6 border-b pt-7">
-      <div className="flex items-center gap-3.5 pb-[22px]">
-        <Image
-          src="/portrait.jpg"
-          alt="Portrait de Bruno Schvartz"
-          width={600}
-          height={600}
-          priority
-          className="border-rule size-14 rounded-full border object-cover"
-        />
-        <span className="font-wordmark text-[32px] font-semibold tracking-[-0.01em]">
-          <Wordmark />
-        </span>
+    // Pleine largeur (annule le padding de <main>) pour que le fond couvre les marges une fois collé.
+    <header className="bg-paper/90 sticky top-0 z-20 -mx-[clamp(20px,5vw,72px)] px-[clamp(20px,5vw,72px)] backdrop-blur-sm">
+      <div className="border-rule mx-auto flex max-w-[1120px] flex-wrap items-center gap-x-3 border-b py-4 sm:gap-x-6">
+        <div className="flex items-center gap-3.5">
+          <Image
+            src="/portrait.jpg"
+            alt="Portrait de Bruno Schvartz"
+            width={600}
+            height={600}
+            priority
+            className="border-rule size-12 rounded-full border object-cover sm:size-14"
+          />
+          <span className="font-wordmark text-[26px] font-semibold tracking-[-0.01em] sm:text-[32px]">
+            <Wordmark />
+          </span>
+        </div>
+        <div className="ml-auto hidden items-center gap-[26px] sm:flex">
+          <nav className="hidden gap-[26px] text-[13.5px] tracking-[0.02em] md:flex">
+            {links.map((l) => (
+              <Link key={l.href} href={l.href} className="no-underline">
+                {l.label}
+              </Link>
+            ))}
+          </nav>
+          <ButtonLink href={contact.href} size="sm">
+            {contact.label}
+          </ButtonLink>
+        </div>
+        {/* Enfant direct du conteneur flex-wrap : son panneau occupe une ligne entière. */}
+        <MobileNav links={[...links, contact]} />
       </div>
-      <nav className="hidden gap-[26px] pb-[22px] text-[13.5px] tracking-[0.02em] md:flex">
-        {links.map((l) => (
-          <Link key={l.href} href={l.href} className="no-underline">
-            {l.label}
-          </Link>
-        ))}
-      </nav>
-      <MobileNav links={links} />
     </header>
   );
 }

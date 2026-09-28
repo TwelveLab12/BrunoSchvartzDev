@@ -42,6 +42,9 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Hauteur de l'en-tête collant (components/home/site-header.tsx) : les ancres
+       ne doivent pas atterrir dessous. */
+    scroll-padding-top: 96px;
   }
   body {
     @apply bg-paper text-ink antialiased;
