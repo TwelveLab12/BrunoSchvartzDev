@@ -223,7 +223,7 @@ export const cv = {
     },
     {
       title: "Medikiosk",
-      meta: "React · TypeScript · Vite · DexieDB",
+      meta: "Next.js · React · TypeScript · DexieDB",
       body: "Borne interactive fonctionnant hors connexion : persistance et cohérence des données en local sur DexieDB (IndexedDB), refonte complète du service worker.",
     },
   ],
