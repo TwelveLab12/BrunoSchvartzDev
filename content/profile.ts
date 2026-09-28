@@ -3,8 +3,19 @@ export const profile = {
   role: "Développeur front-end React",
   location: "Lyon 3e — France",
   availability: "Disponible immédiatement — Lyon, sur site, hybride ou à distance",
+  /** Titre du Hero, découpé pour mettre « senior » en valeur. */
+  headline: {
+    before: "Développeur front-end ",
+    emphasis: "senior",
+    after: ", React & TypeScript.",
+  },
+  /** Ligne de preuves affichée entre le titre et l'intro du Hero. */
+  proofs: [
+    { value: "18 ans", label: "de développement web" },
+    { value: "5 ans", label: "React / TypeScript" },
+  ],
   intro:
-    "Développeur professionnel depuis 2008 : d'abord PHP, puis Laravel à partir de 2016. Depuis cinq ans, entièrement tourné vers le front — React et TypeScript. En agence, l'équipe front est passée de trois développeurs à un seul après deux départs : j'en suis devenu l'unique référent technique, responsable du développement et de la maintenance de l'ensemble des applications front. L'agence a cessé son activité : je suis disponible immédiatement.",
+    "J'architecture et je maintiens des applications React en production : temps réel, hors ligne, interfaces métier. Seul référent front de mon agence ces dernières années, avec un solide bagage back-end Laravel qui facilite le dialogue avec les équipes API.",
   email: "bruno.schvartz@gmail.com",
   phone: "06 23 80 88 39",
   phoneHref: "tel:+33623808839",
