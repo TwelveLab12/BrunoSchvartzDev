@@ -1,6 +1,7 @@
-import { Github, Globe, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { Globe, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import { SectionLabel } from "@/components/section-label";
+import { GithubIcon, LinkedinIcon } from "@/components/social-icons";
 import { Wordmark } from "@/components/wordmark";
 import { profile } from "@/content/profile";
 
@@ -42,11 +43,11 @@ export function Contact() {
               {profile.websiteLabel}
             </a>
             <a href={profile.linkedin} className="flex items-center gap-2">
-              <Linkedin className="size-4" aria-hidden />
+              <LinkedinIcon className="size-4" aria-hidden />
               LinkedIn
             </a>
             <a href={profile.github} className="flex items-center gap-2">
-              <Github className="size-4" aria-hidden />
+              <GithubIcon className="size-4" aria-hidden />
               GitHub
             </a>
           </div>

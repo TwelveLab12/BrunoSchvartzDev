@@ -1,6 +1,6 @@
-import { Linkedin } from "lucide-react";
 import Image from "next/image";
 import { SectionLabel } from "@/components/section-label";
+import { LinkedinIcon } from "@/components/social-icons";
 import { recommendations } from "@/content/profile";
 
 export function Recommendations() {
@@ -45,7 +45,7 @@ export function Recommendations() {
                 aria-label={`Profil LinkedIn de ${rec.name}`}
                 className="ml-auto"
               >
-                <Linkedin className="size-4" aria-hidden />
+                <LinkedinIcon className="size-4" aria-hidden />
               </a>
             </figcaption>
           </figure>
