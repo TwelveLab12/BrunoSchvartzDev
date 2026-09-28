@@ -34,14 +34,14 @@ export function MobileNav({ links }: { links: { href: string; label: string }[] 
         aria-expanded={open}
         aria-controls="mobile-nav-panel"
         aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
-        className="-mr-2 flex size-11 items-center justify-center pb-[22px]"
+        className="-mr-2 flex size-11 items-center justify-center max-sm:ml-auto"
       >
         {open ? <X className="size-5" aria-hidden /> : <Menu className="size-5" aria-hidden />}
       </button>
       {open && (
         <nav
           id="mobile-nav-panel"
-          className="border-rule flex w-full basis-full flex-col border-t pt-4 pb-5 text-[15px] tracking-[0.02em]"
+          className="border-rule mt-4 flex w-full basis-full flex-col border-t pt-2 text-[15px] tracking-[0.02em]"
         >
           {links.map((l) => (
             <Link
