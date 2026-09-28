@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllPosts } from "@/lib/blog";
+import { formatDate } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Notes sur le développement front-end React et TypeScript.",
+  description:
+    "Notes sur le développement front-end (React, TypeScript) et sur mon autoformation à l'IA.",
   alternates: { canonical: "/blog" },
 };
 
@@ -32,7 +34,7 @@ export default function BlogPage() {
               {post.title}
             </Link>
             <p className="text-muted mt-2 font-mono text-xs tracking-[0.06em] uppercase">
-              {post.date}
+              {formatDate(post.date)}
             </p>
             {post.excerpt && <p className="text-ink-muted mt-2">{post.excerpt}</p>}
             {post.tags.length > 0 && (
