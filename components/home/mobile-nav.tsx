@@ -27,7 +27,7 @@ export function MobileNav({ links }: { links: { href: string; label: string }[] 
   }, [open]);
 
   return (
-    <div ref={panelRef} className="contents md:hidden">
+    <div ref={panelRef} className="contents xl:hidden">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
