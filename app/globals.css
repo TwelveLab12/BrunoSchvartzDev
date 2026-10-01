@@ -21,7 +21,8 @@
   /* Feuille CV imprimée (components/cv-print.tsx) : palette et échelle
      typographique dédiées, distinctes des tokens web ci-dessus. */
   --color-print-ink: #23221e;
-  --color-print-muted: #8a867c;
+  /* Gris secondaire : pas plus clair que ~#767676, sinon il s'efface à l'impression. */
+  --color-print-muted: #6b675e;
   --color-print-rule: #ded9cf;
 
   --text-print-name: 30pt;
