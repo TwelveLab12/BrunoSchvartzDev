@@ -41,6 +41,7 @@ Ce document liste les librairies déclarées dans `package.json` : ce qu'elles f
 - **typescript** — Typage statique sur l'ensemble du code.
 - **eslint** — Linter.
 - **eslint-config-next** — Le ruleset ESLint officiel de Next.js (règles Core Web Vitals, hooks React, etc.). Depuis la v16, il expose directement des configs plates (`eslint-config-next/core-web-vitals`, `eslint-config-next/typescript`) consommées telles quelles dans `eslint.config.mjs` — plus besoin de couche de compatibilité `.eslintrc`.
+- **eslint-plugin-jsx-a11y** — N'était jusqu'ici qu'une dépendance transitive d'`eslint-config-next` (6 règles en `warn`), non résolvable directement depuis la racine. Déclarée en dépendance directe pour pouvoir importer son preset `strict` (33 règles, en erreur) dans `eslint.config.mjs` — voir `docs/adr/0016-accessibility-strategy.md`.
 - **prettier** — Formateur de code.
 - **prettier-plugin-tailwindcss** — Trie automatiquement les classes Tailwind dans un ordre canonique à l'intérieur des `className`, pour que les diffs restent lisibles et cohérents peu importe qui édite un composant.
 - **husky** — Gère le hook Git `pre-commit` (`.husky/pre-commit`) qui déclenche `lint-staged` avant chaque commit.

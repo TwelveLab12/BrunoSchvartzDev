@@ -31,8 +31,11 @@ vrp format       # prettier --write .
 ```
 
 There is no test suite in this repo. Before every commit, `vrp typecheck`, `vrp lint`, and
-`vrp build` must all be clean — this is the project's baseline, not optional. A pre-commit hook
-(Husky + lint-staged) also runs Prettier/ESLint automatically on staged files.
+`vrp build` must all be clean — this is the project's baseline, not optional. `vrp lint` includes
+the `jsx-a11y` `strict` ruleset: an a11y lint error is a real defect — fix it, and never add an
+`eslint-disable` for a `jsx-a11y` rule without a comment saying why (see `components/ui/button.tsx`
+for the one existing example). A pre-commit hook (Husky + lint-staged) also runs Prettier/ESLint
+automatically on staged files.
 
 ## Architecture
 
@@ -72,6 +75,40 @@ There is no test suite in this repo. Before every commit, `vrp typecheck`, `vrp 
   status to Vercel as a named Deployment Check that gates production promotion
   (`docs/adr/0009-vercel-deployment-checks.md`) — the check name must stay in sync with whatever is
   selected in the Vercel project's Deployment Checks settings, which lives outside this repo.
+- **Accessibility** is a project constraint, not a polish pass. Target: WCAG 2.2 AA, with the RGAA
+  (4.1.2 until RGAA 5 ships) as the French reference grid — see
+  `docs/adr/0016-accessibility-strategy.md`. Three layers, none sufficient alone: `jsx-a11y` strict
+  rules in `eslint.config.mjs` (blocking, part of `lint:ci`); a rendered-output check with axe-core
+  (advisory CI job, not reported to Vercel); and the manual checklist below for what tools can't
+  see (focus order, screen reader, zoom/reflow). A green tool run is not a conformance claim — and
+  this project deliberately doesn't publish one (ADR 0016).
+
+## Accessibility checklist
+
+Apply to every new component or page.
+
+- **Structure**: one `<h1>` per page, no skipped heading levels; page-level `<header>`/`<nav>`/
+  `<footer>` outside `<main>`; give each `<nav>` an `aria-label` when there is more than one.
+- **Native first**: `<button>` for actions, `<a>` for navigation, `<ul>/<li>` for lists (tags,
+  chips, jobs), `<time>` for dates. No `div onClick`.
+- **Names**: every control has an accessible name; icon-only controls get a constant `aria-label`
+  (don't swap the label _and_ `aria-expanded`); decorative icons `aria-hidden`; images: meaningful
+  `alt`, decorative `alt=""`; an SVG that conveys information (e.g. an architecture diagram) needs
+  `role="img"` + `aria-label`/`aria-labelledby`, and never encodes meaning by color alone — pair it
+  with a shape/pattern difference and, where practical, a visible legend.
+- **Color**: use `app/globals.css` tokens only; never convey information by color alone (keep link
+  underlines).
+- **Focus**: keep the global `:focus-visible` ring; never `outline-none` without an equally visible
+  replacement; menus/disclosures return focus to their trigger on Escape/close, and keep their
+  `aria-controls` target in the DOM (visibility toggled in CSS) so the id stays valid while closed;
+  DOM order = tab order; no keyboard traps.
+- **Targets**: ≥ 24×24 CSS px (WCAG 2.5.8), prefer 44×44 for icon-only controls.
+- **Motion**: no animation or smooth scroll outside `prefers-reduced-motion: no-preference`.
+- **Reflow**: no horizontal scroll at 320 px; prefer `rem` over `px` for font sizes.
+- **Forms** (admin): visible `<label>`, errors tied with `aria-describedby` and announced with
+  `role="alert"`.
+- **Print CV** (`components/cv-print.tsx`): keep it semantic (`h2` sections, no `h1` — ADR 0005);
+  hide it on screen with `hidden` (display:none), never `sr-only`; keep print colors ≥ 4.5:1.
 
 ## Workflow conventions
 
@@ -86,7 +123,8 @@ There is no test suite in this repo. Before every commit, `vrp typecheck`, `vrp 
 - Every issue carries exactly one type label: `bug` (defective behavior), `enhancement` (new
   feature or UX improvement), `documentation` (docs-only work), `chore` (tooling/infra/maintenance
   with no direct feature impact), or `content` (editorial copy changes — e.g. blog articles — with
-  no code). Set it at creation (`gh issue create --label <type>`).
+  no code). Set it at creation (`gh issue create --label <type>`). Issues that touch accessibility
+  also carry the `accessibility` topic label, in addition to (never instead of) the type label.
 - One git branch and one PR per distinct concern. Don't stack unrelated changes onto a branch that
   already has an open PR for something else — branch from `main` again instead.
 - Merge strategy: while a branch is open, keep it current with `git fetch origin && git rebase

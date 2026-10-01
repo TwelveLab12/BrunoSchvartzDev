@@ -23,6 +23,9 @@ type ButtonLinkProps = React.ComponentPropsWithoutRef<typeof Link> &
   VariantProps<typeof buttonVariants>;
 
 export function ButtonLink({ className, variant, size, ...props }: ButtonLinkProps) {
+  // jsx-a11y's `strict` preset maps ButtonLink -> <a> (see eslint.config.mjs) to catch misuse
+  // elsewhere, but can't see that `children`/`{...props}` always carries real content here.
+  // eslint-disable-next-line jsx-a11y/anchor-has-content
   return <Link className={cn(buttonVariants({ variant, size }), className)} {...props} />;
 }
 
