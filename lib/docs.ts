@@ -41,3 +41,8 @@ export function getAllDocs(): DocMeta[] {
     .map((slug) => ({ slug, title: getDocTitle(slug), category: getCategory(slug) }))
     .sort((a, b) => a.slug.join("/").localeCompare(b.slug.join("/")));
 }
+
+/** Nombre d'ADR publiés, calculé au build (section « Ce site » de la home). */
+export function getAdrCount(): number {
+  return getDocSlugs().filter((slug) => slug[0] === "adr").length;
+}

@@ -21,6 +21,7 @@ export const profile = {
   phoneHref: "tel:+33623808839",
   linkedin: "https://www.linkedin.com/in/bruno-schvartz",
   github: "https://github.com/TwelveLab12",
+  repository: "https://github.com/TwelveLab12/BrunoSchvartzDev",
   website: "https://brunoschvartz.dev",
   websiteLabel: "brunoschvartz.dev",
 } as const;
@@ -254,6 +255,57 @@ export const recommendations = [
     linkedin: "https://www.linkedin.com/in/ludovicjourdain/",
   },
 ] as const;
+
+/**
+ * Section « Ce site » : le site présenté comme un cas d'étude technique.
+ * Dans les textes, `…` est rendu en code. Le nombre d'ADR est calculé au build (lib/docs.ts).
+ */
+export const siteCase = {
+  label: "Ce site",
+  title: [
+    { text: "Ce site est aussi un " },
+    { text: "cas d'étude", emphasis: true },
+    { text: "." },
+  ],
+  lede: "Conçu et maintenu comme un projet client : décisions documentées, qualité vérifiée avant chaque mise en production, code public. Tout ce qui suit est vérifiable dans le dépôt.",
+  stack: ["Next.js 16", "React 19", "TypeScript 6", "Tailwind CSS v4", "Vercel"],
+  points: [
+    {
+      label: "Contenu",
+      title: "Une seule source, deux rendus.",
+      body: "Tous les textes vivent dans `content/profile.ts`. La page web et le CV imprimable A4 sont deux arbres React alimentés par les mêmes données ; l'impression bascule par media query, sans JavaScript.",
+    },
+    {
+      label: "Rendu",
+      title: "Statique par défaut.",
+      body: "Toutes les pages publiques sont pré-rendues au build. Seules les routes d'administration du blog sont dynamiques.",
+    },
+    {
+      label: "Blog",
+      title: "Sans base de données ni CMS.",
+      body: "Les articles sont des fichiers Markdown versionnés dans le dépôt. L'admin, protégée par connexion LinkedIn, les publie en committant via l'API GitHub.",
+    },
+    {
+      label: "Qualité",
+      title: "Rien ne part en production sans CI verte.",
+      body: "Typecheck, lint strict et build tournent à chaque push ; le résultat bloque la promotion en production sur Vercel. Prettier et ESLint s'exécutent aussi avant chaque commit.",
+    },
+    {
+      label: "Décisions",
+      /** Titre précédé du nombre d'ADR, calculé au build. */
+      withAdrCount: true,
+      title: "décisions d'architecture documentées.",
+      body: "Chaque choix structurant fait l'objet d'un ADR (contexte, décision, conséquences), publié en ligne, y compris quand une décision en remplace une autre.",
+    },
+    {
+      label: "Méthode",
+      title: "Une issue, une branche, une PR.",
+      body: "Chaque évolution part d'une issue suivie sur un tableau de projet, et passe par une pull request, CI comprise, avant d'arriver sur `main`.",
+    },
+  ],
+  docsLink: "Lire les décisions d'architecture",
+  repositoryLink: "Voir le code sur GitHub",
+} as const;
 
 /** Contenu de la feuille CV imprimée (voir components/cv-print.tsx). Une page A4. */
 export const cv = {

@@ -4,6 +4,7 @@ import { Contact } from "@/components/home/contact";
 import { Experience } from "@/components/home/experience";
 import { Hero } from "@/components/home/hero";
 import { Recommendations } from "@/components/home/recommendations";
+import { SiteCase } from "@/components/home/site-case";
 import { SiteHeader } from "@/components/home/site-header";
 import { Stack } from "@/components/home/stack";
 
@@ -17,6 +18,7 @@ export default function HomePage() {
         <CaseStudies />
         <Experience />
         <Recommendations />
+        <SiteCase />
         <Contact />
       </main>
       <CvPrint />
