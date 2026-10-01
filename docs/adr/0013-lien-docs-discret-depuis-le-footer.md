@@ -1,7 +1,8 @@
 # 0013 — Lien discret vers /docs depuis le footer de la home
 
 **Statut** : Acceptée — amende [0007](./0007-docs-section-noindexed.md) ; mise à jour du
-2026-09-21 en bas de page (`/docs` assumée comme vitrine publique)
+2026-09-21 en bas de page (`/docs` assumée comme vitrine publique) ; prolongée par
+[0015](./0015-section-ce-site-sur-la-home.md) (lien mis en avant depuis le corps de la home)
 
 ## Contexte
 
