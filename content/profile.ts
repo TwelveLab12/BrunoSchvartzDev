@@ -1,3 +1,18 @@
+/**
+ * Points de départ des deux durées affichées en Hero/CV (`profile.proofs`) et dans la
+ * description SEO (`app/layout.tsx`). Recalculées au build par `yearsSince` ci-dessous — ne
+ * jamais remplacer par un nombre d'années tapé en dur, qui se désynchroniserait dès l'année
+ * suivante. CPAM Meurthe-et-Moselle (`experience`) pour 2008 ; pivot React chez WEB-ID
+ * (« octobre 2021 », `experience`) pour 2021.
+ */
+export const CAREER_START_YEAR = 2008;
+export const REACT_START_YEAR = 2021;
+
+/** Durée en années entières depuis `startYear`, au moment du build (rendu statique — ADR 0002). */
+export function yearsSince(startYear: number): number {
+  return new Date().getFullYear() - startYear;
+}
+
 export const profile = {
   name: "Bruno Schvartz",
   role: "Développeur front-end React",
@@ -9,10 +24,10 @@ export const profile = {
     emphasis: "senior",
     after: ", React & TypeScript.",
   },
-  /** Ligne de preuves affichée entre le titre et l'intro du Hero. */
+  /** Ligne de preuves affichée entre le titre et l'intro du Hero. Durées recalculées au build. */
   proofs: [
-    { value: "18 ans", label: "de développement web" },
-    { value: "5 ans", label: "React / TypeScript" },
+    { value: `${yearsSince(CAREER_START_YEAR)} ans`, label: "de développement web" },
+    { value: `${yearsSince(REACT_START_YEAR)} ans`, label: "React / TypeScript" },
   ],
   intro:
     "J'architecture et je maintiens des applications React en production : temps réel, hors ligne, interfaces métier. Seul référent front de mon agence ces dernières années, avec un solide bagage back-end Laravel qui facilite le dialogue avec les équipes API.",

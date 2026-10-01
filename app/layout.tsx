@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans, Instrument_Sans, Instrument_Serif } from "next/font/google";
-import { profile } from "@/content/profile";
+import { CAREER_START_YEAR, REACT_START_YEAR, profile, yearsSince } from "@/content/profile";
 import "./globals.css";
 
 const instrumentSerif = Instrument_Serif({
@@ -35,7 +35,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(profile.website),
   title: "Bruno Schvartz — Développeur front-end React, Lyon",
   description:
-    "Développeur front-end React / TypeScript à Lyon. Développeur depuis 2008, spécialisé React depuis cinq ans, référent technique en agence. Ouvert aux opportunités en CDI.",
+    `Développeur front-end React / TypeScript à Lyon. Développeur depuis ${CAREER_START_YEAR}, ` +
+    `spécialisé React depuis ${yearsSince(REACT_START_YEAR)} ans, référent technique en agence. ` +
+    `Ouvert aux opportunités en CDI.`,
   alternates: {
     canonical: profile.website,
   },

@@ -42,6 +42,15 @@ automatically on staged files.
 - **`content/profile.ts`** is the single source of truth for every piece of site text: bio,
   experience, projects, skills, and the printed CV's content. Components must never hardcode text
   that belongs here — see `docs/adr/0006-centralized-content.md`.
+- **Derived facts shown on the site are computed at build time from their real source, never
+  typed by hand as a string that drifts** — e.g. the ADR count in `components/home/site-case.tsx`
+  (`getAdrCount()` in `lib/docs.ts`) and the years-of-experience figures in `profile.proofs`
+  (`yearsSince(CAREER_START_YEAR)` / `yearsSince(REACT_START_YEAR)` in `content/profile.ts`, also
+  reused by `app/layout.tsx`'s metadata description). Adding a new stat to the site? Check whether
+  it's derivable from something already in this repo (a folder, a date, a list) before typing a
+  number — if it is, compute it, don't hardcode it. Exception: a blog post's prose
+  (`content/blog/*.md`) is a dated artifact — leave stated durations as written, don't templatize
+  published articles.
 - **`components/home/`** — homepage sections (Hero, Stack, CaseStudies with its
   `CaseStudyDiagram` SVG schematics, Experience, Recommendations, SiteCase, Contact, SiteHeader
   with its `MobileNav`), assembled in `app/page.tsx`. **`components/ui/`** — reusable primitives
