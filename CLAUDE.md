@@ -6,10 +6,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Personal portfolio/CV site for Bruno Schvartz (front-end developer, job-seeking), deployed at
 https://brunoschvartz.dev on Vercel (custom domain via Cloudflare DNS, apex is canonical — see
-`docs/adr/0008-vercel-apex-canonical.md`). The entire site is statically rendered — no API routes,
-no database, no authentication (`docs/adr/0002-nextjs-static-rendering.md`). The printed/exported
-CV is not a maintained PDF file; it's a second React tree (`components/cv-print.tsx`) toggled via
-`@media print`, rendered from the same content as the web page.
+`docs/adr/0008-vercel-apex-canonical.md`). The public site is statically rendered — no database
+(`docs/adr/0002-nextjs-static-rendering.md`). The one exception is `/admin`: a NextAuth-gated
+(LinkedIn OAuth, owner-only) dynamic area that writes blog Markdown straight to this repo via
+GitHub's Contents API (`docs/adr/0011-blog-admin-architecture.md`), usable only in production and
+local, not on Vercel previews (`docs/adr/0014-admin-production-et-local-uniquement.md`). The
+printed/exported CV is not a maintained PDF file; it's a second React tree
+(`components/cv-print.tsx`) toggled via `@media print`, rendered from the same content as the web
+page.
 
 ## Commands
 
@@ -35,10 +39,16 @@ There is no test suite in this repo. Before every commit, `vrp typecheck`, `vrp 
 - **`content/profile.ts`** is the single source of truth for every piece of site text: bio,
   experience, projects, skills, and the printed CV's content. Components must never hardcode text
   that belongs here — see `docs/adr/0006-centralized-content.md`.
-- **`components/home/`** — homepage sections (Hero, Stack, Experience, CaseStudies, Contact,
-  SiteHeader), assembled in `app/page.tsx`. **`components/ui/`** — reusable primitives (Button via
-  CVA, PrintButton). Standalone pieces (`Wordmark`, `SectionLabel`, `CvPrint`, `ErrorPage`) live
-  directly under `components/`.
+- **`components/home/`** — homepage sections (Hero, Stack, CaseStudies with its
+  `CaseStudyDiagram` SVG schematics, Experience, Recommendations, SiteCase, Contact, SiteHeader
+  with its `MobileNav`), assembled in `app/page.tsx`. **`components/ui/`** — reusable primitives
+  (Button via CVA, PrintButton). Standalone pieces (`Wordmark`, `SectionLabel`, `CvPrint`,
+  `ErrorPage`, `SocialIcons`) live directly under `components/`.
+- **`app/admin/`** (login, post list, post editor) and **`app/blog/`** (public list + article
+  pages, reading `content/blog/*.md` via `lib/blog.ts`) implement the blog described by
+  `docs/adr/0011-blog-admin-architecture.md`. `proxy.ts` (Next.js 16's rename of `middleware.ts`)
+  gates `/admin/:path*` behind the NextAuth session; `docs/adr/0012-admin-401-403-scope.md` covers
+  the 401/403 handling specific to this area.
 - **`app/globals.css`** defines the design system as Tailwind v4 `@theme` tokens (colors, fonts) —
   no `tailwind.config.js`. A separate `--text-print-*`/`--color-print-*` token set exists
   specifically for the printed CV, distinct from the web palette.
@@ -50,11 +60,14 @@ There is no test suite in this repo. Before every commit, `vrp typecheck`, `vrp 
   Consequences format, sequentially numbered). Read the ADRs before making a structural or
   tooling change that might contradict one; write a new ADR for a new structural decision rather
   than editing an old one to bolt on an unrelated choice.
-- **Error handling** uses only the standard Next.js trio (`app/not-found.tsx`, `app/error.tsx`,
-  `app/global-error.tsx`) — no custom 401/403/500, nothing in this static/auth-less site can
-  trigger them (`docs/adr/0010-error-page-strategy.md`). `not-found.tsx`/`error.tsx` share a
-  `components/error-page.tsx` shell; `global-error.tsx` deliberately does not use it, since it must
-  keep rendering even if a shared component is what crashed the root layout.
+- **Error handling** on the public site uses only the standard Next.js trio (`app/not-found.tsx`,
+  `app/error.tsx`, `app/global-error.tsx`) — no custom 401/403/500 there, nothing outside `/admin`
+  can trigger them (`docs/adr/0010-error-page-strategy.md`). `/admin` is the one area that can hit
+  401/403: `proxy.ts` redirects an unauthenticated visitor to `/admin/login`, and a wrong LinkedIn
+  account is bounced to `/admin/error` — both reuse the `components/error-page.tsx` shell rather
+  than a dedicated 401/403 file or route (`docs/adr/0012-admin-401-403-scope.md`). `not-found.tsx`/
+  `error.tsx`/the admin interstitials share that shell; `global-error.tsx` deliberately does not
+  use it, since it must keep rendering even if a shared component is what crashed the root layout.
 - **CI** (`.github/workflows/ci.yml`) runs typecheck/lint/build on every push and PR, and reports
   status to Vercel as a named Deployment Check that gates production promotion
   (`docs/adr/0009-vercel-deployment-checks.md`) — the check name must stay in sync with whatever is
