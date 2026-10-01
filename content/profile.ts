@@ -26,49 +26,30 @@ export const profile = {
   websiteLabel: "brunoschvartz.dev",
 } as const;
 
-export const stackGroups = [
-  {
-    label: "01 — Front-end",
-    items: [
-      "TypeScript",
-      "React",
-      "Next.js",
-      "Inertia.js",
-      "Zustand",
-      "TanStack Query",
-      "Vite",
-      "React Hook Form",
-      "Cypress",
-      "Playwright",
-    ],
-  },
-  {
-    label: "02 — Style & UI",
-    items: ["Tailwind", "SCSS", "MUI", "Ant Design", "Radix UI", "Figma"],
-  },
-  {
-    label: "03 — Back & workflow",
-    items: [
-      "Laravel",
-      "API REST",
-      "Mercure",
-      "MySQL",
-      "PostgreSQL",
-      "Docker",
-      "Git",
-      "ESLint",
-      "Prettier",
-      "GitHub Actions",
-      "PHPUnit",
-      "PHPStan",
-      "Larastan",
-      "Sanctum",
-      "JWT",
-      "Laravel Resources",
-    ],
-    note: "Certifié Laravel — 2021",
-  },
-] as const;
+/**
+ * Section Stack, sur deux niveaux : les technos du quotidien en grand, puis le reste au second
+ * plan. Le back-end s'affiche en ligne de texte (`inline`) pour ne pas peser plus lourd que le front.
+ */
+export const stack = {
+  label: "Stack — au quotidien",
+  core: ["TypeScript", "React", "Next.js", "TanStack Query", "Zustand", "Tailwind CSS"],
+  groups: [
+    {
+      label: "Front & tests",
+      items: ["Inertia.js", "Vite", "React Hook Form", "Cypress", "Playwright"],
+    },
+    {
+      label: "UI & design",
+      items: ["SCSS", "MUI", "Ant Design", "Radix UI", "Figma"],
+    },
+    {
+      label: "Back-end & outillage",
+      items: ["Laravel", "API REST", "Mercure", "MySQL", "PostgreSQL", "Docker", "GitHub Actions"],
+      inline: true,
+      note: "Certifié Laravel — 2021",
+    },
+  ],
+} as const;
 
 /** Titre de la section Cas d'étude, découpé pour mettre en valeur les deux contraintes. */
 export const caseStudiesTitle = [
