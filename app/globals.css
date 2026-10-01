@@ -24,12 +24,20 @@
   /* Gris secondaire : pas plus clair que ~#767676, sinon il s'efface à l'impression. */
   --color-print-muted: #6b675e;
   --color-print-rule: #ded9cf;
+  --color-print-accent: #b4472a;
 
   --text-print-name: 30pt;
   --text-print-name--line-height: 1.05;
-  --text-print-lead: 10.5pt;
-  --text-print-contact: 8.2pt;
-  --text-print-contact--line-height: 1.85;
+  --text-print-lead: 11.25pt;
+  --text-print-lead-emphasis: 14pt;
+  --text-print-contact: 9pt;
+  --text-print-contact--line-height: 1.7;
+  --text-print-proof: 19.5pt;
+  --text-print-proof--line-height: 1;
+  --text-print-project: 16.5pt;
+  --text-print-project--line-height: 1.1;
+  --text-print-stack: 15.75pt;
+  --text-print-stack--line-height: 1.2;
   --text-print-body: 9.4pt;
   --text-print-body--line-height: 1.5;
   --text-print-profil: 10pt;

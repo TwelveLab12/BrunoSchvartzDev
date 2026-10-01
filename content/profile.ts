@@ -290,7 +290,12 @@ export const siteCase = {
 
 /** Contenu de la feuille CV imprimée (voir components/cv-print.tsx). Une page A4. */
 export const cv = {
-  headline: "Développeur front-end React · TypeScript",
+  /** Titre sous le nom, découpé pour mettre « senior » en valeur. */
+  headline: {
+    before: "Développeur front-end ",
+    emphasis: "senior",
+    after: " · React & TypeScript",
+  },
   contact: [
     { label: "Lyon, France" },
     { label: profile.phone, href: profile.phoneHref },
@@ -298,8 +303,19 @@ export const cv = {
     { label: "linkedin.com/in/bruno-schvartz", href: profile.linkedin },
     { label: profile.websiteLabel, href: profile.website },
   ],
+  /** Ligne de preuves : mêmes chiffres que le Hero du site. */
+  proofs: profile.proofs,
+  availability: "Disponible immédiatement · CDI",
+  labels: {
+    profil: "Profil",
+    jobs: "Expérience",
+    projects: "Projets choisis",
+    stack: "Stack",
+    education: "Formation",
+    languages: "Langues",
+  },
   profil:
-    "Développeur depuis 2008 — PHP, puis Laravel à partir de 2016 — et spécialisé React / TypeScript depuis cinq ans. Seul référent technique front en agence après le départ de mes deux collègues. Disponible immédiatement suite à la fermeture de l'agence ; recherche un CDI à Lyon : sur site, hybride ou à distance.",
+    "J'architecture et je maintiens des applications React en production : temps réel, hors ligne, interfaces métier. Seul référent technique front de mon agence ces dernières années, avec un solide bagage back-end PHP / Laravel depuis 2008 qui facilite le dialogue avec les équipes API. Je recherche un CDI à Lyon : sur site, hybride ou à distance.",
   jobs: [
     {
       title: "Développeur front-end React — WEB-ID",
@@ -317,33 +333,39 @@ export const cv = {
       body: "Outils métiers pour les agents de la caisse (PHP/Laravel, back-office et API). Stage de fin d'études devenu CDI, huit ans sur le poste.",
     },
   ],
-  projectsNote: "Sélection — détail complet sur demande.",
   projects: [
     {
       title: "Ninkasi",
       meta: "React · TypeScript · MUI · Inertia · Mercure",
-      body: "Plateforme d'animation pour un réseau de restaurants : console de pilotage de blind test en direct et application de salle accessible par QR code, synchronisation temps réel via Mercure, carte produits rendue depuis l'API en mobile et en PDF imprimable.",
+      body: "Plateforme d'animation pour un réseau de restaurants : console de pilotage de blind test en direct, application de salle par QR code synchronisée en temps réel via Mercure, cartes produits rendues depuis l'API en digital et en PDF.",
+      result: "Déployée dans plus de 20 établissements du réseau",
     },
     {
       title: "Medikiosk",
       meta: "Next.js · React · TypeScript · DexieDB",
-      body: "Borne interactive fonctionnant hors connexion : persistance et cohérence des données en local sur DexieDB (IndexedDB), refonte complète du service worker.",
+      body: "Borne interactive en pharmacie, opérationnelle hors connexion. v2 développée et maintenue seul : synchronisation descendante vers DexieDB (IndexedDB), refonte complète du service worker.",
+      result: "Autonome une fois synchronisée, mises à jour sans intervention",
     },
   ],
-  skills: [
-    {
-      label: "Front",
-      value: "React, Next.js, TypeScript, Inertia.js, Zustand, TanStack Query, Vite",
-    },
-    { label: "UI", value: "Tailwind CSS, SCSS, MUI, Ant Design, intégration Figma" },
-    {
-      label: "Back & outils",
-      value: "Laravel (API REST), Mercure, PostgreSQL, MySQL, Docker, Git",
-    },
-  ],
+  /** Rangée Stack : les technos du quotidien (mêmes que la section Stack du site), puis le reste. */
+  stack: {
+    core: stack.core,
+    groups: [
+      {
+        label: "Front & UI",
+        value:
+          "Inertia.js, Vite, React Hook Form, Cypress, Playwright, SCSS, MUI, Ant Design, Radix UI, Figma",
+      },
+      {
+        label: "Back-end",
+        value: "Laravel (API REST), Mercure, PostgreSQL, MySQL, Docker, GitHub Actions",
+      },
+    ],
+  },
   education: [
     { title: "Certification Laravel", meta: "2021" },
     { title: "Développeur web, AFPA Pompey (Bac+2)", meta: "2008" },
   ],
-  languages: "Français, natif · Anglais technique : documentation et échanges écrits courants.",
+  languages: "Français, natif · Anglais technique : documentation et échanges écrits.",
+  signature: "— avec un v, jamais un w",
 } as const;
