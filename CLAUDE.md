@@ -34,7 +34,9 @@ There is no test suite in this repo. Before every commit, `vrp typecheck`, `vrp 
 
 - **`content/profile.ts`** is the single source of truth for every piece of site text: bio,
   experience, projects, skills, and the printed CV's content. Components must never hardcode text
-  that belongs here — see `docs/adr/0006-centralized-content.md`.
+  that belongs here — see `docs/adr/0006-centralized-content.md`. Exception by design:
+  personal projects (home section + `/projets/[slug]` case studies) live in `content/projects.ts`
+  (`docs/adr/0016-personal-projects-and-case-study-pages.md`).
 - **`components/home/`** — homepage sections (Hero, Stack, Experience, CaseStudies, Contact,
   SiteHeader), assembled in `app/page.tsx`. **`components/ui/`** — reusable primitives (Button via
   CVA, PrintButton). Standalone pieces (`Wordmark`, `SectionLabel`, `CvPrint`, `ErrorPage`) live

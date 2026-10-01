@@ -9,6 +9,7 @@ import Link from "next/link";
 const links = [
   { href: "#stack", label: "Stack" },
   { href: "#projet", label: "Cas d'étude" },
+  { href: "#projets-perso", label: "Projets perso" },
   { href: "#experience", label: "Parcours" },
   { href: "#recommandations", label: "Recommandations" },
   { href: "#ce-site", label: "Ce site" },
