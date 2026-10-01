@@ -4,12 +4,14 @@ import { Wordmark } from "@/components/wordmark";
 import Image from "next/image";
 import Link from "next/link";
 
-// Dans l'ordre des sections de la page.
+// Dans l'ordre des sections de la page. Affichés en ligne à partir de xl seulement : en dessous,
+// ils ne tiennent plus à côté de la marque et passent dans le menu burger.
 const links = [
   { href: "#stack", label: "Stack" },
   { href: "#projet", label: "Cas d'étude" },
   { href: "#experience", label: "Parcours" },
   { href: "#recommandations", label: "Recommandations" },
+  { href: "#ce-site", label: "Ce site" },
   { href: "/blog", label: "Blog" },
 ];
 
@@ -34,7 +36,7 @@ export function SiteHeader() {
           </span>
         </div>
         <div className="ml-auto hidden items-center gap-[26px] sm:flex">
-          <nav className="hidden gap-[26px] text-[13.5px] tracking-[0.02em] md:flex">
+          <nav className="hidden gap-[26px] text-[13.5px] tracking-[0.02em] xl:flex">
             {links.map((l) => (
               <Link key={l.href} href={l.href} className="no-underline">
                 {l.label}
