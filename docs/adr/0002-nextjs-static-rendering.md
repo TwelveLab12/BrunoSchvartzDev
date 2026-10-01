@@ -1,6 +1,7 @@
 # 0002 — Next.js App Router, rendu 100% statique
 
-**Statut** : Acceptée
+**Statut** : Acceptée — amendée par [0011](./0011-blog-admin-architecture.md) (admin du blog :
+authentification et routes `/admin` dynamiques ; les pages publiques restent statiques)
 
 ## Contexte
 
