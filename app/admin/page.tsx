@@ -40,19 +40,22 @@ export default async function AdminPage() {
         <ButtonLink href="/admin/posts/new">Nouvel article</ButtonLink>
       </div>
 
-      <ul className="divide-ink/10 mt-10 divide-y">
-        {posts.length === 0 && <p className="text-muted">Aucun article pour l&apos;instant.</p>}
-        {posts.map((post) => (
-          <li key={post.slug} className="py-4">
-            <Link href={`/admin/posts/${post.slug}`} className="font-medium">
-              {post.title}
-            </Link>
-            <p className="text-muted mt-1 text-sm">
-              {post.date} — {post.status === "published" ? "Publié" : "Brouillon"}
-            </p>
-          </li>
-        ))}
-      </ul>
+      {posts.length === 0 ? (
+        <p className="text-muted mt-10">Aucun article pour l&apos;instant.</p>
+      ) : (
+        <ul className="divide-ink/10 mt-10 divide-y">
+          {posts.map((post) => (
+            <li key={post.slug} className="py-4">
+              <Link href={`/admin/posts/${post.slug}`} className="font-medium">
+                {post.title}
+              </Link>
+              <p className="text-muted mt-1 text-sm">
+                {post.date} — {post.status === "published" ? "Publié" : "Brouillon"}
+              </p>
+            </li>
+          ))}
+        </ul>
+      )}
     </main>
   );
 }
