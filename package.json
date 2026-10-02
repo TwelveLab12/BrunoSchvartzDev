@@ -10,6 +10,7 @@
     "lint": "eslint .",
     "lint:ci": "eslint . --max-warnings=0",
     "typecheck": "tsc --noEmit",
+    "a11y": "node scripts/a11y.mjs",
     "format": "prettier --write .",
     "prepare": "husky"
   },
@@ -27,6 +28,7 @@
     "tailwind-merge": "^3.7.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@tailwindcss/postcss": "^4.0.0",
     "@tailwindcss/typography": "^0.5.20",
     "@types/node": "^26.6.2",
@@ -37,6 +39,7 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "husky": "^9.1.7",
     "lint-staged": "^17.5.1",
+    "playwright": "^1.63.0",
     "postcss": "^8.5.0",
     "prettier": "^3.9.8",
     "prettier-plugin-tailwindcss": "^0.8.1",

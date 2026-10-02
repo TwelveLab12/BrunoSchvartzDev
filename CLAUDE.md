@@ -28,10 +28,13 @@ vrp lint         # eslint
 vrp lint:ci      # eslint --max-warnings=0 (what CI runs)
 vrp typecheck    # tsc --noEmit
 vrp format       # prettier --write .
+vrp a11y         # axe-core on the served site — run `vrp build`, then `vrp start` in another terminal
 ```
 
-There is no test suite in this repo. Before every commit, `vrp typecheck`, `vrp lint`, and
-`vrp build` must all be clean — this is the project's baseline, not optional. `vrp lint` includes
+There is no test suite in this repo (`vrp a11y` is a rendered-output check, not a test suite;
+locally set `PLAYWRIGHT_CHANNEL=chrome` to reuse your installed Chrome instead of downloading
+Chromium). Before every commit, `vrp typecheck`, `vrp lint`, and `vrp build` must all be clean —
+this is the project's baseline, not optional. `vrp lint` includes
 the `jsx-a11y` `strict` ruleset: an a11y lint error is a real defect — fix it, and never add an
 `eslint-disable` for a `jsx-a11y` rule without a comment saying why (see `components/ui/button.tsx`
 for the one existing example). A pre-commit hook (Husky + lint-staged) also runs Prettier/ESLint
@@ -83,7 +86,10 @@ automatically on staged files.
 - **CI** (`.github/workflows/ci.yml`) runs typecheck/lint/build on every push and PR, and reports
   status to Vercel as a named Deployment Check that gates production promotion
   (`docs/adr/0009-vercel-deployment-checks.md`) — the check name must stay in sync with whatever is
-  selected in the Vercel project's Deployment Checks settings, which lives outside this repo.
+  selected in the Vercel project's Deployment Checks settings, which lives outside this repo. A
+  separate `a11y` job in the same workflow (axe-core via `scripts/a11y.mjs` on the built site) is
+  deliberately NOT reported to Vercel and runs with `continue-on-error`: it stays advisory until
+  promoted to blocking, which would amend ADR 0009 and 0016.
 - **Accessibility** is a project constraint, not a polish pass. Target: WCAG 2.2 AA, with the RGAA
   (4.1.2 until RGAA 5 ships) as the French reference grid — see
   `docs/adr/0016-accessibility-strategy.md`. Three layers, none sufficient alone: `jsx-a11y` strict

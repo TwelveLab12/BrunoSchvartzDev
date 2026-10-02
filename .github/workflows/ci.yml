@@ -34,3 +34,34 @@ jobs:
       - run: pnpm lint:ci
 
       - run: pnpm build
+
+  # Vérification axe-core sur le build servi (docs/adr/0016-accessibility-strategy.md, couche 2).
+  # Volontairement séparé du job `build` : il ne rapporte rien à Vercel, donc ne conditionne pas la
+  # mise en production (ADR 0009). `continue-on-error` garde le workflow vert tant qu'on n'a pas
+  # vérifié qu'il est sans faux positif ; le passer en bloquant amenderait l'ADR 0016.
+  a11y:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm exec playwright install --with-deps chromium
+
+      - run: pnpm build
+
+      - name: Axe-core sur le site servi
+        run: |
+          pnpm start &
+          curl --silent --fail --output /dev/null --retry 30 --retry-delay 1 --retry-connrefused http://localhost:3000
+          pnpm a11y
