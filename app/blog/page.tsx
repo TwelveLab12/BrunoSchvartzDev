@@ -15,7 +15,7 @@ export default function BlogPage() {
 
   return (
     <main id="contenu" className="mx-auto max-w-[720px] px-6 py-16">
-      <Link href="/" className="text-muted text-sm">
+      <Link href="/" className="text-muted -my-2 inline-block py-2 text-sm">
         ← Accueil
       </Link>
       <h1 className="m-0 mt-8 font-serif text-[clamp(44px,8vw,88px)] leading-[0.98] font-normal tracking-[-0.02em]">
