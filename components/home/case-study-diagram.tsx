@@ -162,8 +162,19 @@ function MedikioskSvg({ diagram }: { diagram: MedikioskDiagram }) {
 export function CaseStudyDiagram({ diagram }: { diagram: Diagram }) {
   return (
     <figure className="border-rule-soft bg-ink/[0.035] m-0 min-w-0 self-start rounded border p-[18px]">
-      {/* Largeur minimale : sur mobile, le schéma défile plutôt que de réduire ses textes à ~7px. */}
-      <div className="overflow-x-auto">
+      {/* Largeur minimale : sur mobile, le schéma défile plutôt que de réduire ses textes à ~7px.
+          La zone défilante est focalisable et nommée pour que le clavier puisse la faire défiler
+          (WCAG 2.1.1). `group` plutôt que `region` : deux schémas portent le même nom, et un
+          `region` identique en double polluerait la liste des repères (axe `landmark-unique`). */}
+      <div
+        className="overflow-x-auto"
+        role="group"
+        aria-label={caseStudyLabels.scrollRegion}
+        // Le lint refuse tabIndex sur un élément non interactif ; ici c'est voulu (axe
+        // `scrollable-region-focusable`).
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+        tabIndex={0}
+      >
         <svg
           viewBox="0 0 460 300"
           role="img"
