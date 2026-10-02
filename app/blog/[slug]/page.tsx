@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import ReactMarkdown from "react-markdown";
+import { Markdown } from "@/components/markdown";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import { formatDate } from "@/lib/utils";
 import { profile } from "@/content/profile";
@@ -72,7 +72,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         )}
       </header>
       <article className="prose prose-neutral prose-headings:font-serif prose-a:text-accent mt-10 max-w-none">
-        <ReactMarkdown>{post.content}</ReactMarkdown>
+        <Markdown>{post.content}</Markdown>
       </article>
     </main>
   );

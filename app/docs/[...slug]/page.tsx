@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import ReactMarkdown from "react-markdown";
+import { Markdown } from "@/components/markdown";
 import { getAllDocs, getDocContent, getDocSlugs } from "@/lib/docs";
 
 export function generateStaticParams() {
@@ -43,7 +43,7 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
         </Link>
       </nav>
       <article className="prose prose-neutral prose-headings:font-serif prose-headings:font-normal prose-a:text-accent mt-8 max-w-none">
-        <ReactMarkdown>{getDocContent(slug)}</ReactMarkdown>
+        <Markdown>{getDocContent(slug)}</Markdown>
       </article>
     </main>
   );
