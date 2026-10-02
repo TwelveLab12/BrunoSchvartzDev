@@ -10,7 +10,8 @@ export function SiteFooter() {
         <Wordmark vClassName="text-accent" /> — avec un v, jamais un w
       </span>
       <span>{profile.role} — Lyon</span>
-      <Link href="/docs" className="no-underline">
+      {/* py-1.5 agrandit la zone cliquable (17 → 29 px), -my-1.5 compense pour ne rien décaler. */}
+      <Link href="/docs" className="-my-1.5 py-1.5 no-underline">
         Documentation
       </Link>
     </footer>
