@@ -9,6 +9,11 @@ type MedikioskDiagram = Extract<Diagram, { kind: "medikiosk" }>;
  * Bloc du schéma : trait accent = mon périmètre, pointillés = hors périmètre, double contour sombre
  * sur fond grisé = infrastructure. Chaque variante se distingue par sa forme, pas seulement par sa
  * couleur (WCAG 1.4.1), et figure dans la légende (`caseStudyLabels`).
+ *
+ * Contrastes des contours sur le fond de la figure (WCAG 1.4.11, ≥ 3:1), mesurés sur le rendu :
+ * mine 4,6:1, others 3,7:1, infra 7,1:1. Axe ne mesure ni les tracés SVG ni le texte des schémas :
+ * à recalculer à la main si l'on touche aux opacités ou aux couleurs.
+ * Sous-titres en `ink-muted` : ≥ 7:1 sur les trois fonds (`muted` tombait à 4,35:1 sur infra).
  */
 type NodeVariant = "mine" | "others" | "infra";
 
@@ -20,7 +25,7 @@ const variantsDrawn: Record<Diagram["kind"], readonly NodeVariant[]> = {
 
 const nodeVariants: Record<NodeVariant, string> = {
   mine: "fill-white stroke-accent",
-  others: "fill-none stroke-ink/35 [stroke-dasharray:4_3]",
+  others: "fill-none stroke-ink/55 [stroke-dasharray:4_3]",
   infra: "fill-ink/5 stroke-ink-muted",
 };
 
@@ -79,7 +84,7 @@ function Node({
       <text x={x + 14} y={y + 25} className="fill-ink font-sans text-[13px] font-semibold">
         {title}
       </text>
-      <text x={x + 14} y={y + 44} className="fill-muted font-mono text-[11px]">
+      <text x={x + 14} y={y + 44} className="fill-ink-muted font-mono text-[11px]">
         {sub}
       </text>
     </g>
@@ -234,7 +239,7 @@ export function CaseStudyDiagram({ diagram }: { diagram: Diagram }) {
         <span className="inline-flex items-center gap-1.5">
           <span
             aria-hidden
-            className="border-ink/35 inline-block h-2.5 w-3.5 rounded-sm border-[1.5px] border-dashed"
+            className="border-ink/55 inline-block h-2.5 w-3.5 rounded-sm border-[1.5px] border-dashed"
           />
           {caseStudyLabels.legendOthers}
         </span>
