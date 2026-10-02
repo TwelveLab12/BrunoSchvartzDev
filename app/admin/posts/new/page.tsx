@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function NewPostPage() {
   return (
     <main id="contenu" className="mx-auto max-w-[960px] px-6 py-16">
-      <Link href="/admin" className="text-muted text-sm">
+      <Link href="/admin" className="text-muted -my-2 inline-block py-2 text-sm">
         ← Articles
       </Link>
       <p className="text-muted mt-8 font-mono text-xs tracking-[0.1em] uppercase">Admin</p>

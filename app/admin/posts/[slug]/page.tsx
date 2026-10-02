@@ -17,7 +17,7 @@ export default async function EditPostPage({ params }: { params: Promise<{ slug:
 
   return (
     <main id="contenu" className="mx-auto max-w-[960px] px-6 py-16">
-      <Link href="/admin" className="text-muted text-sm">
+      <Link href="/admin" className="text-muted -my-2 inline-block py-2 text-sm">
         ← Articles
       </Link>
       <div className="mt-8 flex flex-wrap items-baseline justify-between gap-4">
