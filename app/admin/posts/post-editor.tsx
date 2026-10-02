@@ -120,7 +120,11 @@ export function PostEditor({ post, className }: { post?: AdminPost; className?: 
         </div>
       </div>
 
-      {state && !state.ok && <p className="text-sm text-red-600">{state.message}</p>}
+      {state && !state.ok && (
+        <p role="alert" className="text-danger text-sm">
+          {state.message}
+        </p>
+      )}
 
       <div>
         <SubmitButton>Enregistrer</SubmitButton>

@@ -8,6 +8,8 @@
   --color-ink-muted: #4a4740;
   --color-muted: #6b675e;
   --color-accent: #b4472a;
+  /* Messages d'erreur (admin). 5,9:1 sur le papier : le red-600 de Tailwind, à 4,4:1, ne passait pas. */
+  --color-danger: #b91c1c;
   --color-rule: rgba(26, 26, 24, 0.14);
   --color-rule-soft: rgba(26, 26, 24, 0.12);
 
