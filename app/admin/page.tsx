@@ -15,7 +15,7 @@ export default async function AdminPage() {
   const posts = await listAdminPosts();
 
   return (
-    <main className="mx-auto max-w-[720px] px-6 py-16">
+    <main id="contenu" className="mx-auto max-w-[720px] px-6 py-16">
       <div className="flex flex-wrap items-baseline justify-between gap-4">
         <div>
           <p className="text-muted font-mono text-xs tracking-[0.1em] uppercase">Admin</p>

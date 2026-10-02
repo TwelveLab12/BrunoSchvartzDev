@@ -41,6 +41,7 @@ export function MobileNav({ links }: { links: { href: string; label: string }[] 
       {open && (
         <nav
           id="mobile-nav-panel"
+          aria-label="Navigation principale"
           className="border-rule mt-4 flex w-full basis-full flex-col border-t pt-2 text-[15px] tracking-[0.02em]"
         >
           {links.map((l) => (

@@ -1,15 +1,13 @@
 import { Globe, Mail, MapPin, Phone } from "lucide-react";
-import Link from "next/link";
 import { SectionLabel } from "@/components/section-label";
 import { GithubIcon, LinkedinIcon } from "@/components/social-icons";
-import { Wordmark } from "@/components/wordmark";
 import { profile } from "@/content/profile";
 
 export function Contact() {
   return (
     <section
       id="contact"
-      className="border-rule mx-auto max-w-[1120px] border-t pt-[clamp(64px,9vw,120px)] pb-[clamp(40px,5vw,64px)]"
+      className="border-rule mx-auto max-w-[1120px] border-t pt-[clamp(64px,9vw,120px)] pb-[clamp(56px,8vw,96px)]"
     >
       <h2 className="m-0 max-w-[24ch] font-serif text-[clamp(34px,5.6vw,68px)] leading-[1.02] font-normal tracking-[-0.02em]">
         Un poste front-end React à pourvoir ? Parlons-en.
@@ -61,15 +59,6 @@ export function Contact() {
             {profile.location}
           </div>
         </div>
-      </div>
-      <div className="border-rule text-muted mt-[clamp(56px,8vw,96px)] flex flex-wrap justify-between gap-3 border-t pt-5 font-mono text-[11.5px] tracking-[0.06em] uppercase">
-        <span>
-          <Wordmark vClassName="text-accent" /> — avec un v, jamais un w
-        </span>
-        <span>{profile.role} — Lyon</span>
-        <Link href="/docs" className="no-underline">
-          Documentation
-        </Link>
       </div>
     </section>
   );

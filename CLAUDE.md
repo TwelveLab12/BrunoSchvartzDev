@@ -103,7 +103,9 @@ automatically on staged files.
 Apply to every new component or page.
 
 - **Structure**: one `<h1>` per page, no skipped heading levels; page-level `<header>`/`<nav>`/
-  `<footer>` outside `<main>`; give each `<nav>` an `aria-label` when there is more than one.
+  `<footer>` outside `<main>` (siblings, as in `app/page.tsx`); give each `<nav>` an `aria-label`.
+  Every page's `<main>` carries `id="contenu"` — it is the target of the skip link in
+  `app/layout.tsx`, which must stay the first focusable element.
 - **Native first**: `<button>` for actions, `<a>` for navigation, `<ul>/<li>` for lists (tags,
   chips, jobs), `<time>` for dates. No `div onClick`.
 - **Names**: every control has an accessible name; icon-only controls get a constant `aria-label`
