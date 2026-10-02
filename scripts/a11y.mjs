@@ -21,13 +21,16 @@ const MOBILE = { width: 320, height: 640 };
 
 let violationCount = 0;
 
-async function analyze(label, page) {
+/** `quiet` : n'affiche la page que si elle a des violations (pour les séries de pages). */
+async function analyze(label, page, { quiet = false } = {}) {
   const results = await new AxeBuilder({ page }).withTags(TAGS).analyze();
   const incomplete = results.incomplete.reduce((sum, rule) => sum + rule.nodes.length, 0);
   const status = results.violations.length === 0 ? "OK " : "KO ";
-  console.log(
-    `${status} ${label} — ${results.violations.length} violation(s), ${incomplete} à vérifier à la main`,
-  );
+  if (!quiet || results.violations.length > 0) {
+    console.log(
+      `${status} ${label} — ${results.violations.length} violation(s), ${incomplete} à vérifier à la main`,
+    );
+  }
   for (const violation of results.violations) {
     violationCount += violation.nodes.length;
     console.log(`     [${violation.impact}] ${violation.id} — ${violation.help}`);
@@ -71,10 +74,18 @@ try {
   await desktop.goto(`${BASE_URL}/docs`);
   await analyze("Documentation — index", desktop);
 
-  const adrHref = await firstHref(desktop, "/docs", 'main a[href^="/docs/adr/"]');
-  if (adrHref) {
-    await desktop.goto(`${BASE_URL}${adrHref}`);
-    await analyze(`Documentation — ADR (${adrHref})`, desktop);
+  // Toutes les pages de /docs : ce sont des fichiers Markdown très différents (tableaux, blocs de
+  // code, listes…) et un défaut de rendu n'apparaît que sur celle qui contient l'élément en cause.
+  const docHrefs = await desktop
+    .locator('main a[href^="/docs/"]')
+    .evaluateAll((links) => links.map((link) => link.getAttribute("href")));
+  const before = violationCount;
+  for (const href of docHrefs) {
+    await desktop.goto(`${BASE_URL}${href}`);
+    await analyze(`Documentation — ${href}`, desktop, { quiet: true });
+  }
+  if (violationCount === before) {
+    console.log(`OK  Documentation — ${docHrefs.length} pages, 0 violation(s)`);
   }
 
   await desktop.goto(`${BASE_URL}/page-inexistante`);

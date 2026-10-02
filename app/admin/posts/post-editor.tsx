@@ -2,7 +2,7 @@
 
 import { useActionState, useState, type ReactNode } from "react";
 import { useFormStatus } from "react-dom";
-import ReactMarkdown from "react-markdown";
+import { Markdown } from "@/components/markdown";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import type { AdminPost } from "@/lib/github-content";
@@ -116,7 +116,7 @@ export function PostEditor({ post, className }: { post?: AdminPost; className?: 
               editorHeight,
             )}
           >
-            <ReactMarkdown>{body}</ReactMarkdown>
+            <Markdown>{body}</Markdown>
           </article>
         </div>
       </div>

@@ -121,6 +121,8 @@ Apply to every new component or page.
   DOM order = tab order; no keyboard traps. A container that scrolls (`overflow-x-auto`…) must be
   keyboard-reachable: `tabIndex={0}` + `role="group"` + a constant `aria-label` (see
   `components/home/case-study-diagram.tsx`) — axe flags it otherwise (`scrollable-region-focusable`).
+  Rendered Markdown (docs, blog, admin preview) must go through `components/markdown.tsx`, which
+  already does this for code blocks and tables — never use `<ReactMarkdown>` directly.
 - **Targets**: ≥ 24×24 CSS px (WCAG 2.5.8), prefer 44×44 for icon-only controls.
 - **Motion**: no animation or smooth scroll outside `prefers-reduced-motion: no-preference`.
 - **Reflow**: no horizontal scroll at 320 px; prefer `rem` over `px` for font sizes.

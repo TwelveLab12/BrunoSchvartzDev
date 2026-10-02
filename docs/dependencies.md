@@ -22,7 +22,8 @@ Ce document liste les librairies déclarées dans `package.json` : ce qu'elles f
 
 ## Documentation (`/docs`)
 
-- **react-markdown** — Rend les fichiers `.md` de `docs/` en React côté serveur. Utilisé dans `app/docs/[...slug]/page.tsx`, sans `dangerouslySetInnerHTML` (tout le contenu est écrit par le propriétaire du site, mais autant éviter l'injection de HTML brut par principe).
+- **react-markdown** — Rend le Markdown en React côté serveur : les fichiers de `docs/`, les articles du blog et l'aperçu de l'éditeur admin, tous via le composant partagé `components/markdown.tsx`. Sans `dangerouslySetInnerHTML` (tout le contenu est écrit par le propriétaire du site, mais autant éviter l'injection de HTML brut par principe).
+- **remark-gfm** — Plugin de react-markdown qui ajoute la syntaxe GitHub : surtout les **tableaux** (sans lui, ils sortent comme un paragraphe de `|` — par exemple dans `docs/blog-content-format.md`), mais aussi le texte barré, les liens automatiques et les listes de tâches. Branché une seule fois, dans `components/markdown.tsx`.
 - **@tailwindcss/typography** — Fournit les classes `prose` pour une mise en forme lisible du Markdown rendu (titres, listes, liens) sans styliser chaque balise à la main. Activé via `@plugin "@tailwindcss/typography";` dans `app/globals.css`.
 
 ## Blog & admin (voir `docs/adr/0011-blog-admin-architecture.md`)
