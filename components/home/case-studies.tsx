@@ -51,16 +51,16 @@ export function CaseStudies() {
                   </div>
                 ))}
               </dl>
-              <div className="mt-[22px] flex flex-wrap gap-2">
+              <ul className="mt-[22px] mb-0 flex list-none flex-wrap gap-2 p-0">
                 {study.tags.map((tag) => (
-                  <span
+                  <li
                     key={tag}
                     className="border-ink/20 rounded-sm border px-[11px] py-1.5 font-mono text-[12.5px]"
                   >
                     {tag}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
             <CaseStudyDiagram diagram={study.diagram} />
           </div>

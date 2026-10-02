@@ -38,16 +38,16 @@ export default function BlogPage() {
             </p>
             {post.excerpt && <p className="text-ink-muted mt-2">{post.excerpt}</p>}
             {post.tags.length > 0 && (
-              <div className="mt-3 flex flex-wrap gap-2">
+              <ul className="mt-3 mb-0 flex list-none flex-wrap gap-2 p-0">
                 {post.tags.map((tag) => (
-                  <span
+                  <li
                     key={tag}
                     className="bg-ink/[0.05] rounded-sm px-3 py-[7px] font-mono text-[13px]"
                   >
                     {tag}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             )}
           </li>
         ))}
