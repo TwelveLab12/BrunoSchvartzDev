@@ -50,10 +50,15 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
     /* Hauteur de l'en-tête collant (components/home/site-header.tsx) : les ancres
        ne doivent pas atterrir dessous. */
     scroll-padding-top: 96px;
+  }
+  /* Défilement animé seulement pour qui n'a pas demandé de réduire les animations. */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
   body {
     @apply bg-paper text-ink antialiased;
