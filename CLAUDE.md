@@ -166,8 +166,14 @@ origin/main` rather than merging `main` into it. Merge PRs into `main` with squa
   open, not automatically a separate PR (only spin up a standalone docs PR when nothing relevant is
   already in flight).
 - The GitHub Project board (https://github.com/users/TwelveLab12/projects/1) is the reference for
-  what's done and what's left — keep every issue's Status field in sync (À faire / En cours /
-  Terminé) as work progresses, don't let the board drift from reality.
+  what's done and what's left — keep every issue's Status field in sync (Backlog / À faire / En
+  cours / Terminé) as work progresses, don't let the board drift from reality. It tracks this
+  repository only; `dnd-character-manager` has its own project.
+- **Backlog** is the first status: issues deliberately kept in mind without commitment (waiting on
+  a prerequisite, time, or a critical review). Nothing is in progress on them. Say in the issue
+  _why_ it is waiting — otherwise the parking lot becomes unreadable — and move it to **À faire**
+  once the decision to do it is made. New issues still land in **À faire** by default: parking one
+  in Backlog is a deliberate act, so real work doesn't disappear into it.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
