@@ -116,7 +116,9 @@ Apply to every new component or page.
 - **Focus**: keep the global `:focus-visible` ring; never `outline-none` without an equally visible
   replacement; menus/disclosures return focus to their trigger on Escape/close, and keep their
   `aria-controls` target in the DOM (visibility toggled in CSS) so the id stays valid while closed;
-  DOM order = tab order; no keyboard traps.
+  DOM order = tab order; no keyboard traps. A container that scrolls (`overflow-x-auto`…) must be
+  keyboard-reachable: `tabIndex={0}` + `role="group"` + a constant `aria-label` (see
+  `components/home/case-study-diagram.tsx`) — axe flags it otherwise (`scrollable-region-focusable`).
 - **Targets**: ≥ 24×24 CSS px (WCAG 2.5.8), prefer 44×44 for icon-only controls.
 - **Motion**: no animation or smooth scroll outside `prefers-reduced-motion: no-preference`.
 - **Reflow**: no horizontal scroll at 320 px; prefer `rem` over `px` for font sizes.
