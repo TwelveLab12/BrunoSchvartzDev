@@ -80,6 +80,8 @@ export const caseStudyLabels = {
   challenge: "Enjeu :",
   legendMine: "mon périmètre",
   legendOthers: "hors périmètre",
+  /** Nom de la zone qui défile horizontalement sur petit écran (annoncé au focus clavier). */
+  scrollRegion: "Schéma d'architecture, défilement horizontal",
 } as const;
 
 export const caseStudies = [
