@@ -43,7 +43,9 @@ export function Recommendations() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Profil LinkedIn de ${rec.name}`}
-                className="ml-auto"
+                // Zone cliquable de 44 px autour d'une icône de 16 px ; -mr-3.5 garde l'icône alignée
+                // sur le bord du contenu de la carte, et l'avatar (44 px) fixe déjà la hauteur de la ligne.
+                className="-mr-3.5 ml-auto flex size-11 shrink-0 items-center justify-center"
               >
                 <LinkedinIcon className="size-4" aria-hidden />
               </a>
