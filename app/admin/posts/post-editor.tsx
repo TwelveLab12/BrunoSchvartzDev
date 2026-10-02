@@ -1,15 +1,13 @@
 "use client";
 
-import { useActionState, useState, type ReactNode } from "react";
-import { useFormStatus } from "react-dom";
+import { startTransition, useActionState, useState, type FormEvent, type ReactNode } from "react";
 import { Markdown } from "@/components/markdown";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import type { AdminPost } from "@/lib/github-content";
 import { savePostAction } from "./actions";
 
-function SubmitButton({ children }: { children: ReactNode }) {
-  const { pending } = useFormStatus();
+function SubmitButton({ pending, children }: { pending: boolean; children: ReactNode }) {
   return (
     <button type="submit" disabled={pending} className={buttonVariants()}>
       {pending ? "Enregistrement..." : children}
@@ -46,10 +44,21 @@ function MarkdownCheatsheet() {
 
 export function PostEditor({ post, className }: { post?: AdminPost; className?: string }) {
   const [body, setBody] = useState(post?.content ?? "");
-  const [state, formAction] = useActionState(savePostAction, null);
+  const [state, formAction, pending] = useActionState(savePostAction, null);
+
+  // React 19 réinitialise un <form action> à la fin de l'action, même quand elle échoue : titre,
+  // tags, extrait, épinglage et surtout le statut (retombé à « Brouillon » sur un article publié)
+  // étaient perdus à chaque erreur. On annule donc l'envoi natif et on lance l'action à la main :
+  // sans l'envoi par <form action>, pas de réinitialisation (WCAG 3.3.7). `action` reste posé pour
+  // qu'un envoi avant l'hydratation passe quand même par l'action et non par un GET.
+  function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    startTransition(() => formAction(data));
+  }
 
   return (
-    <form action={formAction} className={cn("grid gap-6", className)}>
+    <form action={formAction} onSubmit={submit} className={cn("grid gap-6", className)}>
       <input type="hidden" name="slug" defaultValue={post?.slug ?? ""} />
       <input type="hidden" name="sha" defaultValue={post?.sha ?? ""} />
       <input type="hidden" name="date" defaultValue={post?.date ?? ""} />
@@ -127,7 +136,7 @@ export function PostEditor({ post, className }: { post?: AdminPost; className?: 
       )}
 
       <div>
-        <SubmitButton>Enregistrer</SubmitButton>
+        <SubmitButton pending={pending}>Enregistrer</SubmitButton>
       </div>
     </form>
   );

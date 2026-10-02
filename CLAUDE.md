@@ -128,7 +128,8 @@ Apply to every new component or page.
 - **Reflow**: no horizontal scroll at 320 px; prefer `rem` over `px` for font sizes.
 - **Forms** (admin): visible `<label>`, field borders ≥ 3:1 (`border-ink/55`), errors announced with
   `role="alert"` in `text-danger` (the only error color — red-600 failed 4.5:1). Fields get the global
-  focus ring; never `outline-none`.
+  focus ring; never `outline-none`. A failed action must never wipe what was typed (WCAG 3.3.7):
+  React 19 resets a `<form action>` after the action, so `PostEditor` submits through `onSubmit`.
 - **Print CV** (`components/cv-print.tsx`): keep it semantic (`h2` sections, no `h1` — ADR 0005);
   hide it on screen with `hidden` (display:none), never `sr-only`; keep print colors ≥ 4.5:1.
 

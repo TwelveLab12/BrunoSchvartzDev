@@ -129,9 +129,6 @@ Passer le HTML rendu d'une page (« Afficher le code source ») dans le validate
   sont pas couverts par axe. Reflow à 320 px, champs, focus et messages d'erreur ont été corrigés et
   mesurés sur un banc d'essai de l'éditeur rendu hors connexion ; à repasser à la main une fois connecté
   (clavier, lecteur d'écran).
-- **Champs vidés après un échec d'enregistrement** ([#126](https://github.com/TwelveLab12/BrunoSchvartzDev/issues/126)) :
-  titre, tags, extrait, statut et ordre d'épinglage sont réinitialisés quand l'action échoue ; le contenu
-  est conservé (WCAG 3.3.7, saisie redondante).
 
 ## Tenir ce document à jour
 
