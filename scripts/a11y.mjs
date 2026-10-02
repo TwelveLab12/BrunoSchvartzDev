@@ -90,6 +90,13 @@ try {
 
   await desktop.goto(`${BASE_URL}/page-inexistante`);
   await analyze("404", desktop);
+
+  // Seules pages d'administration accessibles sans connexion ; le reste (liste, éditeur) demande
+  // une session LinkedIn et n'est donc pas couvert ici.
+  await desktop.goto(`${BASE_URL}/admin/login`);
+  await analyze("Admin — connexion", desktop);
+  await desktop.goto(`${BASE_URL}/admin/error`);
+  await analyze("Admin — accès refusé", desktop);
 } finally {
   await browser.close();
 }
