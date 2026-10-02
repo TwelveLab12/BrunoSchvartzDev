@@ -60,7 +60,7 @@ export function PostEditor({ post, className }: { post?: AdminPost; className?: 
         <input name="title" defaultValue={post?.title} required className={fieldInput} />
       </label>
 
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <label className="grid gap-1.5">
           <span className={fieldLabel}>Tags (séparés par des virgules)</span>
           <input name="tags" defaultValue={post?.tags.join(", ")} className={fieldInput} />
@@ -74,7 +74,7 @@ export function PostEditor({ post, className }: { post?: AdminPost; className?: 
         </label>
       </div>
 
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <label className="grid gap-1.5">
           <span className={fieldLabel}>Extrait</span>
           <input name="excerpt" defaultValue={post?.excerpt} className={fieldInput} />
@@ -97,7 +97,7 @@ export function PostEditor({ post, className }: { post?: AdminPost; className?: 
         <MarkdownCheatsheet />
       </div>
 
-      <div className="grid grid-cols-2 items-start gap-6">
+      <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
         <label className="grid gap-1.5">
           <span className={fieldLabel}>Contenu (Markdown)</span>
           <textarea
