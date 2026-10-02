@@ -59,16 +59,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           {formatDate(post.date)}
         </p>
         {post.tags.length > 0 && (
-          <div className="mt-4 flex flex-wrap gap-2">
+          <ul className="mt-4 mb-0 flex list-none flex-wrap gap-2 p-0">
             {post.tags.map((tag) => (
-              <span
+              <li
                 key={tag}
                 className="bg-ink/[0.05] rounded-sm px-3 py-[7px] font-mono text-[13px]"
               >
                 {tag}
-              </span>
+              </li>
             ))}
-          </div>
+          </ul>
         )}
       </header>
       <article className="prose prose-neutral prose-headings:font-serif prose-a:text-accent mt-10 max-w-none">
