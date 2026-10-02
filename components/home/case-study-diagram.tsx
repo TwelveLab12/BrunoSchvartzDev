@@ -5,14 +5,48 @@ type Diagram = (typeof caseStudies)[number]["diagram"];
 type NinkasiDiagram = Extract<Diagram, { kind: "ninkasi" }>;
 type MedikioskDiagram = Extract<Diagram, { kind: "medikiosk" }>;
 
-/** Bloc du schéma : trait accent = mon périmètre, pointillés = hors périmètre, grisé = infrastructure. */
+/**
+ * Bloc du schéma : trait accent = mon périmètre, pointillés = hors périmètre, double contour sombre
+ * sur fond grisé = infrastructure. Chaque variante se distingue par sa forme, pas seulement par sa
+ * couleur (WCAG 1.4.1), et figure dans la légende (`caseStudyLabels`).
+ */
 type NodeVariant = "mine" | "others" | "infra";
+
+/** Variantes dessinées par chaque schéma : la légende n'affiche que celles qu'on y voit. */
+const variantsDrawn: Record<Diagram["kind"], readonly NodeVariant[]> = {
+  ninkasi: ["mine", "others", "infra"],
+  medikiosk: ["mine", "others"],
+};
 
 const nodeVariants: Record<NodeVariant, string> = {
   mine: "fill-white stroke-accent",
   others: "fill-none stroke-ink/35 [stroke-dasharray:4_3]",
-  infra: "fill-ink/5 stroke-ink/25",
+  infra: "fill-ink/5 stroke-ink-muted",
 };
+
+/** Second contour, 3 px à l'intérieur : ce qui distingue l'infrastructure sans passer par la couleur. */
+function InfraInnerOutline({
+  x,
+  y,
+  width,
+  height,
+}: {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}) {
+  return (
+    <rect
+      x={x + 3.5}
+      y={y + 3.5}
+      width={width - 7}
+      height={height - 7}
+      rx={2}
+      className="stroke-ink-muted fill-none stroke-[1]"
+    />
+  );
+}
 
 function Node({
   x,
@@ -41,6 +75,7 @@ function Node({
         rx={4}
         className={cn("stroke-[1.5]", nodeVariants[variant])}
       />
+      {variant === "infra" ? <InfraInnerOutline x={x} y={y} width={width} height={height} /> : null}
       <text x={x + 14} y={y + 25} className="fill-ink font-sans text-[13px] font-semibold">
         {title}
       </text>
@@ -203,6 +238,30 @@ export function CaseStudyDiagram({ diagram }: { diagram: Diagram }) {
           />
           {caseStudyLabels.legendOthers}
         </span>
+        {variantsDrawn[diagram.kind].includes("infra") ? (
+          <span className="inline-flex items-center gap-1.5">
+            {/* Même double contour que les blocs du schéma, à l'échelle de la légende. */}
+            <svg aria-hidden viewBox="0 0 14 10" className="inline-block h-2.5 w-3.5">
+              <rect
+                x={0.75}
+                y={0.75}
+                width={12.5}
+                height={8.5}
+                rx={1.5}
+                className="fill-ink/5 stroke-ink-muted stroke-[1.2]"
+              />
+              <rect
+                x={3}
+                y={3}
+                width={8}
+                height={4}
+                rx={0.8}
+                className="stroke-ink-muted fill-none stroke-[1]"
+              />
+            </svg>
+            {caseStudyLabels.legendInfra}
+          </span>
+        ) : null}
       </figcaption>
     </figure>
   );
