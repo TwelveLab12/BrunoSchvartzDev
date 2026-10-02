@@ -11,7 +11,11 @@ import { Stack } from "@/components/home/stack";
 export default function HomePage() {
   return (
     <>
-      <main data-print="screen" className="min-h-dvh px-[clamp(20px,5vw,72px)] print:hidden">
+      <main
+        id="contenu"
+        data-print="screen"
+        className="min-h-dvh px-[clamp(20px,5vw,72px)] print:hidden"
+      >
         <SiteHeader />
         <Hero />
         <Stack />

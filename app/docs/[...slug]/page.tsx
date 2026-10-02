@@ -32,7 +32,7 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
   if (!doc) notFound();
 
   return (
-    <main className="mx-auto max-w-[720px] px-6 py-16">
+    <main id="contenu" className="mx-auto max-w-[720px] px-6 py-16">
       <nav className="text-muted flex items-center gap-1.5 text-sm" aria-label="Fil d'Ariane">
         <Link href="/">Accueil</Link>
         <span aria-hidden="true">/</span>

@@ -47,7 +47,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   if (!post) notFound();
 
   return (
-    <main className="mx-auto max-w-[720px] px-6 py-16">
+    <main id="contenu" className="mx-auto max-w-[720px] px-6 py-16">
       <Link href="/blog" className="text-muted text-sm">
         ← Blog
       </Link>

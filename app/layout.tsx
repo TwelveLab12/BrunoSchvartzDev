@@ -73,6 +73,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${instrumentSerif.variable} ${instrumentSans.variable} ${plexSans.variable} ${plexMono.variable}`}
     >
       <body className="font-sans">
+        {/* Premier élément focalisable de chaque page, visible seulement au focus (RGAA 12.7). La
+            cible `#contenu` est le <main> de chaque page. */}
+        <a
+          href="#contenu"
+          className="bg-ink text-paper sr-only rounded-sm text-sm font-medium focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-3"
+        >
+          Aller au contenu principal
+        </a>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}

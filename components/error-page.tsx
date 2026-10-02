@@ -23,7 +23,10 @@ export function ErrorPage({
   actions: ReactNode;
 }) {
   return (
-    <main className="mx-auto flex min-h-dvh max-w-[720px] flex-col items-start justify-center px-6 py-16">
+    <main
+      id="contenu"
+      className="mx-auto flex min-h-dvh max-w-[720px] flex-col items-start justify-center px-6 py-16"
+    >
       <p className="text-muted font-mono text-xs tracking-[0.1em] uppercase">{kicker}</p>
       <h1 className={cn("m-0 mt-4 font-serif font-normal tracking-[-0.02em]", titleClassName)}>
         {title}

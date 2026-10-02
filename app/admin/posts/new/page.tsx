@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function NewPostPage() {
   return (
-    <main className="mx-auto max-w-[960px] px-6 py-16">
+    <main id="contenu" className="mx-auto max-w-[960px] px-6 py-16">
       <Link href="/admin" className="text-muted text-sm">
         ← Articles
       </Link>

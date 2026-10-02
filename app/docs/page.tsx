@@ -13,7 +13,7 @@ export default function DocsIndexPage() {
   const categories = [...new Set(docs.map((doc) => doc.category))];
 
   return (
-    <main className="mx-auto max-w-[720px] px-6 py-16">
+    <main id="contenu" className="mx-auto max-w-[720px] px-6 py-16">
       <Link href="/" className="text-muted text-sm">
         ← Accueil
       </Link>
