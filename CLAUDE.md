@@ -126,8 +126,9 @@ Apply to every new component or page.
 - **Targets**: ≥ 24×24 CSS px (WCAG 2.5.8), prefer 44×44 for icon-only controls.
 - **Motion**: no animation or smooth scroll outside `prefers-reduced-motion: no-preference`.
 - **Reflow**: no horizontal scroll at 320 px; prefer `rem` over `px` for font sizes.
-- **Forms** (admin): visible `<label>`, errors tied with `aria-describedby` and announced with
-  `role="alert"`.
+- **Forms** (admin): visible `<label>`, field borders ≥ 3:1 (`border-ink/55`), errors announced with
+  `role="alert"` in `text-danger` (the only error color — red-600 failed 4.5:1). Fields get the global
+  focus ring; never `outline-none`.
 - **Print CV** (`components/cv-print.tsx`): keep it semantic (`h2` sections, no `h1` — ADR 0005);
   hide it on screen with `hidden` (display:none), never `sr-only`; keep print colors ≥ 4.5:1.
 
