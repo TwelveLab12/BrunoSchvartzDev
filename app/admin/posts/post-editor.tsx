@@ -18,8 +18,7 @@ function SubmitButton({ children }: { children: ReactNode }) {
 }
 
 const fieldLabel = "text-muted font-mono text-xs tracking-[0.08em] uppercase";
-const fieldInput =
-  "border-ink/20 focus:border-ink rounded-sm border bg-transparent px-3 py-2 outline-none";
+const fieldInput = "border-ink/55 focus:border-ink rounded-sm border bg-transparent px-3 py-2";
 const editorHeight = "h-[28rem] overflow-y-auto resize-none";
 
 const MARKDOWN_HINTS = [
@@ -60,7 +59,7 @@ export function PostEditor({ post, className }: { post?: AdminPost; className?: 
         <input name="title" defaultValue={post?.title} required className={fieldInput} />
       </label>
 
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <label className="grid gap-1.5">
           <span className={fieldLabel}>Tags (séparés par des virgules)</span>
           <input name="tags" defaultValue={post?.tags.join(", ")} className={fieldInput} />
@@ -74,7 +73,7 @@ export function PostEditor({ post, className }: { post?: AdminPost; className?: 
         </label>
       </div>
 
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <label className="grid gap-1.5">
           <span className={fieldLabel}>Extrait</span>
           <input name="excerpt" defaultValue={post?.excerpt} className={fieldInput} />
@@ -97,7 +96,7 @@ export function PostEditor({ post, className }: { post?: AdminPost; className?: 
         <MarkdownCheatsheet />
       </div>
 
-      <div className="grid grid-cols-2 items-start gap-6">
+      <div className="grid grid-cols-1 items-start gap-6 lg:grid-cols-2">
         <label className="grid gap-1.5">
           <span className={fieldLabel}>Contenu (Markdown)</span>
           <textarea
@@ -121,7 +120,11 @@ export function PostEditor({ post, className }: { post?: AdminPost; className?: 
         </div>
       </div>
 
-      {state && !state.ok && <p className="text-sm text-red-600">{state.message}</p>}
+      {state && !state.ok && (
+        <p role="alert" className="text-danger text-sm">
+          {state.message}
+        </p>
+      )}
 
       <div>
         <SubmitButton>Enregistrer</SubmitButton>

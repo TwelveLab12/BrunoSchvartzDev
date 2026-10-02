@@ -16,7 +16,11 @@ export function DeletePostButton({ slug, sha }: { slug: string; sha: string }) {
       <button type="submit" className={buttonVariants({ variant: "outline", size: "sm" })}>
         Supprimer
       </button>
-      {state && !state.ok && <p className="text-sm text-red-600">{state.message}</p>}
+      {state && !state.ok && (
+        <p role="alert" className="text-danger text-sm">
+          {state.message}
+        </p>
+      )}
     </form>
   );
 }
