@@ -18,8 +18,7 @@ function SubmitButton({ children }: { children: ReactNode }) {
 }
 
 const fieldLabel = "text-muted font-mono text-xs tracking-[0.08em] uppercase";
-const fieldInput =
-  "border-ink/20 focus:border-ink rounded-sm border bg-transparent px-3 py-2 outline-none";
+const fieldInput = "border-ink/55 focus:border-ink rounded-sm border bg-transparent px-3 py-2";
 const editorHeight = "h-[28rem] overflow-y-auto resize-none";
 
 const MARKDOWN_HINTS = [
