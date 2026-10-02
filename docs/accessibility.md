@@ -26,7 +26,7 @@ testé ; le panneau d'administration ne l'est pas (authentification requise).
 | ------------------------ | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | 1. Images                | `alt-text` (lint), axe `image-alt`                  | portrait informatif avec `alt`, avatars décoratifs en `alt=""`, icônes `aria-hidden`, schémas en `role="img"` + `aria-label` | pertinence des alternatives (1.3), description des schémas lue au lecteur d'écran                                                                                         | applicable                                                                            |
 | 2. Cadres                | —                                                   | aucun `iframe`                                                                                                               | —                                                                                                                                                                         | non applicable (à revoir si un embed apparaît)                                        |
-| 3. Couleurs              | axe `color-contrast` (sauf SVG)                     | tokens de `app/globals.css` calculés                                                                                         | 3.1 (information par la couleur seule), contrastes au survol et au focus, texte des schémas                                                                               | applicable ; écarts ouverts : voir plus bas                                           |
+| 3. Couleurs              | axe `color-contrast` (sauf SVG)                     | tokens de `app/globals.css` calculés                                                                                         | 3.1 (information par la couleur seule), contrastes au survol et au focus, texte des schémas                                                                               | applicable                                                                            |
 | 4. Multimédia            | —                                                   | aucun audio ni vidéo                                                                                                         | —                                                                                                                                                                         | non applicable                                                                        |
 | 5. Tableaux              | axe (en-têtes de cellules)                          | un tableau Markdown dans la documentation, rendu avec `<th>` par `components/markdown.tsx`                                   | en-têtes de colonnes annoncés au lecteur d'écran                                                                                                                          | applicable (`/docs` seulement)                                                        |
 | 6. Liens                 | `anchor-is-valid` (lint), axe `link-name`           | intitulés explicites, liens à icône seule nommés                                                                             | intitulés compris hors contexte (liste des liens du lecteur d'écran) ; liens `target="_blank"` des profils LinkedIn sans mention de la nouvelle fenêtre : à arbitrer      | applicable                                                                            |
@@ -89,7 +89,9 @@ Parcourir la page avec Tab, Maj+Tab, Entrée, Espace, Échap et les flèches.
 À mesurer, car axe ne le voit pas partout :
 
 - États de survol et de focus (lien au survol : accent `#b4472a` sur le papier, 4,93:1).
-- Le texte et les contours des **schémas** : voir les écarts ouverts ci-dessous.
+- Le texte et les contours des **schémas** (axe ne les mesure pas) : texte ≥ 4,5:1, contours ≥ 3:1. Les
+  valeurs mesurées sont notées dans le commentaire de `components/home/case-study-diagram.tsx`, à
+  recalculer si l'on touche à leurs opacités ou à leurs couleurs.
 - Tout nouveau token ou toute nouvelle paire de couleurs : texte ≥ 4,5:1, texte large et éléments
   d'interface ≥ 3:1.
 
@@ -114,7 +116,7 @@ Passer le HTML rendu d'une page (« Afficher le code source ») dans le validate
 ## Ce que les outils ne voient pas
 
 - Le **texte et les tracés des schémas SVG** : axe laisse leur contraste « à vérifier » (fond
-  indéterminé). Les valeurs ci-dessous ont été calculées à la main.
+  indéterminé) : il se calcule à la main.
 - Le focus réel, l'ordre de tabulation et l'usage au lecteur d'écran : seuls les tests manuels ci-dessus
   les couvrent.
 - La pertinence des textes (intitulés de liens, alternatives, titres de pages).
@@ -122,9 +124,6 @@ Passer le HTML rendu d'une page (« Afficher le code source ») dans le validate
 
 ## Écarts ouverts
 
-- **Contraste des schémas** ([#121](https://github.com/TwelveLab12/BrunoSchvartzDev/issues/121)) : le
-  contour pointillé « hors périmètre » est à 2,15:1 (seuil 3:1), le sous-titre du bloc infrastructure à
-  4,35:1 (seuil 4,5:1).
 - **Administration** : non auditée (authentification requise). Relevé à la lecture du code : grille à
   deux colonnes fixe (pas de reflow à 320 px), messages d'erreur sans `role="alert"`, champs dont le
   focus n'est qu'un changement de bordure.
