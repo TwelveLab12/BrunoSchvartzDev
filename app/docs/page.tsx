@@ -14,7 +14,7 @@ export default function DocsIndexPage() {
 
   return (
     <main id="contenu" className="mx-auto max-w-[720px] px-6 py-16">
-      <Link href="/" className="text-muted text-sm">
+      <Link href="/" className="text-muted -my-2 inline-block py-2 text-sm">
         ← Accueil
       </Link>
       <h1 className="m-0 mt-8 font-serif text-4xl font-normal tracking-[-0.01em]">Documentation</h1>
@@ -29,7 +29,10 @@ export default function DocsIndexPage() {
               .filter((doc) => doc.category === category)
               .map((doc) => (
                 <li key={doc.slug.join("/")}>
-                  <Link href={`/docs/${doc.slug.join("/")}`} className="text-lg">
+                  <Link
+                    href={`/docs/${doc.slug.join("/")}`}
+                    className="-my-1 inline-block py-1 text-lg"
+                  >
                     {doc.title}
                   </Link>
                 </li>

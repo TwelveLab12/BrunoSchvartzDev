@@ -42,7 +42,9 @@ export function SiteHeader() {
             className="hidden gap-[26px] text-[13.5px] tracking-[0.02em] xl:flex"
           >
             {links.map((l) => (
-              <Link key={l.href} href={l.href} className="no-underline">
+              // py-2 : zone cliquable de 36 px (le texte seul ne fait que 20 px) ; l'en-tête est
+              // déjà plus haut (portrait de 56 px), la mise en page ne bouge pas.
+              <Link key={l.href} href={l.href} className="py-2 no-underline">
                 {l.label}
               </Link>
             ))}
