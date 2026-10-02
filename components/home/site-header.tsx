@@ -19,7 +19,8 @@ const contact = { href: "#contact", label: "Me contacter" };
 
 export function SiteHeader() {
   return (
-    // Pleine largeur (annule le padding de <main>) pour que le fond couvre les marges une fois collé.
+    // Pleine largeur (annule le padding du conteneur de la page) pour que le fond couvre les marges
+    // une fois collé.
     <header className="bg-paper/90 sticky top-0 z-20 -mx-[clamp(20px,5vw,72px)] px-[clamp(20px,5vw,72px)] backdrop-blur-sm">
       <div className="border-rule mx-auto flex max-w-[1120px] flex-wrap items-center gap-x-3 border-b py-4 sm:gap-x-6">
         <div className="flex items-center gap-3.5">
@@ -36,7 +37,10 @@ export function SiteHeader() {
           </span>
         </div>
         <div className="ml-auto hidden items-center gap-[26px] sm:flex">
-          <nav className="hidden gap-[26px] text-[13.5px] tracking-[0.02em] xl:flex">
+          <nav
+            aria-label="Navigation principale"
+            className="hidden gap-[26px] text-[13.5px] tracking-[0.02em] xl:flex"
+          >
             {links.map((l) => (
               <Link key={l.href} href={l.href} className="no-underline">
                 {l.label}
