@@ -1,67 +1,43 @@
-# bruno-schvartz-site
+# Bruno Schvartz — portfolio
 
-Site de présentation personnel, déployé sur [brunoschvartz.dev](https://brunoschvartz.dev) (Vercel, domaine chez Cloudflare). Pages publiques entièrement statiques, sans base de données ; seule l'admin du blog (`/admin`) est dynamique et authentifiée par LinkedIn (voir `docs/adr/0011-blog-admin-architecture.md`).
+[![CI](https://github.com/TwelveLab12/BrunoSchvartzDev/actions/workflows/ci.yml/badge.svg)](https://github.com/TwelveLab12/BrunoSchvartzDev/actions/workflows/ci.yml)
 
-Stack : Next.js 15 (App Router, Turbopack) · React 19 · TypeScript strict · Tailwind CSS 4 · CVA + clsx + tailwind-merge · lucide-react. Qualité : ESLint (`eslint-config-next`), Prettier + `prettier-plugin-tailwindcss`, Husky + lint-staged, CI GitHub Actions. Détail de chaque dépendance : [`docs/dependencies.md`](docs/dependencies.md).
+Mon site de présentation et mon CV, en ligne sur **[brunoschvartz.dev](https://brunoschvartz.dev)**.
 
-## Démarrer
+Je suis développeur front-end React / TypeScript. Ce dépôt est aussi un exemple concret de ma façon de travailler : un petit produit, mené comme un vrai projet, avec ses choix documentés.
 
-```bash
-pnpm install
-pnpm dev        # http://localhost:3000
-```
+**English —** My personal site and CV, live at [brunoschvartz.dev](https://brunoschvartz.dev). I'm a front-end developer (React / TypeScript). This repository doubles as a worked example of how I build and run a small product: documented decisions, automated quality gates, accessibility as a requirement. The documentation is in French; the summary below is in both languages.
 
-Scripts : `pnpm build` · `pnpm start` · `pnpm lint` · `pnpm lint:ci` · `pnpm typecheck` · `pnpm format`.
+## Ce que contient le projet / What's inside
 
-## Structure
+- **Un site statique** : pages prérendues, pas de base de données, hébergement Vercel. / _A static site: pre-rendered pages, no database._
+- **Un CV imprimable** : pas de PDF à maintenir, il est généré à partir du même contenu que la page web. / _A printable CV built from the same content as the web page, so there is no PDF to keep in sync._
+- **Un blog avec espace d'administration** : réservé au propriétaire (connexion LinkedIn), les articles sont des fichiers Markdown commités dans ce dépôt. / _A blog with an owner-only admin; posts are Markdown files committed to this repo._
 
-```
-app/           routes (page, layout, CV imprimé via @media print, docs/, not-found, error, global-error)
-components/    home/ (sections de la page) · ui/ (primitives réutilisables : Button, PrintButton)
-content/       profile.ts — tout le contenu éditorial, typé, en un seul endroit
-docs/          documentation du projet (dependencies.md, adr/) — aussi servie en ligne sur /docs
-lib/utils.ts   cn()
-```
+## Ce que ça démontre / What it shows
 
-Les couleurs et les polices sont des tokens Tailwind déclarés dans `app/globals.css` (`@theme`) : `bg-paper`, `text-ink`, `text-muted`, `bg-accent`, `font-serif|sans|mono|wordmark`. Modifier l'accent = une ligne.
+- **Simplicité d'exploitation** : le rendu statique garde le coût et la surface d'attaque au minimum. Une seule zone est dynamique, l'administration. / _Static rendering keeps cost and attack surface low; only the admin area is dynamic._
+- **Une source de vérité pour le contenu** : le texte du site, du CV et les chiffres affichés viennent d'un seul fichier ou sont calculés au build, jamais recopiés à la main. / _One source of truth for content; derived figures are computed at build time._
+- **Accessibilité comme exigence** : cible WCAG 2.2 AA et RGAA, vérifiée par le lint, un contrôle axe-core en CI et une checklist manuelle. / _Accessibility as a requirement: WCAG 2.2 AA / RGAA target, enforced by lint, axe-core in CI and a manual checklist._
+- **Qualité automatisée** : TypeScript strict, ESLint, et une CI qui bloque la mise en production tant qu'elle n'est pas verte. / _Strict TypeScript, ESLint, and a CI that gates production deploys._
+- **Décisions tracées** : chaque choix structurant a son [ADR](docs/adr) (contexte, décision, conséquences). / _Each structural choice is recorded as an Architecture Decision Record._
 
-## Documentation
+## Stack
 
-- [`docs/dependencies.md`](docs/dependencies.md) — ce que fait chaque librairie et pourquoi elle est utilisée ici.
-- [`docs/adr/`](docs/adr) — décisions d'architecture (format Statut/Contexte/Décision/Conséquences), numérotées.
-- Les deux sont aussi consultables en ligne sur `/docs` (`noindex`, hors sitemap, lien discret dans le pied de la home — voir `docs/adr/0013-lien-docs-discret-depuis-le-footer.md`).
-- [`CLAUDE.md`](CLAUDE.md) — conventions de travail pour Claude Code sur ce repo.
+Next.js 16 · React 19 · TypeScript · Tailwind CSS 4 · Vercel · GitHub Actions
 
-## CV imprimable
+Le rôle de chaque dépendance est expliqué dans [`docs/dependencies.md`](docs/dependencies.md).
 
-Pas de PDF à maintenir : le CV **est** la version imprimée de la page. `components/cv-print.tsx` est masqué à l'écran (`hidden print:block`) et la page l'est à l'impression (`print:hidden`) ; `@media print` dans `globals.css` fixe le format A4. Le CTA « Imprimer mon CV » appelle `window.print()` — l'utilisateur choisit « Enregistrer au format PDF ». Contenu dans `content/profile.ts` (`cv`) : une seule source à mettre à jour.
+## Pour aller plus loin / Going further
 
-Tenir sur une page : vérifier l'aperçu d'impression après chaque ajout de contenu.
+- [`docs/adr/`](docs/adr) — les décisions d'architecture. / _Architecture decisions._
+- [`docs/contributing.md`](docs/contributing.md) — lancer le projet en local, structure du code, environnements, déploiement. / _Running locally, code layout, environments, deployment._
+- [`CLAUDE.md`](CLAUDE.md) — les conventions de travail suivies sur ce dépôt (issues, branches, PR, accessibilité), utilisées avec Claude Code. / _The working conventions for this repo, used with Claude Code._
 
-## Déploiement
+## Contact
 
-Vercel, déploiement automatique sur push vers `main`. La promotion en production est bloquée tant que la CI (`.github/workflows/ci.yml`) n'est pas verte (Deployment Check Vercel, voir `docs/adr/0009-vercel-deployment-checks.md`).
+[LinkedIn](https://www.linkedin.com/in/bruno-schvartz) · [brunoschvartz.dev](https://brunoschvartz.dev) · bruno.schvartz@gmail.com
 
-## Environnements
+## Licence / License
 
-- **Production** (Vercel, branche `main`) : site public et `/admin`. Les variables d'`.env.example` y sont toutes définies.
-- **Preview** (une URL par déploiement de PR) : site public uniquement. `/admin` n'y fonctionne pas et affiche « Accès refusé » : c'est attendu, pas un oubli de configuration (voir `docs/adr/0014-admin-production-et-local-uniquement.md`).
-- **Local** (`pnpm dev`, `.env.local` copié depuis `.env.example`) : `/admin` fonctionne une fois les variables renseignées. Attention : enregistrer un article commite réellement sur `main` via l'API GitHub.
-
-Le tableau variable × environnement est en tête d'`.env.example`. Les valeurs ne vont jamais dans le dépôt ni dans `/docs`.
-
-## Volontairement pas installé
-
-Rien dans cette page n'a besoin de base de données, donc ces dépendances ne sont pas dans le `package.json` (pas de deps mortes). Le blog avec édition depuis le site (suivi dans le GitHub Project) en aura besoin le jour où il sera implémenté :
-
-```bash
-# Shadcn UI + primitives Radix (au besoin, composant par composant)
-pnpm dlx shadcn@latest init
-pnpm dlx shadcn@latest add dialog dropdown-menu
-
-# Neon + Drizzle (quand il y aura des données)
-pnpm add @neondatabase/serverless drizzle-orm
-pnpm add -D drizzle-kit
-```
-
-Non inclus car côté poste de travail, pas côté projet : Node/nvm, pnpm, Git, GitHub CLI, IDE et assistants IA, comptes Vercel/Neon/GitHub.
+Voir [`LICENSE`](LICENSE). / See [`LICENSE`](LICENSE).
