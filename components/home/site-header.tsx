@@ -1,6 +1,7 @@
 import { MobileNav } from "@/components/home/mobile-nav";
 import { ButtonLink } from "@/components/ui/button";
 import { Wordmark } from "@/components/wordmark";
+import { projects } from "@/content/projects";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,6 +10,7 @@ import Link from "next/link";
 const links = [
   { href: "#stack", label: "Stack" },
   { href: "#projet", label: "Cas d'étude" },
+  ...(projects.length > 0 ? [{ href: "#projets-perso", label: "Projets perso" }] : []),
   { href: "#experience", label: "Parcours" },
   { href: "#recommandations", label: "Recommandations" },
   { href: "#ce-site", label: "Ce site" },
