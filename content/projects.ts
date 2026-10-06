@@ -17,7 +17,7 @@ export const personalProjects = {
     demo: "Voir la démo",
     repository: "Code source",
     caseStudy: "Étude de cas",
-    adr: "Lire les ADR",
+    adr: "Décisions d'architecture",
     back: "Projets personnels",
   },
   /** Libellés des chiffres relevés sur le dépôt GitHub du projet (lib/project-stats.ts). */
@@ -46,7 +46,80 @@ export type Project = {
   sections: readonly ProjectSection[];
 };
 
-export const projects: readonly Project[] = [];
+export const projects: readonly Project[] = [
+  {
+    slug: "dnd-character-manager",
+    name: "Gestionnaire de personnage D&D",
+    tagline:
+      "Fiches de personnage Donjons & Dragons 5e portées en application : un moteur de règles métier qui calcule la fiche au lieu de la stocker, utilisable hors ligne à la table de jeu.",
+    meta: "Depuis septembre 2026",
+    tags: ["Next.js 16", "React 19", "TypeScript strict", "Zustand", "Zod", "Vitest", "PWA"],
+    links: {
+      demo: "https://dnd.brunoschvartz.dev/?demo=1",
+      repository: "https://github.com/TwelveLab12/dnd-character-manager",
+      adr: "https://github.com/TwelveLab12/dnd-character-manager/blob/main/docs/architecture.md",
+    },
+    highlights: [
+      {
+        label: "Moteur de règles",
+        body: "Classe d'armure, attaques, sauvegardes, points de vie, emplacements de sorts : tout ce qui se déduit des règles est calculé par des fonctions pures, jamais saisi.",
+      },
+      {
+        label: "Données versionnées",
+        body: "Stockage local derrière un repository pattern, avec des migrations de format qui font évoluer les données des joueurs sans rien perdre.",
+      },
+      {
+        label: "Décisions tracées",
+        body: "Chaque choix structurant fait l'objet d'un ADR ; chaque évolution passe par une pull request et une CI verte.",
+      },
+    ],
+    sections: [
+      {
+        title: "Le besoin",
+        paragraphs: [
+          "Les fiches de personnage de ma table de jeu vivaient dans un tableur Google Sheets. Pratique pour noter, beaucoup moins pour appliquer des règles qui dépendent à la fois de la classe, du niveau et de l'équipement, et peu lisible sur un téléphone en pleine partie.",
+          "L'objectif : une application que chaque joueur ouvre sur son téléphone pendant la partie, qui applique les règles à sa place et fonctionne même sans réseau.",
+        ],
+      },
+      {
+        title: "Un moteur de règles plutôt qu'un formulaire",
+        paragraphs: [
+          "Le principe directeur : toute valeur dérivable des paramètres du personnage est calculée, jamais stockée. Seuls les choix du joueur et sa consommation de ressources sont persistés.",
+        ],
+        points: [
+          "Registres déclaratifs de classes, sous-classes, races et dons : ajouter une option revient à ajouter une entrée, pas à modifier l'interface.",
+          "Fonctions pures et testées pour la classe d'armure, les attaques d'armes, les sauvegardes, l'initiative, les points de vie maximums et les emplacements de sorts.",
+          "Chaque règle appliquée automatiquement est listée en clair dans la fiche, pour que le joueur comprenne d'où vient chaque chiffre.",
+        ],
+      },
+      {
+        title: "Persistance et évolution des données",
+        paragraphs: [
+          "Pas de back-end dans cette première version : les données vivent dans le navigateur, derrière un repository pattern qui permettra de brancher une API sans toucher aux écrans.",
+        ],
+        points: [
+          "Formats de stockage versionnés, avec une migration à chaque évolution du modèle : les fiches existantes sont converties au chargement, jamais perdues.",
+          "Import et export JSON validés par Zod, avec un aperçu ligne par ligne (nouveau, mise à jour, identique, invalide) avant d'écrire quoi que ce soit.",
+          "Service worker pour un usage hors ligne, et application installable sur mobile.",
+        ],
+      },
+      {
+        title: "Une interface pensée pour la table de jeu",
+        paragraphs: [
+          "Deux modes distincts : la configuration, où l'on construit le personnage, et le jeu, où l'on ne fait que consulter et consommer. En mode jeu, un HUD de combat reste visible en permanence : classe d'armure, points de vie, ressources de classe.",
+          "Viennent ensuite les mécaniques de partie : attaque guidée pas à pas, jets contre la mort, épuisement, repos courts et longs, forme sauvage du druide, historique des actions et journal de session.",
+        ],
+      },
+      {
+        title: "Qualité et méthode",
+        paragraphs: [
+          "Le projet part d'un socle que j'ai formalisé dans un dépôt modèle : TypeScript strict, ESLint, Prettier, hooks de pré-commit, Vitest et Testing Library, et une CI qui enchaîne typecheck, lint, tests et build à chaque push.",
+          "Je développe avec un agent IA (Claude Code). Mon rôle : cadrer le besoin, trancher l'architecture, rédiger les ADR, relire chaque pull request et tenir le niveau d'exigence. Les tests, la CI et les ADR rendent ce travail vérifiable par n'importe qui.",
+        ],
+      },
+    ],
+  },
+];
 
 export function getProject(slug: string): Project | undefined {
   return projects.find((project) => project.slug === slug);
