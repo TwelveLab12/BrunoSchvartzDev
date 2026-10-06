@@ -119,6 +119,13 @@ export const projects: readonly Project[] = [
         ],
       },
       {
+        title: "Un cadre serré : trois jours",
+        paragraphs: [
+          "Je n'avais que trois jours pour construire l'application. J'en ai consacré deux et demi à mon propre personnage, Yomi, clerc du Crépuscule : c'est lui qui a servi à cadrer le moteur de règles, le mode jeu et les calculs. La dernière demi-journée a porté sur les spécificités des trois personnages de mes compagnons : un barbare, un moine et une druide.",
+          "Ce découpage tient parce que les classes, sous-classes, races et dons sont des registres déclaratifs : ajouter un personnage revient à décrire ce qui le distingue, pas à réécrire l'application. Le temps compté a imposé de choisir ce qui comptait vraiment à la table, et de documenter chaque choix dans un ADR plutôt que de le garder en tête.",
+        ],
+      },
+      {
         title: "Un moteur de règles plutôt qu'un formulaire",
         paragraphs: [
           "Le principe directeur : toute valeur dérivable des paramètres du personnage est calculée, jamais stockée. Seuls les choix du joueur et sa consommation de ressources sont persistés.",
@@ -151,7 +158,7 @@ export const projects: readonly Project[] = [
         title: "Qualité et méthode",
         paragraphs: [
           "Le projet part d'un socle que j'ai formalisé dans un dépôt modèle : TypeScript strict, ESLint, Prettier, hooks de pré-commit, Vitest et Testing Library, et une CI qui enchaîne typecheck, lint, tests et build à chaque push.",
-          "Je développe avec un agent IA (Claude Code). Mon rôle : cadrer le besoin, trancher l'architecture, rédiger les ADR, relire chaque pull request et tenir le niveau d'exigence. Les tests, la CI et les ADR rendent ce travail vérifiable par n'importe qui.",
+          "Je développe avec un agent IA (Claude Code). Mon rôle : cadrer le besoin, trancher l'architecture, rédiger les ADR, relire chaque pull request et tenir le niveau d'exigence. Dans un délai aussi court, ce sont les tests, la CI et les ADR qui garantissent que la vitesse ne se paie pas en qualité, et qui rendent ce travail vérifiable par n'importe qui.",
         ],
       },
     ],
