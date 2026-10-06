@@ -115,6 +115,33 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         </>
       ) : null}
 
+      {project.gallery?.length ? (
+        <section className="border-rule mt-12 border-t pt-8">
+          <SectionLabel className="m-0 tracking-[0.08em]">
+            {personalProjects.galleryLabel}
+          </SectionLabel>
+          <ul className="mt-6 mb-0 grid list-none gap-6 p-0 sm:grid-cols-2">
+            {project.gallery.map((shot) => (
+              <li key={shot.src}>
+                <figure className="m-0">
+                  <Image
+                    src={shot.src}
+                    alt={shot.alt}
+                    width={shot.width}
+                    height={shot.height}
+                    sizes="(min-width: 640px) 348px, 100vw"
+                    className="border-rule h-auto w-full rounded-sm border"
+                  />
+                  <figcaption className="text-muted mt-2 text-[13.5px] leading-snug">
+                    {shot.caption}
+                  </figcaption>
+                </figure>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+
       {project.sections.map((section) => (
         <section key={section.title} className="border-rule mt-12 border-t pt-8">
           <SectionLabel className="m-0 tracking-[0.08em]">{section.title}</SectionLabel>
