@@ -45,6 +45,8 @@ automatically on staged files.
 - **`content/profile.ts`** is the single source of truth for every piece of site text: bio,
   experience, projects, skills, and the printed CV's content. Components must never hardcode text
   that belongs here — see `docs/adr/0006-centralized-content.md`.
+  Exception by design: personal projects (home section + `/projets/[slug]` case studies) live in
+  `content/projects.ts` (`docs/adr/0017-personal-projects-and-case-study-pages.md`).
 - **Derived facts shown on the site are computed at build time from their real source, never
   typed by hand as a string that drifts** — e.g. the ADR count in `components/home/site-case.tsx`
   (`getAdrCount()` in `lib/docs.ts`) and the years-of-experience figures in `profile.proofs`
