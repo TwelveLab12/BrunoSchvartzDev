@@ -23,6 +23,7 @@ export const personalProjects = {
   /** Libellés des chiffres relevés sur le dépôt GitHub du projet (lib/project-stats.ts). */
   figureLabels: { adr: "ADR", pullRequests: "pull requests fusionnées" },
   figuresNote: "Chiffres relevés sur GitHub à chaque mise en ligne du site.",
+  galleryLabel: "Aperçu de l'application",
 } as const;
 
 export type ProjectSection = {
@@ -30,6 +31,8 @@ export type ProjectSection = {
   paragraphs: readonly string[];
   points?: readonly string[];
 };
+
+export type Screenshot = { src: string; alt: string; width: number; height: number };
 
 export type Project = {
   slug: string;
@@ -41,7 +44,9 @@ export type Project = {
   /** `repository` est l'URL GitHub du dépôt : les chiffres clés en sont déduits au build. */
   links: { demo: string; repository: string; adr: string };
   /** Capture affichée sur la carte et en tête de l'étude de cas (chemin sous `public/`). */
-  cover?: { src: string; alt: string; width: number; height: number };
+  cover?: Screenshot;
+  /** Autres captures, affichées avec leur légende sous l'en-tête de la page détail. */
+  gallery?: readonly (Screenshot & { caption: string })[];
   highlights: readonly { label: string; body: string }[];
   sections: readonly ProjectSection[];
 };
@@ -59,6 +64,38 @@ export const projects: readonly Project[] = [
       repository: "https://github.com/TwelveLab12/dnd-character-manager",
       adr: "https://github.com/TwelveLab12/dnd-character-manager/blob/main/docs/architecture.md",
     },
+    cover: {
+      src: "/projects/dnd-character-manager/liste-personnages.webp",
+      alt: "Liste de quatre personnages de niveau 3 (clerc, barbare, moine et druide), chacun avec sa classe d'armure, ses points de vie et un bouton Jouer.",
+      width: 570,
+      height: 356,
+    },
+    gallery: [
+      {
+        src: "/projects/dnd-character-manager/hud-combat.webp",
+        alt: "Fiche en mode jeu : bouclier de classe d'armure 18, anneau de 23 points de vie, initiative, vitesse, emplacements de sorts et Canalisation divine.",
+        width: 508,
+        height: 769,
+        caption:
+          "Le mode jeu : classe d'armure, points de vie, initiative, ressources de classe et armes prêtes, tout se lit d'un coup d'œil.",
+      },
+      {
+        src: "/projects/dnd-character-manager/caracteristiques.webp",
+        alt: "Onglet Caractéristiques : six caractéristiques avec leurs modificateurs, le bonus de maîtrise et la liste des compétences.",
+        width: 511,
+        height: 736,
+        caption:
+          "Les caractéristiques et les compétences, avec des modificateurs calculés à partir des scores et de la maîtrise.",
+      },
+      {
+        src: "/projects/dnd-character-manager/attaque-guidee.webp",
+        alt: "Panneau du marteau de guerre : une attaque de 10 au toucher et 4 dégâts contondants, détaillés dé par dé et bonus par bonus.",
+        width: 446,
+        height: 332,
+        caption:
+          "L'attaque guidée : le jet, le total et le détail du calcul, avec « Pourquoi ? » pour voir d'où vient chaque bonus.",
+      },
+    ],
     highlights: [
       {
         label: "Moteur de règles",
