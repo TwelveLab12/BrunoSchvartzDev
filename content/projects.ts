@@ -40,6 +40,8 @@ export type Project = {
   /** Une phrase, pour la carte de la home et la description SEO. */
   tagline: string;
   meta: string;
+  /** Date de première publication de l'étude de cas (« AAAA-MM-JJ »), pour `article:published_time`. */
+  published: string;
   tags: readonly string[];
   /** `repository` est l'URL GitHub du dépôt : les chiffres clés en sont déduits au build. */
   links: { demo: string; repository: string; adr: string };
@@ -58,6 +60,7 @@ export const projects: readonly Project[] = [
     tagline:
       "Fiches de personnage Donjons & Dragons 5e portées en application : un moteur de règles métier qui calcule la fiche au lieu de la stocker, utilisable hors ligne à la table de jeu.",
     meta: "Depuis septembre 2026",
+    published: "2026-10-06",
     tags: ["Next.js 16", "React 19", "TypeScript strict", "Zustand", "Zod", "Vitest", "PWA"],
     links: {
       demo: "https://dnd.brunoschvartz.dev/?demo=1",

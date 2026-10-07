@@ -33,6 +33,8 @@ export async function generateMetadata({
       url: `${profile.website}/projets/${slug}`,
       type: "article",
       locale: "fr_FR",
+      publishedTime: project.published,
+      authors: [profile.linkedin],
     },
   };
 }
