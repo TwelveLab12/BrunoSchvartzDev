@@ -116,6 +116,7 @@ export const projects: readonly Project[] = [
         paragraphs: [
           "Les fiches de personnage de ma table de jeu vivaient dans un tableur Google Sheets. Pratique pour noter, beaucoup moins pour appliquer des règles qui dépendent à la fois de la classe, du niveau et de l'équipement, et peu lisible sur un téléphone en pleine partie.",
           "L'objectif : une application que chaque joueur ouvre sur son téléphone pendant la partie, qui applique les règles à sa place et fonctionne même sans réseau.",
+          "Trois raisons m'ont poussé à le faire. D'abord un besoin réel : celui de ma table, pas un exercice inventé. Ensuite, mes projets d'agence sont confidentiels : je voulais un projet que je puisse montrer de bout en bout, avec une démo, le code et les décisions. Enfin, c'était un terrain d'essai pour mon socle de travail avec Claude Code, sur un projet neuf et avec une échéance.",
         ],
       },
       {
@@ -123,6 +124,18 @@ export const projects: readonly Project[] = [
         paragraphs: [
           "Je n'avais que trois jours pour construire l'application. J'en ai consacré deux et demi à mon propre personnage, Yomi, clerc du Crépuscule : c'est lui qui a servi à cadrer le moteur de règles, le mode jeu et les calculs. La dernière demi-journée a porté sur les spécificités des trois personnages de mes compagnons : un barbare, un moine et une druide.",
           "Ce découpage tient parce que les classes, sous-classes, races et dons sont des registres déclaratifs : ajouter un personnage revient à décrire ce qui le distingue, pas à réécrire l'application. Le temps compté a imposé de choisir ce qui comptait vraiment à la table, et de documenter chaque choix dans un ADR plutôt que de le garder en tête.",
+          "J'ai délibérément choisi une approche pragmatique et incrémentale : pas de conception exhaustive en amont, on construit d'abord pour un seul personnage et on généralise quand le suivant le demande. C'est aussi un test grandeur nature des procédures et du `CLAUDE.md` que j'utilise sur ce site (issue, branche, pull request, ADR, CI) : là où elles manquent, je les fais évoluer.",
+        ],
+      },
+      {
+        title: "Des règles justes : valider avec Claude",
+        paragraphs: [
+          "Je maîtrise bien les règles qui concernent mon personnage, beaucoup moins celles des autres classes et espèces. Les règles de D&D sont très largement documentées, ce qui me permet de travailler avec Claude de deux façons.",
+        ],
+        points: [
+          "Là où je connais les règles, je fais valider mon raisonnement pour m'assurer de ne pas me tromper.",
+          "Là où je ne les connais pas, je vais chercher la règle en précisant à chaque fois la version des règles que j'utilise et celle des extensions.",
+          "Chaque règle appliquée est listée en clair dans la fiche : un joueur qui la connaît peut la vérifier lui-même.",
         ],
       },
       {
