@@ -174,7 +174,7 @@ export const projects: readonly Project[] = [
       {
         title: "Qualité et méthode",
         paragraphs: [
-          "Le projet part d'un socle que j'ai formalisé dans un dépôt modèle : TypeScript strict, ESLint, Prettier, hooks de pré-commit, Vitest et Testing Library, et une CI qui enchaîne typecheck, lint, tests et build à chaque push.",
+          "Le projet part de deux socles que j'avais déjà formalisés. Un dépôt modèle apporte l'outillage : TypeScript strict, ESLint, Prettier, hooks de pré-commit, Vitest et Testing Library, et une CI qui enchaîne typecheck, lint, tests et build à chaque push. Le `CLAUDE.md` de ce site apporte les procédures : une issue par tâche, une branche et une pull request par sujet, des ADR pour les décisions.",
           "Je développe avec un agent IA (Claude Code). Mon rôle : cadrer le besoin, trancher l'architecture, rédiger les ADR, relire chaque pull request et tenir le niveau d'exigence. Dans un délai aussi court, ce sont les tests, la CI et les ADR qui garantissent que la vitesse ne se paie pas en qualité, et qui rendent ce travail vérifiable par n'importe qui.",
         ],
       },
