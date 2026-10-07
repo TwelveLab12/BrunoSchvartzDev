@@ -125,8 +125,9 @@ export const projects: readonly Project[] = [
       {
         title: "Un cadre serré : trois jours",
         paragraphs: [
-          "Je n'avais que trois jours pour construire l'application. J'en ai consacré deux et demi à mon propre personnage, Yomi, clerc du Crépuscule : c'est lui qui a servi à cadrer le moteur de règles, le mode jeu et les calculs. La dernière demi-journée a porté sur les spécificités des trois personnages de mes compagnons : un barbare, un moine et une druide.",
+          "Je n'avais que trois jours, du 23 au 25 septembre, pour construire une première version jouable de l'application. J'en ai consacré deux et demi à mon propre personnage, Yomi, clerc du Crépuscule : c'est lui qui a servi à cadrer le moteur de règles, le mode jeu et les calculs. La dernière demi-journée a porté sur les spécificités des trois personnages de mes compagnons : un barbare, un moine et une druide.",
           "Ce découpage tient parce que les classes, sous-classes, races et dons sont des registres déclaratifs : ajouter un personnage revient à décrire ce qui le distingue, pas à réécrire l'application. Le temps compté a imposé de choisir ce qui comptait vraiment à la table, et de documenter chaque choix dans un ADR plutôt que de le garder en tête.",
+          "Une journée est venue s'y ajouter le 27 septembre, après une vraie partie : j'ai traité les retours des joueurs. Cette séance a fait remonter ce que la table utilise vraiment et que l'usage seul révèle : jets contre la mort, dés de vie, épuisement, forme sauvage du druide, historique des actions et journal de l'aventurier.",
           "J'ai délibérément choisi une approche pragmatique et incrémentale : pas de conception exhaustive en amont, on construit d'abord pour un seul personnage et on généralise quand le suivant le demande. C'est aussi un test grandeur nature des procédures et du `CLAUDE.md` que j'utilise sur ce site (issue, branche, pull request, ADR, CI) : là où elles manquent, je les fais évoluer.",
         ],
       },
@@ -137,7 +138,7 @@ export const projects: readonly Project[] = [
         ],
         points: [
           "Là où je connais les règles, je fais valider mon raisonnement pour m'assurer de ne pas me tromper.",
-          "Là où je ne les connais pas, je vais chercher la règle en précisant à chaque fois la version des règles que j'utilise et celle des extensions.",
+          "Là où je ne les connais pas, je vais chercher la règle en précisant à chaque fois la version des règles que j'utilise (la 5e édition de 2014) et celle des extensions.",
           "Chaque règle appliquée est listée en clair dans la fiche : un joueur qui la connaît peut la vérifier lui-même.",
         ],
       },
