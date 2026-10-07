@@ -33,6 +33,7 @@ const plexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(profile.website),
+  authors: [{ name: profile.name, url: profile.linkedin }],
   title: "Bruno Schvartz — Développeur front-end React, Lyon",
   description:
     `Développeur front-end React / TypeScript à Lyon. Développeur depuis ${CAREER_START_YEAR}, ` +
