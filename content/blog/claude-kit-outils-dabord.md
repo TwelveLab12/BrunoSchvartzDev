@@ -13,7 +13,7 @@ excerpt: >-
   la qualité, ce ne sont pas les consignes données à l'IA, mais des outils qui
   tournent sans elle. Retour sur six semaines d'itérations, sur les limites du
   kit et sur la suite.
-status: draft
+status: published
 pinnedOrder: 1
 ---
 
