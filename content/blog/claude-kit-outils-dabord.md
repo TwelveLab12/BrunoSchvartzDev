@@ -14,6 +14,7 @@ excerpt: >-
   tournent sans elle. Retour sur six semaines d'itérations, sur les limites du
   kit et sur la suite.
 status: draft
+pinnedOrder: 1
 ---
 
 Il y a deux mois, j'expliquais [pourquoi je me forme sérieusement à l'IA](/blog/autoformation-ia),
