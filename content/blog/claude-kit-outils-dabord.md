@@ -1,7 +1,7 @@
 ---
 title: "Les outils d'abord, l'IA au-dessus : le kit qui tient la qualité de mes projets"
-date: "2026-11-14"
-updatedAt: "2026-11-14"
+date: "2026-11-16"
+updatedAt: "2026-11-16"
 tags:
   - ia
   - qualité
