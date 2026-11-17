@@ -52,7 +52,10 @@ Le corps de l'article, en Markdown, après le second `---`.
   `auto-formation`), pour rester cohérent avec les badges déjà affichés.
 
 `date`, `updatedAt` et `tags` sont aussi exposés dans les métadonnées Open Graph de l'article
-(`article:published_time`, `article:modified_time`, `article:tag`).
+(`article:published_time`, `article:modified_time`, `article:tag`). L'article reçoit en plus
+`article:author` (profil LinkedIn) et une image d'aperçu générée au build par
+`app/blog/[slug]/opengraph-image.tsx` : titre, date et tags, dans l'habillage des images de la home
+et des études de cas. Un brouillon n'a pas d'image.
 
 Le corps du fichier (tout ce qui suit le frontmatter) est du Markdown brut, rendu via
 `react-markdown` — le même pipeline que `docs/` (ce fichier inclus), sans
