@@ -306,6 +306,12 @@ export const siteCase = {
   repositoryLink: "Voir le code sur GitHub",
 } as const;
 
+/** Libellés du blog utilisés hors des pages : image d'aperçu des articles (Open Graph). */
+export const blogLabels = {
+  section: "Blog",
+  ogImageAlt: `Article du blog de ${profile.name}`,
+} as const;
+
 /** Contenu de la feuille CV imprimée (voir components/cv-print.tsx). Une page A4. */
 export const cv = {
   /** Titre sous le nom, découpé pour mettre « senior » en valeur. */

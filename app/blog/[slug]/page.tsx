@@ -36,6 +36,7 @@ export async function generateMetadata({
       locale: "fr_FR",
       publishedTime: post.date,
       modifiedTime: post.updatedAt,
+      authors: [profile.linkedin],
       tags: post.tags,
     },
   };
