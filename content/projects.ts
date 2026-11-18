@@ -1,3 +1,5 @@
+import { profile } from "./profile";
+
 /**
  * Projets personnels : une carte par projet sur la home, une page d'étude de cas sur
  * `/projets/[slug]`. Ajouter un projet = ajouter une entrée à `projects`. Séparé de
@@ -24,6 +26,8 @@ export const personalProjects = {
   figureLabels: { adr: "ADR", pullRequests: "pull requests fusionnées" },
   figuresNote: "Chiffres relevés sur GitHub à chaque mise en ligne du site.",
   galleryLabel: "Aperçu de l'application",
+  /** Texte alternatif de l'image d'aperçu des études de cas (app/projets/[slug]/opengraph-image.tsx). */
+  ogImageAlt: `Étude de cas — projet personnel de ${profile.name}`,
 } as const;
 
 export type ProjectSection = {
