@@ -88,9 +88,11 @@ automatically on staged files.
 - **CI** (`.github/workflows/ci.yml`) runs typecheck/lint/build on every push and PR, and reports
   status to Vercel as a named Deployment Check that gates production promotion
   (`docs/adr/0009-vercel-deployment-checks.md`) — the check name must stay in sync with whatever is
-  selected in the Vercel project's Deployment Checks settings, which lives outside this repo. A
-  separate `a11y` job in the same workflow (axe-core via `scripts/a11y.mjs` on the built site) is
-  deliberately NOT reported to Vercel and runs with `continue-on-error`: it stays advisory until
+  selected in the Vercel project's Deployment Checks settings, which lives outside this repo. Keep
+  `ci.yml` to that single `build` job: the Vercel action judges the first job of its run, whatever
+  its name, so a second job silently breaks the gate (#163, ADR 0009). The `a11y` job (axe-core via
+  `scripts/a11y.mjs` on the built site) lives in its own workflow, `.github/workflows/a11y.yml`; it
+  is deliberately NOT reported to Vercel and runs with `continue-on-error`: it stays advisory until
   promoted to blocking, which would amend ADR 0009 and 0016.
 - **Accessibility** is a project constraint, not a polish pass. Target: WCAG 2.2 AA, with the RGAA
   (4.1.2 until RGAA 5 ships) as the French reference grid — see
