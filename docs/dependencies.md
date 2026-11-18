@@ -37,6 +37,16 @@ Ce document liste les librairies déclarées dans `package.json` : ce qu'elles f
 - **gray-matter** — Parsing et génération du frontmatter YAML des fichiers `content/blog/*.md`
   (titre, date, tags, statut brouillon/publié), consommé par `lib/blog.ts`.
 
+## Images d'aperçu (Open Graph)
+
+- **@fontsource/instrument-serif**, **@fontsource/ibm-plex-sans**, **@fontsource/ibm-plex-mono**,
+  **@fontsource/instrument-sans** — Les polices du site en fichiers `woff` (sous-ensemble latin,
+  licence OFL), lues au build par `lib/og.tsx` pour les images d'aperçu de la home, des études de cas
+  et des articles. `ImageResponse` n'accepte que ttf, otf et woff, et `next/font/google`, qui sert
+  ces mêmes polices aux pages, ne fournit pas de fichier lisible ; sans elles, `next/og` retombe sur
+  Geist (#160). Seuls quatre fichiers `latin-*-normal.woff` sont lus ; les CSS des paquets ne sont
+  pas importées.
+
 ## Qualité de code & outillage
 
 - **typescript** — Typage statique sur l'ensemble du code.
