@@ -39,6 +39,8 @@ export const profile = {
   repository: "https://github.com/TwelveLab12/BrunoSchvartzDev",
   website: "https://brunoschvartz.dev",
   websiteLabel: "brunoschvartz.dev",
+  /** Ligne sous le nom dans l'image d'aperçu de la home (app/opengraph-image.tsx). */
+  ogTagline: "Développeur front-end React, référent technique.",
 } as const;
 
 /**

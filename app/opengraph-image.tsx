@@ -35,7 +35,7 @@ export default function OpengraphImage() {
       <div
         style={{ display: "flex", marginTop: 32, fontSize: 32, color: "#4a4740", maxWidth: 900 }}
       >
-        Développeur front-end React, référent technique.
+        {profile.ogTagline}
       </div>
     </div>,
     size,

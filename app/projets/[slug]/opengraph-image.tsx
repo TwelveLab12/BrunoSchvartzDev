@@ -4,7 +4,7 @@ import { profile } from "@/content/profile";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "Étude de cas — projet personnel de Bruno Schvartz";
+export const alt = personalProjects.ogImageAlt;
 
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
