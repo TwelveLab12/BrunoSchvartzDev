@@ -1,5 +1,5 @@
 /**
- * Vérification axe-core sur le rendu du site servi (`vrp build && vrp start`, puis `vrp a11y`).
+ * Vérification axe-core sur le rendu du site servi (`pnpm build && pnpm start`, puis `pnpm a11y`).
  * Couche 2 de l'ADR 0016 : complète le lint `jsx-a11y` avec ce qu'il ne voit pas (contraste calculé,
  * landmarks réels, menu mobile ouvert). C'est un indicateur, pas une preuve de conformité — axe ne
  * lit pas les couleurs `oklch()` des pages Markdown (`color-contrast` reste alors « incomplet »),
