@@ -23,9 +23,10 @@ jobs:
 
       - uses: pnpm/action-setup@v6
 
+      # Node : celui de `.nvmrc`, comme `ci.yml` et le poste.
       - uses: actions/setup-node@v7
         with:
-          node-version: 22
+          node-version-file: .nvmrc
           cache: pnpm
 
       - run: pnpm install --frozen-lockfile

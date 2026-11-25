@@ -25,9 +25,11 @@ jobs:
 
       - uses: pnpm/action-setup@v6
 
+      # Node : celui de `.nvmrc`, comme sur le poste. Vercel règle le sien à part (réglage du projet,
+      # hors du dépôt) : le garder sur la même majeure.
       - uses: actions/setup-node@v7
         with:
-          node-version: 22
+          node-version-file: .nvmrc
           cache: pnpm
 
       - run: pnpm install --frozen-lockfile
