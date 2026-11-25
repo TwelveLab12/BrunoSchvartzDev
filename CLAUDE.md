@@ -17,24 +17,26 @@ page.
 
 ## Commands
 
-Always use `vrp <script>` (= `volta run pnpm <script>`), not bare `pnpm` — this is the project's
-convention throughout its history.
+Run scripts with `pnpm <script>`. The Node version comes from `.nvmrc`, read by the dev machine's
+version manager (mise) and by both CI workflows (`node-version-file`). Vercel sets its own Node
+version in the project settings, outside this repo: when bumping Node, move it to the same major
+in the same PR (#168).
 
 ```bash
-vrp dev          # dev server, Turbopack
-vrp build        # production build
-vrp start        # serve the production build
-vrp lint         # eslint
-vrp lint:ci      # eslint --max-warnings=0 (what CI runs)
-vrp typecheck    # tsc --noEmit
-vrp format       # prettier --write .
-vrp a11y         # axe-core on the served site — run `vrp build`, then `vrp start` in another terminal
+pnpm dev          # dev server, Turbopack
+pnpm build        # production build
+pnpm start        # serve the production build
+pnpm lint         # eslint
+pnpm lint:ci      # eslint --max-warnings=0 (what CI runs)
+pnpm typecheck    # tsc --noEmit
+pnpm format       # prettier --write .
+pnpm a11y         # axe-core on the served site — run `pnpm build`, then `pnpm start` in another terminal
 ```
 
-There is no test suite in this repo (`vrp a11y` is a rendered-output check, not a test suite;
+There is no test suite in this repo (`pnpm a11y` is a rendered-output check, not a test suite;
 locally set `PLAYWRIGHT_CHANNEL=chrome` to reuse your installed Chrome instead of downloading
-Chromium). Before every commit, `vrp typecheck`, `vrp lint`, and `vrp build` must all be clean —
-this is the project's baseline, not optional. `vrp lint` includes
+Chromium). Before every commit, `pnpm typecheck`, `pnpm lint`, and `pnpm build` must all be clean —
+this is the project's baseline, not optional. `pnpm lint` includes
 the `jsx-a11y` `strict` ruleset: an a11y lint error is a real defect — fix it, and never add an
 `eslint-disable` for a `jsx-a11y` rule without a comment saying why (see `components/ui/button.tsx`
 for the one existing example). A pre-commit hook (Husky + lint-staged) also runs Prettier/ESLint
